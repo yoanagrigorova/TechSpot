@@ -1,0 +1,15 @@
+<fieldset>
+    <form action="/login" method="post">
+    <label for="username">Електронна поща
+        <input id="username" type="text" name="username"/>
+        </label>
+        <label for="password">Парола
+        <input id="password" type="password"  name="password"  placeholder="Enter password"/>
+        </label>
+        <input type="submit" value='Вход'/>
+    </form>
+
+    <div class='error'>
+        {{message}}
+    </div>
+</fieldset>
