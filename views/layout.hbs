@@ -3,17 +3,71 @@
   <head>
     <title>{{title}}</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
-    <script src="../node_modules/angular/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
   </head>
   <body ng-app="">
     <header>
       <img src="/images/logo.png" alt="Logo"/>
       <input type="text"/>
-      <a href="/login">Вход</a>
-      <a href="/registration">Регистрация</a>    
+      <a href="/login"> Вход </a>
+      <a href="/registration"> Регистрация </a>    
     </header>
-    <main >
+    <main>
     {{{body}}}
     </main>
+
+    <footer>
+      <article>
+        <h5>ТЕХНОПОЛИС</h5>
+        <ul>
+          <li><a href="">Компанията</a></li>
+          <li><a href="">Работа при нас</a></li>
+          <li><a href="">Новини</a></li>
+          <li><a href="">Общи условия</a></li>
+        </ul>
+      </article>
+      <article>
+        <h5>КОНТАКТИ</h5>
+        <ul>
+          <li><a href="">Контакти</a></li>
+          <li><a href="">Магазини</a></li>
+          <li><a href="">Сервизи</a></li>
+        </ul>
+      </article>
+      <article>
+        <h5>ЗА КЛИЕНТА</h5>
+        <ul>
+          <li><a href="">Съвети</a></li>
+          <li><a href="">Транспорт</a></li>
+          <li><a href="">Доставка при онлайн поръчка</a></li>
+          <li><a href="">Вземи от магазин</a></li>
+          <li><a href="">Услуги</a></li>
+          <li><a href="">Връщане на поръчка</a></li>
+        </ul>
+      </article>
+      <article>
+        <h5>ОБЩА ИНФОРМАЦИЯ</h5>
+        <ul>
+          <li><a href="">Как да поръчам</a></li>
+          <li><a href="">Лоялни клиенти</a></li>
+          <li><a href="">Рециклиране</a></li>
+        </ul>
+
+        <h5>НАМЕРЕТЕ НИ В</h5>
+        <ul>
+          <a href=""><img src="/images/facebook.png" alt=""></a>
+          <a href=""><img src="/images/yt.png" alt=""></a>
+          <a href=""><img src="/images/g+.png" alt=""></a>
+        </ul>
+      </article>
+      <article id="payment">
+        <h5>ПАЗАРУВАЙТЕ С</h5>
+        <ul>
+          <a href=""><img src="/images/visa.png" alt=""></a>
+          <a href=""><img src="/images/master.png" alt=""></a>
+          <a href=""><img src="/images/maestro.png" alt=""></a>
+        </ul>
+      </article>
+    </footer>
   </body>
 </html>
