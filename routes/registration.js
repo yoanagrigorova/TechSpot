@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-router.post('/', function(req, res, next) {
-
+router.get('/', function(req, res, next) {
+    res.render('registration')
     function User(firstName, lastName, mail, phone, password) {
         if (firstName.trim().length > 0 && lastName.trim().length > 0 && mail.trim().length > 0 && mail.indexOf("@") !== -1 &&
             phone.startsWith("08") && phone.length === 10 && password.length >= 5) {

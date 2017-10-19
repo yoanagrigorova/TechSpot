@@ -8,19 +8,24 @@ var session = require('express-session');
 var mongodb = require('mongodb');
 var monk = require('monk');
 var db = monk('localhost:27017/finalProjectdb');
-
-
-var index = require('./routes/index');
-var login = require('./routes/login');
-var logout = require('./routes/logout');
-var register = require("./routes/registration");
-
+var express = require("express");
 var app = express();
 
 app.use(function(req, res, next) {
     req.db = db;
     next();
 });
+
+var index = require('./routes/index')
+
+
+app.use(express.static('public'));
+// app.use("*",function(req,res){
+//     res.sendFile(db);
+
+// });
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -44,9 +49,10 @@ function requireLogin(req, res, next) {
 }
 
 // app.use('/', index);
-app.use('/login', login);
-app.use('/logout', requireLogin, logout);
-app.use("/registration", register);
+app.use('*', index);
+// app.use('/login', login);
+// app.use('/logout', requireLogin, logout);
+// app.use("/registration", register);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
