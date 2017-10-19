@@ -39,11 +39,11 @@ function requireLogin(req, res, next) {
     if (req.session.userId != undefined) {
         next();
     } else {
-        res.redirect('/#login');
+        res.redirect('#/login');
     }
 }
 
-app.use('/', index);
+// app.use('/', index);
 app.use('/login', login);
 app.use('/logout', requireLogin, logout);
 app.use("/registration", register);

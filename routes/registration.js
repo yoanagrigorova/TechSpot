@@ -28,7 +28,7 @@ router.post('/', function(req, res, next) {
     var db = req.db;
     var users = db.get("users");
     // if (password === repeatPass) {
-    //     $http.post("finalProjectdb", new User(name, lastName, mail, phone, password));
+    //     $http.post('users', new User(name, lastName, mail, phone, password));
     //     res.redirect('/');
     // }
     users.find({ mail: mail }).then(function(data) {
