@@ -1,66 +1,73 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <title>{{title}}</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  </head>
+  <body ng-app="">
+    <header>
+      <img src="/images/logo.png" alt="Logo"/>
+      <input type="text"/>
+      <a href="/login"> Вход </a>
+      <a href="/registration"> Регистрация </a>    
+    </header>
+    <main>
+    {{{body}}}
+    </main>
 
-<head>
-  <title>{{title}}</title>
-  <link rel='stylesheet' href='/stylesheets/style.css' />
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
-  <link href='/stylesheets/bootstrap.min.css' rel="stylesheet" />
-</head>
-
-<body ng-app="myApp">
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-
-
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><a href="#!login">ВХОД</a></li>
-          <li><a href="#!registration">РЕГИСТРАЦИЯ</a></li>
-          <li class="dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
-            <ul class="dropdown-menu" role="menu">
-              <li><a href="/login">ВХОД</a></li>
-              <li><a href="/registration">РЕГИСТРАЦИЯ</a></li>
-
-            </ul>
-          </li>
+    <footer>
+      <article>
+        <h5>ТЕХНОПОЛИС</h5>
+        <ul>
+          <li><a href="">Компанията</a></li>
+          <li><a href="">Работа при нас</a></li>
+          <li><a href="">Новини</a></li>
+          <li><a href="">Общи условия</a></li>
         </ul>
-      </div>
-    </div>
-  </nav>
-  {{!--
-  <header>
-    <img src="/images/logo.png" alt="Logo" />
-    <input type="text" />
-    <a href="/login">Вход</a>
-    <a href="/registration">Регистрация</a>
-  </header> --}}
-  <main ng-app='myApp'>
-    <div ng-view></div>
+      </article>
+      <article>
+        <h5>КОНТАКТИ</h5>
+        <ul>
+          <li><a href="">Контакти</a></li>
+          <li><a href="">Магазини</a></li>
+          <li><a href="">Сервизи</a></li>
+        </ul>
+      </article>
+      <article>
+        <h5>ЗА КЛИЕНТА</h5>
+        <ul>
+          <li><a href="">Съвети</a></li>
+          <li><a href="">Транспорт</a></li>
+          <li><a href="">Доставка при онлайн поръчка</a></li>
+          <li><a href="">Вземи от магазин</a></li>
+          <li><a href="">Услуги</a></li>
+          <li><a href="">Връщане на поръчка</a></li>
+        </ul>
+      </article>
+      <article>
+        <h5>ОБЩА ИНФОРМАЦИЯ</h5>
+        <ul>
+          <li><a href="">Как да поръчам</a></li>
+          <li><a href="">Лоялни клиенти</a></li>
+          <li><a href="">Рециклиране</a></li>
+        </ul>
 
-<script>
-var app = angular.module("myApp", ["ngRoute"]);
-app.config(function($routeProvider) {
-    $routeProvider
-    {{!-- .when("/", {
-        templateUrl : "layout.hbs"
-    }) --}}
-    .when("/login", {
-        templateUrl : "C:\Users\Alexander\Desktop\final-project\Final-project\views\login.htm"
-    })
-    .when("/green", {
-        templateUrl : "green.htm"
-    })
-    .when("/blue", {
-        templateUrl : "blue.htm"
-    });
-});
-</script>
-
-    {{!-- {{{body}}} --}}
-  </main>
-</body>
-
+        <h5>НАМЕРЕТЕ НИ В</h5>
+        <ul>
+          <a href=""><img src="/images/facebook.png" alt=""></a>
+          <a href=""><img src="/images/yt.png" alt=""></a>
+          <a href=""><img src="/images/g+.png" alt=""></a>
+        </ul>
+      </article>
+      <article id="payment">
+        <h5>ПАЗАРУВАЙТЕ С</h5>
+        <ul>
+          <a href=""><img src="/images/visa.png" alt=""></a>
+          <a href=""><img src="/images/master.png" alt=""></a>
+          <a href=""><img src="/images/maestro.png" alt=""></a>
+        </ul>
+      </article>
+    </footer>
+  </body>
 </html>

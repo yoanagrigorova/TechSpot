@@ -17,29 +17,38 @@ router.get('/', function(req, res, next) {
         }
     }
 
-    document.getElementById("cancel").addEventListener("click", function(event) {
-        event.preventDefault();
-        redirect('/login');
-    })
-    var name = document.getElementById("name").value;
-    var lastName = document.getElementById("lastName").value;
-    var mail = document.getElementById("mail").value;
-    var phone = document.getElementById("phone").value;
-    var password = document.getElementById("pass").value;
-    var repeatPass = document.getElementById("repeatPass").value;
-    register.addEventListener("click", function(event) {
-        event.preventDefault();
-        if (password === repeatPass) {
-            $http.post("finalProjectdb", new User(name, lastName, mail, phone, password));
+    var name = req.body.name;
+    var lastName = req.body.lastName;
+    var mail = req.body.mail;
+    var phone = req.body.phone;
+    var password = req.body.pass;
+    var repeatPass = req.body.repeatPass;
+
+    console.log(name + " " + lastName);
+    var db = req.db;
+    var users = db.get("users");
+    // if (password === repeatPass) {
+    //     $http.post("finalProjectdb", new User(name, lastName, mail, phone, password));
+    //     res.redirect('/');
+    // }
+    users.find({ mail: mail }).then(function(data) {
+        if (data.length == 0) {
+            if (password === repeatPass) {
+                var user = new User(name, lastName, mail, phone, password);
+                users.insert(user);
+                res.redirect("/login");
+            }
+        } else {
+            res.render('registration', { message: 'E-mail is taken.' });
         }
-    })
+    });
 })
 
 router.get('/', function(req, res, next) {
-    if (req.session.username)
-        res.redirect('/login');
-    else
-        res.render('registration');
+    // if (req.session.username)
+    //     res.redirect('/login');
+    // else
+    res.render('registration');
 });
 
 module.exports = router;

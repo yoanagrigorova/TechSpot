@@ -1,22 +1,79 @@
-<fieldset>
-    <label for="name">Име *
-    <input type="text" id="name">
-    </label>
-    <label for="lastName">Фамилия *
-    <input type="text" id="lastName">
-    </label>
-    <label for="mail">E-mail *
-    <input type="text" id="mail">
-    </label>
-    <label for="phone">Телефон *
-    <input type="text" id="phone">
-    </label>
-    <label for="pass">Парола *
-    <input type="text" id="pass">
-    </label>
-    <label for="repeatPass">Потвърдете паролата *
-    <input type="text" id="repeatPass">
-    </label>
-    <button id="cancel">Отказ</button>
-    <button id="register">Запазване</button>
+<div>
+    <h1>Регистрация</h1>
+</div>
+<fieldset id="reg" ng-app="registration.js">
+    <form action="/registration" method="post">
+    <ul>
+        <li>
+            <div>
+                <label for="name">Име
+                    <span class="mendatory">*</span>
+                </label>
+                <div>
+                    <input name="name" type="text" id="name">
+                </div>
+            </div>
+        </li>
+        <li>
+            <div>
+                <label for="lastName">Фамилия
+                    <span class="mendatory">*</span>
+                </label>
+                <div>
+                    <input name="lastName" type="text" id="lastName">
+                </div>
+            </div>
+        </li>
+        <li>
+            <div>
+                <label for="mail">E-mail
+                    <span class="mendatory"> * </span>
+                </label>
+                <div>
+                    <input name="mail" type="text" id="mail">
+                </div>
+            </div>
+        </li>
+        <li>
+            <div>
+                <label for="phone">Телефон
+                    <span class="mendatory"> * </span>
+                </label>
+                <div>
+                    <input name="phone" type="text" id="phone">
+                </div>
+            </div>
+        </li>
+        <li>
+             <div>
+                <label for="pass">Парола
+                    <span class="mendatory"> * </span>
+                </label>
+                <div>
+                    <input name="pass" type="password" id="pass">
+                </div>
+            </div>
+        </li>
+        <li>
+             <div>
+                <label for="repeatPass">Потвърдете парола
+                    <span class="mendatory"> * </span>
+                </label>
+                <div>
+                    <input name="repeatPass" type="password" id="repeatPass">
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="buttons">
+        {{!-- <button id="register">Запазване</button> --}}
+        <input type="submit" value="Запазване">
+        <button class="cancel" onclick="location.href='/'">Отказ</button>
+    </div>
+    </form>
+
+     <div class='error'>
+        {{message}}
+    </div>
 </fieldset>
+
