@@ -11,7 +11,9 @@ router.post('/', function(req, res, next) {
         .then(function(data) {
             if (data.length > 0) {
                 req.session.userId = data[0]._id;
-                res.redirect('/');
+                res.json({ success: true }).render('index.html');
+                console.log("test");
+                res.render("index");
             } else {
                 res.render('login', { message: 'Invalid data' });
             }

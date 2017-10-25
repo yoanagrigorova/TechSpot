@@ -16,8 +16,8 @@ app.use(function(req, res, next) {
     next();
 });
 
-var index = require('./routes/index')
-
+var index = require('./routes/index');
+var login = require("./routes/login");
 
 app.use(express.static('public'));
 // app.use("*",function(req,res){
@@ -49,7 +49,7 @@ function requireLogin(req, res, next) {
 }
 
 // app.use('/', index);
-app.use('*', index);
+app.use('*', login);
 // app.use('/login', login);
 // app.use('/logout', requireLogin, logout);
 // app.use("/registration", register);
