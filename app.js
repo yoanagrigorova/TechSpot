@@ -17,13 +17,13 @@ app.use(function(req, res, next) {
 });
 
 var index = require('./routes/index')
-
+var login = require('./routes/login')
 
 app.use(express.static('public'));
-// app.use("*",function(req,res){
-//     res.sendFile(db);
+app.get("*",function(req,res){
+    res.sendFile(path.join(__dirname + '/public/index.html'));
     
-// });
+});
 
 
 
@@ -49,8 +49,8 @@ function requireLogin(req, res, next) {
 }
 
 // app.use('/', index);
-app.use('*', index);
-// app.use('/login', login);
+app.use('/', index);
+app.use('/login', login);
 // app.use('/logout', requireLogin, logout);
 // app.use("/registration", register);
 

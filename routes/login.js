@@ -4,7 +4,7 @@ var router = express.Router();
 router.post('/', function(req, res, next) {
     var username = req.body.username;
     var password = req.body.password;
-    console.log(username + " " + password);
+    console.log('123');
     var db = req.db;
     var users = db.get('users');
     users.find({ username: username, password: password })

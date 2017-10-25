@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res, next) {
-    res.render('registration')
+router.post('/', function(req, res, next) {
+    
     function User(firstName, lastName, mail, phone, password) {
         if (firstName.trim().length > 0 && lastName.trim().length > 0 && mail.trim().length > 0 && mail.indexOf("@") !== -1 &&
             phone.startsWith("08") && phone.length === 10 && password.length >= 5) {
@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
             this.password = password;
         } else {
             throw new Error("Incorrect information");
-            alert("Invalid data!");
+        
         }
     }
 
