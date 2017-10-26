@@ -12,6 +12,4 @@ var User = function(firstName, lastName, mail, phone, password) {
     }
 }
 
-
-
 module.exports = User;

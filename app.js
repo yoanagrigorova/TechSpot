@@ -18,6 +18,7 @@ app.use(function(req, res, next) {
 
 var index = require('./routes/index');
 var login = require("./routes/login");
+// var phones = require("./routes/phones");
 
 app.use(express.static('public'));
 // app.use("*",function(req,res){
@@ -44,12 +45,13 @@ function requireLogin(req, res, next) {
     if (req.session.userId != undefined) {
         next();
     } else {
-        res.redirect('#/login');
+        res.redirect('/login');
     }
 }
 
 // app.use('/', index);
-app.use('*', login);
+app.use('/login', login);
+// app.use("/phones", phones);
 // app.use('/login', login);
 // app.use('/logout', requireLogin, logout);
 // app.use("/registration", register);

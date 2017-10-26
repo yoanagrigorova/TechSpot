@@ -1,0 +1,27 @@
+<section ng-controller="phonesCtrl">
+    <h1> {{pageTitle}} </h1>
+    <article ng-repeat="phone in phones track by $index">
+        <!-- <span><img src="{{pictures.first}}" alt=""/></span> -->
+        <h2> {{phone.title}} </h2>
+        <ul>
+            <li>Процесор: {{phone.cpu}} </li>
+            <li>Размер на екрана в INCH: {{phone.display-size}}" </li>
+            <li>Батерия: {{phone.battery}}</li>
+            <li>DUAL SIM</li>
+        </ul>
+
+    </article>
+</section>
+
+<!-- <script src="./javascripts/phoneCtr.js"></script> -->
+<!-- <script>
+    var app = angular.module("myApp", []);
+
+    app.controller("phonesCtrl", function($scope, $http) {
+        $scope.pageTitle = "Мобилни телефони";
+        $http.get("phones.json").then(function(response) {
+            console.log(response.data.phones);
+            $scope.phones = response.data.phones;
+        });
+    });
+</script> -->
