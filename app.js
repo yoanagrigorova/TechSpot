@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongodb = require('mongodb');
 var monk = require('monk');
-var db = monk('localhost:27017/finalProjectdb');
+var db = monk('angelov21:plf13017@ds37445.mlab.com:37445/final-project');
 var express = require("express");
 var app = express();
 
@@ -18,11 +18,11 @@ app.use(function(req, res, next) {
 
 var index = require('./routes/index')
 var login = require('./routes/login')
+var registration = require('./routes/registration')
 
 app.use(express.static('public'));
 app.get("*",function(req,res){
     res.sendFile(path.join(__dirname + '/public/index.html'));
-    
 });
 
 
@@ -44,12 +44,13 @@ function requireLogin(req, res, next) {
     if (req.session.userId != undefined) {
         next();
     } else {
-        res.redirect('/#login');
+        res.redirect('#/login');
     }
 }
 
 // app.use('/', index);
-app.use('/', index);
+app.use('/registration', registration);
+// app.use('/registration', registration);
 app.use('/login', login);
 // app.use('/logout', requireLogin, logout);
 // app.use("/registration", register);

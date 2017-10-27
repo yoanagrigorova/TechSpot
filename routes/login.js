@@ -7,11 +7,13 @@ router.post('/', function(req, res, next) {
     console.log('123');
     var db = req.db;
     var users = db.get('users');
-    users.find({ username: username, password: password })
+    users.find({ firstName: username, password: password })
         .then(function(data) {
             if (data.length > 0) {
                 req.session.userId = data[0]._id;
-                res.redirect('/');
+                
+                console.log("test");
+                res.redirect('back');
             } else {
                 res.render('login', { message: 'Invalid data' });
             }

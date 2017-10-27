@@ -1,4 +1,4 @@
-var User = function(firstName, lastName, mail, phone, password) {
+var User = function (firstName, lastName, mail, phone, password) {
     if (firstName.trim().length > 0 && lastName.trim().length > 0 && mail.trim().length > 0 && mail.indexOf("@") !== -1 &&
         phone.startsWith("08") && phone.length === 10 && password.length >= 5) {
         this.firstName = firstName;
@@ -6,12 +6,7 @@ var User = function(firstName, lastName, mail, phone, password) {
         this.mail = mail;
         this.phone = phone;
         this.password = password;
-    } else {
-        throw new Error("Incorrect information");
-        alert("Invalid data!");
-    }
+    } 
 }
 
-
-
-module.exports = User;
+module.exports = User; 
