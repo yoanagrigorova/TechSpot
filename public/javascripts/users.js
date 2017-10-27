@@ -6,9 +6,6 @@ var User = function(firstName, lastName, mail, phone, password) {
         this.mail = mail;
         this.phone = phone;
         this.password = password;
-    } else {
-        throw new Error("Incorrect information");
-        alert("Invalid data!");
     }
 }
 

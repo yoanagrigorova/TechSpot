@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongodb = require('mongodb');
 var monk = require('monk');
-var db = monk('yoana.grigorova:j9o7a8n1a8@ds237445.mlab.com:37445/final-project');
+var db = monk('angelov21:plf13017@ds37445.mlab.com:37445/final-project');
 var express = require("express");
 var app = express();
 
@@ -19,12 +19,12 @@ app.use(function(req, res, next) {
 var index = require('./routes/index');
 var login = require("./routes/login");
 var phones = require("./routes/phones");
+var registration = require('./routes/registration')
 
 app.use(express.static('public'));
-// app.use("*",function(req,res){
-//     res.sendFile(db);
-
-// });
+app.get("*", function(req, res) {
+    res.sendFile(path.join(__dirname + '/public/index.html'));
+});
 
 
 
@@ -53,6 +53,8 @@ function requireLogin(req, res, next) {
 app.use('/login', login);
 app.use("/phones", phones);
 // app.use('/login', login);
+app.use('/registration', registration);
+// app.use('/registration', registration);
 // app.use('/logout', requireLogin, logout);
 // app.use("/registration", register);
 
