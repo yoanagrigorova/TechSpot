@@ -1,11 +1,22 @@
 <section ng-controller="phonesCtrl">
     <h1> {{pageTitle}} </h1>
-    <article ng-repeat="phone in phones track by $index">
-        <!-- <span><img src="{{pictures.first}}" alt=""/></span> -->
-        <h2> {{phone.title}} </h2>
+
+    <aside ng-controller="phonesCtrl">
+        <h3>Резултати</h3>
+        <div>
+            <h4>Марка</h4>
+            <ul>
+                <li ng-repeat="phone in phones"><input type="checkbox"> {{phone.brand}} </li>
+            </ul>
+        </div>
+    </aside>
+
+    <article ng-repeat="phone in phones">
+        <span style="float:left"><img height="105px" width="100px" src="{{phone.pictures[0].first}}" alt=""/></span>
+        <h4> {{phone.title}} </h4>
         <ul>
             <li>Процесор: {{phone.cpu}} </li>
-            <li>Размер на екрана в INCH: {{phone.display-size}}" </li>
+            <li>Размер на екрана в INCH: {{phone.displaysize}} </li>
             <li>Батерия: {{phone.battery}}</li>
             <li>DUAL SIM</li>
         </ul>

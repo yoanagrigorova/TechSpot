@@ -106,3 +106,17 @@ header a {
     color: rgb(33, 33, 122);
     padding: 2px;
 }
+
+aside {
+    width: 30%;
+    display: inline-block;
+}
+
+aside div {
+    width: 30%;
+    display: inline-block;
+}
+
+section article {
+    width: 50%;
+}
