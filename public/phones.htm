@@ -1,32 +1,54 @@
 <section>
     <h1> {{pageTitle}} </h1>
 
-    <input type="checkbox" ng-model='search.os' ng-true-value="'ANDROID'" ng-false-value='' />
-    <input type="checkbox" ng-model='search.ram' ng-true-value="'4 GB'" ng-false-value='' />
+
     <aside>
         <h3>Резултати</h3>
         <div>
             <h4>Марка</h4>
-            
-            
+            <ul>
+                <li ng-repeat="brand in brands"><input type="checkbox" ng-model='search.brand' ng-true-value="'{{brand}}'" ng-false-value=''> {{brand}} </li>
+            </ul>
+        </div>
+        <div>
+            <h4>Размер на екрана в INCH</h4>
+            <ul>
+                <li ng-repeat="ds in displaySizes"><input type="checkbox" ng-model='search.displaysize' ng-true-value="'{{ds}}'" ng-false-value=''> {{ds}} </li>
+            </ul>
+        </div>
+        <div>
+            <h4>Задна камера</h4>
+            <ul>
+                <li ng-repeat="rc in rearCameras"><input type="checkbox" ng-model='search.rc' ng-true-value="'{{rc}}'" ng-false-value=''> {{rc}} </li>
+            </ul>
+        </div>
+        <div>
+            <h4>Вградена памет</h4>
+            <ul>
+                <li ng-repeat="im in iternalMemory"><input type="checkbox" ng-model='search.im' ng-true-value="'{{im}}'" ng-false-value=''> {{im}} </li>
+            </ul>
         </div>
     </aside>
-    
-    <article ng-repeat="phone in phones | filter:search.os | filter:search.ram">
-        <span style="float:left"><img height="105px" width="100px" src="{{phone.pictures[0]}}" alt=""/></span>
-        <h4> {{phone.title}} </h4>  
-        <h2> {{search.os}} </h2>
-        <ul>
-            <li>Процесор: {{phone.cpu}} </li>
-            <li>Размер на екрана в INCH: {{phone.displaysize}} </li>
-            <li>Батерия: {{phone.battery}}</li>
-            <li>DUAL SIM</li>
-        </ul>
-
-    </article>
-
-    
-   
+    <div id="phones">
+        <article ng-repeat="phone in phones | filter:search.brand | filter:search.displaysize | filter:search.rc | filter:search.im">
+            <span style="float:left"><img height="115px" width="100px" src="{{phone.pictures[0]}}" alt=""/></span>
+            <div class="phoneInfo">
+                <h4> {{phone.title}} </h4>
+                <ul>
+                    <li>Процесор: {{phone.cpu}} </li>
+                    <li>Размер на екрана в INCH: {{phone.displaysize}} </li>
+                    <li>Батерия: {{phone.battery}}</li>
+                    <li>DUAL SIM</li>
+                </ul>
+            </div>
+            <span class="purchase"><h3> {{phone.price}}<sup>00</sup> лв</h3>
+                <br>
+                <button class="buy">КУПИ</button>
+                <br>
+                <button class="info">ВИЖ ОЩЕ</button>
+            </span>
+        </article>
+    </div>
 </section>
 
 <!-- <script src="./javascripts/phoneCtr.js"></script> -->

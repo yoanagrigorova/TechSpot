@@ -107,16 +107,70 @@ header a {
     padding: 2px;
 }
 
-aside {
-    width: 30%;
+main {
+    width: 100%;
     display: inline-block;
 }
 
+aside {
+    width: 20%;
+    /* display: inline-block; */
+    float: left;
+}
+
 aside div {
-    width: 30%;
+    width: 100%;
+    float: left;
+    font-size: 13px;
+}
+
+section {
+    width: 100%;
     display: inline-block;
 }
 
 section article {
-    width: 50%;
+    margin-bottom: 1em;
+}
+
+.phoneInfo {
+    display: inline-block;
+    width: 60%;
+}
+
+div#phones {
+    float: left;
+    width: 70%;
+}
+
+div#phones ul {
+    display: inline-block;
+}
+
+div#phones ul li {
+    width: 100%;
+}
+
+.buy {
+    background-color: rgb(182, 69, 69);
+    margin-bottom: 10px;
+}
+
+.purchase button {
+    color: white;
+    width: 80%;
+    margin: auto;
+}
+
+.info {
+    background-color: rgb(36, 36, 131);
+}
+
+.purchase {
+    width: 20%;
+    display: inline-block;
+}
+
+.purchase h3 {
+    color: rgb(146, 20, 20);
 }
