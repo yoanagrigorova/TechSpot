@@ -19,12 +19,14 @@ app.use(function(req, res, next) {
 var index = require('./routes/index');
 var login = require("./routes/login");
 var phones = require("./routes/phones");
-var registration = require('./routes/registration')
+var registration = require('./routes/registration');
 
-app.use(express.static('public'));
+// app.use(express.static('public'));
 // app.get("*", function(req, res) {
 //     res.sendFile(path.join(__dirname + '/public/index.html'));
 // });
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -51,7 +53,9 @@ function requireLogin(req, res, next) {
 app.use('/login', login);
 app.use("/phones", phones);
 app.use('/registration', registration);
+
 // app.use('/logout', requireLogin, logout);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

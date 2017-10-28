@@ -1,35 +1,36 @@
-<section style="display:inline-block" ng-controller="phonesCtrl">
+<section>
     <h1> {{pageTitle}} </h1>
+
 
     <aside>
         <h3>Резултати</h3>
         <div>
             <h4>Марка</h4>
             <ul>
-                <li ng-repeat="brand in brands"><input type="checkbox"> {{brand}} </li>
+                <li ng-repeat="brand in brands"><input type="checkbox" ng-model='search.brand' ng-true-value="'{{brand}}'" ng-false-value=''> {{brand}} </li>
             </ul>
         </div>
         <div>
             <h4>Размер на екрана в INCH</h4>
             <ul>
-                <li ng-repeat="ds in displaySizes"><input type="checkbox"> {{ds}} </li>
+                <li ng-repeat="ds in displaySizes"><input type="checkbox" ng-model='search.displaysize' ng-true-value="'{{ds}}'" ng-false-value=''> {{ds}} </li>
             </ul>
         </div>
         <div>
             <h4>Задна камера</h4>
             <ul>
-                <li ng-repeat="rc in rearCameras"><input type="checkbox"> {{rc}} </li>
+                <li ng-repeat="rc in rearCameras"><input type="checkbox" ng-model='search.rc' ng-true-value="'{{rc}}'" ng-false-value=''> {{rc}} </li>
             </ul>
         </div>
         <div>
             <h4>Вградена памет</h4>
             <ul>
-                <li ng-repeat="im in iternalMemory"><input type="checkbox"> {{im}} </li>
+                <li ng-repeat="im in iternalMemory"><input type="checkbox" ng-model='search.im' ng-true-value="'{{im}}'" ng-false-value=''> {{im}} </li>
             </ul>
         </div>
     </aside>
     <div id="phones">
-        <article ng-repeat="phone in phones">
+        <article ng-repeat="phone in phones | filter:search.brand | filter:search.displaysize | filter:search.rc | filter:search.im">
             <span style="float:left"><img height="115px" width="100px" src="{{phone.pictures[0]}}" alt=""/></span>
             <div class="phoneInfo">
                 <h4> {{phone.title}} </h4>
