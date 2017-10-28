@@ -1,4 +1,4 @@
-<section ng-controller="phonesCtrl">
+<section style="display:inline-block" ng-controller="phonesCtrl">
     <h1> {{pageTitle}} </h1>
 
     <aside>
@@ -31,14 +31,21 @@
     <div id="phones">
         <article ng-repeat="phone in phones">
             <span style="float:left"><img height="115px" width="100px" src="{{phone.pictures[0]}}" alt=""/></span>
-            <h4> {{phone.title}} </h4>
-            <ul>
-                <li>Процесор: {{phone.cpu}} </li>
-                <li>Размер на екрана в INCH: {{phone.displaysize}} </li>
-                <li>Батерия: {{phone.battery}}</li>
-                <li>DUAL SIM</li>
-            </ul>
-
+            <div class="phoneInfo">
+                <h4> {{phone.title}} </h4>
+                <ul>
+                    <li>Процесор: {{phone.cpu}} </li>
+                    <li>Размер на екрана в INCH: {{phone.displaysize}} </li>
+                    <li>Батерия: {{phone.battery}}</li>
+                    <li>DUAL SIM</li>
+                </ul>
+            </div>
+            <span class="purchase"><h3> {{phone.price}}<sup>00</sup> лв</h3>
+                <br>
+                <button class="buy">КУПИ</button>
+                <br>
+                <button class="info">ВИЖ ОЩЕ</button>
+            </span>
         </article>
     </div>
 </section>

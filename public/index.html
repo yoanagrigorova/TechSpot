@@ -75,6 +75,7 @@
             app.controller("phonesCtrl", function($scope, $http) {
                 $scope.pageTitle = "Мобилни телефони";
                 $http.get("/phones").then(function(response) {
+                    response.data.sort((p1, p2) => p1.price - p2.price);
                     $scope.phones = response.data;
                     print(response.data);
                 });
