@@ -1,27 +1,46 @@
 <section ng-controller="phonesCtrl">
     <h1> {{pageTitle}} </h1>
 
-    <aside ng-controller="phonesCtrl">
+    <aside>
         <h3>Резултати</h3>
         <div>
             <h4>Марка</h4>
             <ul>
-                <li ng-repeat="phone in phones"><input type="checkbox"> {{phone.brand}} </li>
+                <li ng-repeat="brand in brands"><input type="checkbox"> {{brand}} </li>
+            </ul>
+        </div>
+        <div>
+            <h4>Размер на екрана в INCH</h4>
+            <ul>
+                <li ng-repeat="ds in displaySizes"><input type="checkbox"> {{ds}} </li>
+            </ul>
+        </div>
+        <div>
+            <h4>Задна камера</h4>
+            <ul>
+                <li ng-repeat="rc in rearCameras"><input type="checkbox"> {{rc}} </li>
+            </ul>
+        </div>
+        <div>
+            <h4>Вградена памет</h4>
+            <ul>
+                <li ng-repeat="im in iternalMemory"><input type="checkbox"> {{im}} </li>
             </ul>
         </div>
     </aside>
+    <div id="phones">
+        <article ng-repeat="phone in phones">
+            <span style="float:left"><img height="115px" width="100px" src="{{phone.pictures[0]}}" alt=""/></span>
+            <h4> {{phone.title}} </h4>
+            <ul>
+                <li>Процесор: {{phone.cpu}} </li>
+                <li>Размер на екрана в INCH: {{phone.displaysize}} </li>
+                <li>Батерия: {{phone.battery}}</li>
+                <li>DUAL SIM</li>
+            </ul>
 
-    <article ng-repeat="phone in phones">
-        <span style="float:left"><img height="105px" width="100px" src="{{phone.pictures[0].first}}" alt=""/></span>
-        <h4> {{phone.title}} </h4>
-        <ul>
-            <li>Процесор: {{phone.cpu}} </li>
-            <li>Размер на екрана в INCH: {{phone.displaysize}} </li>
-            <li>Батерия: {{phone.battery}}</li>
-            <li>DUAL SIM</li>
-        </ul>
-
-    </article>
+        </article>
+    </div>
 </section>
 
 <!-- <script src="./javascripts/phoneCtr.js"></script> -->

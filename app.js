@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var session = require('express-session');
 var mongodb = require('mongodb');
 var monk = require('monk');
-var db = monk('angelov21:plf13017@ds37445.mlab.com:37445/final-project');
+var db = monk('angelov21:plf13017@ds237445.mlab.com:37445/final-project');
 var express = require("express");
 var app = express();
 
@@ -22,11 +22,9 @@ var phones = require("./routes/phones");
 var registration = require('./routes/registration')
 
 app.use(express.static('public'));
-app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname + '/public/index.html'));
-});
-
-
+// app.get("*", function(req, res) {
+//     res.sendFile(path.join(__dirname + '/public/index.html'));
+// });
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -52,11 +50,8 @@ function requireLogin(req, res, next) {
 // app.use('/', index);
 app.use('/login', login);
 app.use("/phones", phones);
-// app.use('/login', login);
 app.use('/registration', registration);
-// app.use('/registration', registration);
 // app.use('/logout', requireLogin, logout);
-// app.use("/registration", register);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

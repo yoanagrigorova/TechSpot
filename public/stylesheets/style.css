@@ -107,16 +107,29 @@ header a {
     padding: 2px;
 }
 
+main {
+    width: 100%;
+    display: inline-block;
+}
+
 aside {
     width: 30%;
-    display: inline-block;
+    /* display: inline-block; */
+    float: left;
 }
 
 aside div {
-    width: 30%;
-    display: inline-block;
+    width: 100%;
+    float: left;
+    font-size: 13px;
 }
 
-section article {
-    width: 50%;
+section {
+    width: 60%;
+    display: inline-block;
+    left: 30%;
+}
+
+div#phones {
+    float: left;
 }
