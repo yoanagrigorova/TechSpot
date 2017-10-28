@@ -1,9 +1,11 @@
-// var app = angular.module("myApp", []);
+angular.module("phoneController", [])
 
-app.controller("phonesCtrl", function($scope, $http) {
-    $scope.pageTitle = "Мобилни телефони";
-    $http.get("/phones").then(function(response) {
-        console.log(response.data);
-        $scope.phones = response.data;
+    .controller("phonesCtrl", function ($scope, $http) {
+        console.log('test');
+        $scope.search = {
+        };
+        $scope.pageTitle = "Мобилни телефони";
+        $http.get("/phones").then(function (response) {
+            $scope.phones = response.data;
+        });
     });
-});

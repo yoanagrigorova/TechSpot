@@ -1,19 +1,21 @@
-<section ng-controller="phonesCtrl">
+<section>
     <h1> {{pageTitle}} </h1>
 
-    <aside ng-controller="phonesCtrl">
+    <input type="checkbox" ng-model='search.os' ng-true-value="'ANDROID'" ng-false-value='' />
+    <input type="checkbox" ng-model='search.ram' ng-true-value="'4 GB'" ng-false-value='' />
+    <aside>
         <h3>Резултати</h3>
         <div>
             <h4>Марка</h4>
-            <ul>
-                <li ng-repeat="phone in phones"><input type="checkbox"> {{phone.brand}} </li>
-            </ul>
+            
+            
         </div>
     </aside>
-
-    <article ng-repeat="phone in phones">
-        <span style="float:left"><img height="105px" width="100px" src="{{phone.pictures[0].first}}" alt=""/></span>
-        <h4> {{phone.title}} </h4>
+    
+    <article ng-repeat="phone in phones | filter:search.os | filter:search.ram">
+        <span style="float:left"><img height="105px" width="100px" src="{{phone.pictures[0]}}" alt=""/></span>
+        <h4> {{phone.title}} </h4>  
+        <h2> {{search.os}} </h2>
         <ul>
             <li>Процесор: {{phone.cpu}} </li>
             <li>Размер на екрана в INCH: {{phone.displaysize}} </li>
@@ -22,6 +24,9 @@
         </ul>
 
     </article>
+
+    
+   
 </section>
 
 <!-- <script src="./javascripts/phoneCtr.js"></script> -->

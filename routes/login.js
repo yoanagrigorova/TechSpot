@@ -11,8 +11,6 @@ router.post('/', function(req, res, next) {
         .then(function(data) {
             if (data.length > 0) {
                 req.session.userId = data[0]._id;
-                
-                console.log("test");
                 res.redirect('back');
             } else {
                 res.render('login', { message: 'Invalid data' });
@@ -26,5 +24,5 @@ router.get('/', function(req, res, next) {
     else
         res.render('login');
 });
-
+    
 module.exports = router;
