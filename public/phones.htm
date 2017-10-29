@@ -1,9 +1,14 @@
-<section>
+<section >
     <h1> {{pageTitle}} </h1>
 
 
     <aside>
         <h3>Резултати</h3>
+        <div>
+            <h4> Цена в лева </h4>
+            <rzslider rz-slider-model="slider.minValue"
+            rz-slider-high="slider.maxValue"
+            rz-slider-options="slider.options"></rzslider></div>
         <div>
             <h4>Марка</h4>
             <ul>
@@ -11,7 +16,7 @@
             </ul>
         </div>
         <div>
-            <h4>Размер на екрана в INCH</h4>
+            <h4>Размер на екрана в инчове</h4>
             <ul>
                 <li ng-repeat="ds in displaySizes"><input type="checkbox" ng-model='search.displaysize' ng-true-value="'{{ds}}'" ng-false-value=''> {{ds}} </li>
             </ul>
@@ -30,7 +35,7 @@
         </div>
     </aside>
     <div id="phones">
-        <article ng-repeat="phone in phones | filter:search.brand | filter:search.displaysize | filter:search.rc | filter:search.im">
+        <article class='animate' ng-repeat="phone in phones | filter:search.brand | filter:search.displaysize | filter:search.rc | filter:search.im | sizeFilter:slider" >
             <span style="float:left"><img height="115px" width="100px" src="{{phone.pictures[0]}}" alt=""/></span>
             <div class="phoneInfo">
                 <h4> {{phone.title}} </h4>
@@ -43,9 +48,9 @@
             </div>
             <span class="purchase"><h3> {{phone.price}}<sup>00</sup> лв</h3>
                 <br>
-                <button class="buy">КУПИ</button>
+                <button class='btn btn-danger'>КУПИ</button>
                 <br>
-                <button class="info">ВИЖ ОЩЕ</button>
+                <button class='btn btn-primary'>ВИЖ ОЩЕ</button>
             </span>
         </article>
     </div>
