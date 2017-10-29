@@ -1,38 +1,38 @@
-<section>
+<section class="row">
     <h1> {{pageTitle}} </h1>
 
 
-    <aside>
+    <aside class="col-md-2">
         <h3>Резултати</h3>
-        <div>
+        <div class="col-md-12">
             <h4>Марка</h4>
             <ul>
                 <li ng-repeat="brand in brands"><input type="checkbox" ng-model='search.brand' ng-true-value="'{{brand}}'" ng-false-value=''> {{brand}} </li>
             </ul>
         </div>
-        <div>
+        <div class="col-md-12">
             <h4>Размер на екрана в INCH</h4>
             <ul>
                 <li ng-repeat="ds in displaySizes"><input type="checkbox" ng-model='search.displaysize' ng-true-value="'{{ds}}'" ng-false-value=''> {{ds}} </li>
             </ul>
         </div>
-        <div>
+        <div class="col-md-12">
             <h4>Задна камера</h4>
             <ul>
                 <li ng-repeat="rc in rearCameras"><input type="checkbox" ng-model='search.rc' ng-true-value="'{{rc}}'" ng-false-value=''> {{rc}} </li>
             </ul>
         </div>
-        <div>
+        <div class="col-md-12">
             <h4>Вградена памет</h4>
             <ul>
                 <li ng-repeat="im in iternalMemory"><input type="checkbox" ng-model='search.im' ng-true-value="'{{im}}'" ng-false-value=''> {{im}} </li>
             </ul>
         </div>
     </aside>
-    <div id="phones">
-        <article ng-repeat="phone in phones | filter:search.brand | filter:search.displaysize | filter:search.rc | filter:search.im">
-            <span style="float:left"><img height="115px" width="100px" src="{{phone.pictures[0]}}" alt=""/></span>
-            <div class="phoneInfo">
+    <div id="phones" class="col-md-8">
+        <article class="col-md-12" ng-repeat="phone in phones | filter:search.brand | filter:search.displaysize | filter:search.rc | filter:search.im">
+            <span class="col-md-2" style="float:left"><img ng-src="{{phone.pictures[0]}}" alt=""/></span>
+            <div class="col-md-7" class="phoneInfo">
                 <h4> {{phone.title}} </h4>
                 <ul>
                     <li>Процесор: {{phone.cpu}} </li>
@@ -41,11 +41,11 @@
                     <li>DUAL SIM</li>
                 </ul>
             </div>
-            <span class="purchase"><h3> {{phone.price}}<sup>00</sup> лв</h3>
+            <span class="purchase col-md-3"><h3> {{phone.price}}<sup>00</sup> лв</h3>
                 <br>
-                <button class="buy btn btn-default" style="background-color: rgb(182, 69, 69)">КУПИ</button>
+                <button class="buy btn btn-danger">КУПИ</button>
                 <br>
-                <button class="info btn btn-default" style="background-color: rgb(36, 36, 131)">ВИЖ ОЩЕ</button>
+                <button class="info btn btn-info"><a ng-href="#!phones/{{phone._id}}">ВИЖ ОЩЕ</a></button>
             </span>
         </article>
     </div>
