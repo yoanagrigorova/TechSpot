@@ -22,6 +22,10 @@ var phones = require("./routes/phones");
 var registration = require('./routes/registration');
 var tvs = require("./routes/tvs");
 var computers = require("./routes/computers");
+var microwaveOvens = require("./routes/microwaves");
+var vacuumCleaners = require("./routes/vacuums");
+var airConditioners = require("./routes/conditioners");
+var ovens = require("./routes/ovens");
 
 // app.use(express.static('public'));
 // app.get("*", function(req, res) {
@@ -57,6 +61,10 @@ app.use("/phones", phones);
 app.use('/registration', registration);
 app.use("/tvs", tvs);
 app.use("/computers", computers);
+app.use("/microwave-ovens", microwaveOvens);
+app.use("/vacuumCleaners", vacuumCleaners);
+app.use("/conditioners", airConditioners);
+app.use("/ovens", ovens);
 
 // app.use('/logout', requireLogin, logout);
 

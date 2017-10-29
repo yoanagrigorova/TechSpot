@@ -3,16 +3,17 @@ var router = express.Router();
 
 router.get("/", function(req, res, next) {
     var db = req.db;
-    var computers = db.get('laptops');
-    computers.find({}, {}, function(err, docs) {
+    var microwaveOvens = db.get('microwaveOvens');
+    microwaveOvens.find({}, {}, function(err, docs) {
         res.json(docs);
     });
-});
+})
 
-router.get("/:computers_id", function(req, res, next) {
+router.get("/:microwaves_id", function(req, res, next) {
     var db = req.db;
-    var collection = db.get('laptops');
-    var id = req.params.computers_id;
+    var collection = db.get('microwaveOvens');
+    var id = req.params.microwaves_id;
+    console.log(id);
     collection.find({ _id: id }, {}, function(e, docs) {
         res.json(docs);
     });

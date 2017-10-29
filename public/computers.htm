@@ -1,57 +1,56 @@
 <section class="row">
     <h1> {{pageTitle}} </h1>
 
-    <aside class="col-md-2">
+    <aside class="col-md-3">
         <h3>Резултати</h3>
 
         <div class="col-md-12">
-                <h4> Цена в лева </h4>
-                <rzslider rz-slider-model="slider.minValue"
-                rz-slider-high="slider.maxValue"
-                rz-slider-options="slider.options"></rzslider></div>
-            <div>
+            <h4> Цена в лева </h4>
+            <rzslider rz-slider-model="slider.minValue" rz-slider-high="slider.maxValue" rz-slider-options="slider.options"></rzslider>
+        </div>
+        <div>
 
-        <div class="col-md-12">
-            <h4>Марка</h4>
-            <ul>
-                <li ng-repeat="brand in brands"><input type="checkbox" ng-model='search.brand' ng-true-value="'{{brand}}'" ng-false-value=''> {{brand}} </li>
-            </ul>
-        </div>
-        <div class="col-md-12">
-            <h4>Капацитет RAM</h4>
-            <ul>
-                <li ng-repeat="ram in rams"><input type="checkbox" ng-model='search.ram' ng-true-value="'{{ram}}'" ng-false-value=''> {{ram}} </li>
-            </ul>
-        </div>
-        <div class="col-md-12">
-            <h4>Капацитет HDD</h4>
-            <ul>
-                <li ng-repeat="hdd in hdds"><input type="checkbox" ng-model='search.hdd' ng-true-value="'{{hdd}}'" ng-false-value=''> {{hdd}} </li>
-            </ul>
-        </div>
-        <div class="col-md-12">
-            <h4>Размер на екрана в инчове</h4>
-            <ul>
-                <li ng-repeat="ds in displaySizes"><input type="checkbox" ng-model='search.displaysize' ng-true-value="'{{ds}}'" ng-false-value=''> {{ds}} </li>
-            </ul>
-        </div>
-        <div class="col-md-12">
-            <h4>Операционна система</h4>
-            <ul>
-                <li ng-repeat="os in oss"><input type="checkbox" ng-model='search.os' ng-true-value="'{{os}}'" ng-false-value=''> {{os}} </li>
-            </ul>
-        </div>
-        <div class="col-md-12">
-            <h4>Тип процесор</h4>
-            <ul>
-                <li ng-repeat="pr in processors"><input type="checkbox" ng-model='search.pr' ng-true-value="'{{pr}}'" ng-false-value=''> {{pr}} </li>
-            </ul>
-        </div>
+            <div class="col-md-12">
+                <h4>Марка</h4>
+                <ul>
+                    <li ng-repeat="brand in brands"><input type="checkbox" ng-model='search.brand' ng-true-value="'{{brand}}'" ng-false-value=''> {{brand}} </li>
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <h4>Капацитет RAM</h4>
+                <ul>
+                    <li ng-repeat="ram in rams"><input type="checkbox" ng-model='search.ram' ng-true-value="'{{ram}}'" ng-false-value=''> {{ram}} </li>
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <h4>Капацитет HDD</h4>
+                <ul>
+                    <li ng-repeat="hdd in hdds"><input type="checkbox" ng-model='search.hdd' ng-true-value="'{{hdd}}'" ng-false-value=''> {{hdd}} </li>
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <h4>Размер на екрана в INCH</h4>
+                <ul>
+                    <li ng-repeat="ds in displaySizes"><input type="checkbox" ng-model='search.displaysize' ng-true-value="'{{ds}}'" ng-false-value=''> {{ds}} </li>
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <h4>Операционна система</h4>
+                <ul>
+                    <li ng-repeat="os in oss"><input type="checkbox" ng-model='search.os' ng-true-value="'{{os}}'" ng-false-value=''> {{os}} </li>
+                </ul>
+            </div>
+            <div class="col-md-12">
+                <h4>Тип процесор</h4>
+                <ul>
+                    <li ng-repeat="pr in processors"><input type="checkbox" ng-model='search.pr' ng-true-value="'{{pr}}'" ng-false-value=''> {{pr}} </li>
+                </ul>
+            </div>
     </aside>
     <div class="col-md-8" id="tvs">
-        <article class='animate' class="col-md-12" ng-repeat="computer in computers | filter:search.brand | filter:search.displaysize | filter:search.ram | filter:search.os | filter:search.hdd | filter:search.pr | sizeFilter:slider"  >
+        <article class='animate' class="col-md-12" ng-repeat="computer in computers | filter:search.brand | filter:search.displaysize | filter:search.ram | filter:search.os | filter:search.hdd | filter:search.pr | sizeFilter:slider">
             <span class="col-md-2" style="float:left"><img ng-src="{{computer.pictures[0]}}" alt=""/></span>
-            <div class="col-md-7" class="tvInfo">
+            <div class="col-md-7" class="compInfo">
                 <h4> {{computer.title}} </h4>
                 <ul>
                     <li>Капацитет RAM: {{computer.ram}} </li>
@@ -64,7 +63,7 @@
                 <br>
                 <button class="buy btn btn-danger">КУПИ</button>
                 <br>
-                <button class="info btn btn-info">ВИЖ ОЩЕ</button>
+                <button class="info btn btn-info"><a ng-href="#!computers/{{computer._id}}">ВИЖ ОЩЕ</a></button>
             </span>
         </article>
     </div>

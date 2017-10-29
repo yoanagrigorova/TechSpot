@@ -21,6 +21,15 @@
     <script src="./javascripts/tvController.js"></script>
     <script src="./javascripts/computersCtrl.js"></script>
     <script src="./javascripts/phoneInfoController.js"></script>
+    <script src="./javascripts/tvsInfoCtrl.js"></script>
+    <script src="./javascripts/computersInfoCtrl.js"></script>
+    <script src="./javascripts/microwavesCtrl.js"></script>
+    <script src="./javascripts/microwavesInfoCtrl.js"></script>
+    <script src="./javascripts/vacuumsCtrl.js"></script>
+    <script src="./javascripts/vacuumsInfoCtrl.js"></script>
+    <script src="./javascripts/conditionersCtrl.js"></script>
+    <script src="./javascripts/conditionersInfoCtrl.js"></script>
+    <script src="./javascripts/ovensCtrl.js"></script>
 
 
 </head>
@@ -76,8 +85,12 @@
         <div ng-view class='animate'></div>
 
         <script>
-            var app = angular.module("myApp", ["ngRoute", "phoneController", "tvController", "computersController", "phoneInfoController", "searchApp"]);
-            app.config(function ($routeProvider, $locationProvider) {
+            var app = angular.module("myApp", ["ngRoute", "phoneController", "tvController", "computersController",
+                "phoneInfoController", "tvsInfoController", "computersInfoController", "microwaveOvensController",
+                "microwavesInfoController", "vacuumsController", "vacuumInfoController", "conditionersController",
+                "conditionersInfoController", "ovensController", 'searchApp'
+            ]);
+            app.config(function($routeProvider, $locationProvider) {
                 $routeProvider
 
                     .when("/login", {
@@ -102,16 +115,103 @@
                         templateUrl: "phoneInfo.htm",
                         controller: "phoneInfoCtrl"
                     })
-
-
-
-                // $locationProvider.html5Mode(true);
+                    .when("/tvs/:_id", {
+                        templateUrl: "tvsInfo.htm",
+                        controller: "tvsInfoCtrl"
+                    })
+                    .when("/computers/:_id", {
+                        templateUrl: "computersInfo.htm",
+                        controller: "computersInfoCtrl"
+                    })
+                    .when("/smallappliances/microwave-ovens", {
+                        templateUrl: "microwaves.htm",
+                        controller: "microwavesCtrl"
+                    })
+                    .when("/smallappliances/microwave-ovens/:_id", {
+                        templateUrl: "microwavesInfo.htm",
+                        controller: "microwavesInfoCtrl"
+                    })
+                    .when("/smallappliances/vacuumCleaners", {
+                        templateUrl: "vacuums.htm",
+                        controller: "vacuumsCtrl"
+                    })
+                    .when("/smallappliances/vacuumCleaners/:_id", {
+                        templateUrl: "vacuumsInfo.htm",
+                        controller: "vocuumsInfoCtrl"
+                    })
+                    .when("/conditioners", {
+                        templateUrl: "conditioners.htm",
+                        controller: "conditionersCtrl"
+                    })
+                    .when("/conditioners/:_id", {
+                        templateUrl: "conditionersInfo.htm",
+                        controller: "conditionersInfoCtrl"
+                    })
+                    .when("/homeappliances/ovens", {
+                        templateUrl: "ovens.htm",
+                        controller: "ovensCtrl"
+                    })
+                    // $locationProvider.html5Mode(true);
 
 
             });
         </script>
 
     </main>
+
+    <footer class="row">
+        <article class="col-md-2">
+            <h5>ТЕХНОПОЛИС</h5>
+            <ul>
+                <li><a href="">Компанията</a></li>
+                <li><a href="">Работа при нас</a></li>
+                <li><a href="">Новини</a></li>
+                <li><a href="">Общи условия</a></li>
+            </ul>
+        </article>
+        <article class="col-md-2">
+            <h5>КОНТАКТИ</h5>
+            <ul>
+                <li><a href="">Контакти</a></li>
+                <li><a href="">Магазини</a></li>
+                <li><a href="">Сервизи</a></li>
+            </ul>
+        </article>
+        <article class="col-md-2">
+            <h5>ЗА КЛИЕНТА</h5>
+            <ul>
+                <li><a href="">Съвети</a></li>
+                <li><a href="">Транспорт</a></li>
+                <li><a href="">Доставка при онлайн поръчка</a></li>
+                <li><a href="">Вземи от магазин</a></li>
+                <li><a href="">Услуги</a></li>
+                <li><a href="">Връщане на поръчка</a></li>
+            </ul>
+        </article>
+        <article class="col-md-2">
+            <h5>ОБЩА ИНФОРМАЦИЯ</h5>
+            <ul>
+                <li><a href="">Как да поръчам</a></li>
+                <li><a href="">Лоялни клиенти</a></li>
+                <li><a href="">Рециклиране</a></li>
+            </ul>
+
+            <h5>НАМЕРЕТЕ НИ В</h5>
+            <ul>
+                <a href=""><img src="/images/facebook.png" alt=""></a>
+                <a href=""><img src="/images/yt.png" alt=""></a>
+                <a href=""><img src="/images/g+.png" alt=""></a>
+            </ul>
+        </article>
+        <article class="col-md-3" id="payment">
+            <h5>ПАЗАРУВАЙТЕ С</h5>
+            <ul>
+                <a href=""><img src="/images/visa.png" alt=""></a>
+                <a href=""><img src="/images/master.png" alt=""></a>
+                <a href=""><img src="/images/maestro.png" alt=""></a>
+            </ul>
+        </article>
+    </footer>
 </body>
 
 </html>

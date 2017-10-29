@@ -1,0 +1,50 @@
+<section class="row">
+    <h1> {{pageTitle}} </h1>
+
+    <aside class="col-md-3">
+        <h3>Резултати</h3>
+        <div class="col-md-12">
+            <h4>Марка</h4>
+            <ul>
+                <li ng-repeat="brand in brands"><input type="checkbox" ng-model='search.brand' ng-true-value="'{{brand}}'" ng-false-value=''> {{brand}} </li>
+            </ul>
+        </div>
+        <div class="col-md-12">
+            <h4>Мощност</h4>
+            <ul>
+                <li ng-repeat="power in powers"><input type="checkbox" ng-model='search.power' ng-true-value="'{{power}}'" ng-false-value=''> {{power}} </li>
+            </ul>
+        </div>
+        <div class="col-md-12">
+            <h4>Вместимост</h4>
+            <ul>
+                <li ng-repeat="capacity in capacities"><input type="checkbox" ng-model='search.capacity' ng-true-value="'{{capacity}}'" ng-false-value=''> {{capacity}} </li>
+            </ul>
+        </div>
+        <div class="col-md-12">
+            <h4>Тип</h4>
+            <ul>
+                <li ng-repeat="type in types"><input type="checkbox" ng-model='search.type' ng-true-value="'{{type}}'" ng-false-value=''> {{type}} </li>
+            </ul>
+        </div>
+    </aside>
+    <div id="vacuums" class="col-md-8">
+        <article class="col-md-12" ng-repeat="vacuum in vacuums | filter:search.brand | filter:search.power | filter:search.capacity | filter:search.type">
+            <span class="col-md-2"><img ng-src="{{vacuum.pictures[0]}}" alt=""/></span>
+            <div class="col-md-7" class="vacuumsInfo">
+                <h4> {{vacuum.title}} </h4>
+                <ul>
+                    <li>Тип: {{vacuum.type}} </li>
+                    <li>Мощност: {{vacuum.power}} </li>
+                    <li>Капацитет: {{vacuum.capacity}} </li>
+                </ul>
+            </div>
+            <span class="purchase col-md-3"><h3> {{vacuum.price}}<sup>00</sup> лв</h3>
+                 <br>
+             <button class="buy btn btn-danger">КУПИ</button>
+            <br>
+            <button class="info btn btn-info"><a ng-href="#!smallappliances/vacuumCleaners/{{vacuum._id}}">ВИЖ ОЩЕ</a></button>
+             </span>
+        </article>
+    </div>
+</section>

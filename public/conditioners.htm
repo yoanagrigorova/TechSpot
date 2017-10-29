@@ -1,0 +1,43 @@
+<section class="row">
+    <h1> {{pageTitle}} </h1>
+
+    <aside class="col-md-3">
+        <h3>Резултати</h3>
+        <div class="col-md-12">
+            <h4>Марка</h4>
+            <ul>
+                <li ng-repeat="brand in brands"><input type="checkbox" ng-model='search.brand' ng-true-value="'{{brand}}'" ng-false-value=''> {{brand}} </li>
+            </ul>
+        </div>
+        <div class="col-md-12">
+            <h4>Мощност на охлаждане</h4>
+            <ul>
+                <li ng-repeat="cp in coolingPowers"><input type="checkbox" ng-model='search.cp' ng-true-value="'{{cp}}'" ng-false-value=''> {{cp}} </li>
+            </ul>
+        </div>
+        <div class="col-md-12">
+            <h4>Мощност на отопление</h4>
+            <ul>
+                <li ng-repeat="ch in heatingPowers"><input type="checkbox" ng-model='search.ch' ng-true-value="'{{ch}}'" ng-false-value=''> {{ch}} </li>
+            </ul>
+        </div>
+    </aside>
+    <div id="conditioners" class="col-md-8">
+        <article class="col-md-12" ng-repeat="cond in conditioners | filter:search.brand | filter:search.cp | filter:search.ch">
+            <span class="col-md-2"><img ng-src="{{cond.pictures[0]}}" alt=""/></span>
+            <div class="col-md-7" class="condInfo">
+                <h4> {{cond.title}} </h4>
+                <ul>
+                    <li>Мощност на охлаждане: {{cond.capacityCooling}} </li>
+                    <li>Мощност на отопление: {{cond.capacityHeating}} </li>
+                </ul>
+            </div>
+            <span class="purchase col-md-3"><h3> {{cond.price}}<sup>00</sup> лв</h3>
+                     <br>
+                 <button class="buy btn btn-danger">КУПИ</button>
+                <br>
+                <button class="info btn btn-info"><a ng-href="#!conditioners/{{cond._id}}">ВИЖ ОЩЕ</a></button>
+                 </span>
+        </article>
+    </div>
+</section>

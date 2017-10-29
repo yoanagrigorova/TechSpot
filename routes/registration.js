@@ -3,7 +3,7 @@ var router = express.Router();
 var User = require('../public/javascripts/users.js');
 
 router.post('/', function(req, res, next) {
-    
+
     // function User(firstName, lastName, mail, phone, password) {
     //     if (firstName.trim().length > 0 && lastName.trim().length > 0 && mail.trim().length > 0 && mail.indexOf("@") !== -1 &&
     //         phone.startsWith("08") && phone.length === 10 && password.length >= 5) {
@@ -14,7 +14,7 @@ router.post('/', function(req, res, next) {
     //         this.password = password;
     //     } else {
     //         throw new Error("Incorrect information");
-        
+
     //     }
     // }
 
@@ -37,7 +37,7 @@ router.post('/', function(req, res, next) {
             if (password === repeatPass) {
                 var user = new User(name, lastName, mail, phone, password);
                 users.insert(user);
-                res.redirect("/login");
+                res.redirect("back");
             }
         } else {
             res.render('registration', { message: 'E-mail is taken.' });
