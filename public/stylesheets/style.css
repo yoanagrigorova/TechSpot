@@ -231,10 +231,63 @@ border-radius: 16px !important;
     transition:0.5s linear all;
     opacity:1;
   }
-  .animate.ng-leave.ng-leave-active {
+.animate.ng-leave.ng-leave-active {
     opacity:0;
   }
+
+  /* .animateSearch {
+    -webkit-transition: 1s linear all; 
+	transition: 1s linear all;
+    opacity: 1;
+    display: block !important;
+  } */
+
+.animateSearch.ng-enter{
+	-webkit-transition: 1s linear all; /* Chrome */
+	transition: 1s linear all;
+	opacity: 0;
+}
+ 
+.animateSearch.ng-enter.ng-enter-active {
+	opacity: 1;
+}
+
+.animateSearch.ng-leave{
+    transition:0.5s linear all;
+    opacity:1;
+  }
+
+.animateSearch.ng-leave.ng-leave-active{
+    opacity:0;
+  }
+
+
 .buy {
     width: 7em !important;
     margin-bottom: 5px !important;
+}
+
+option {
+    font-size: 1.5em;
+}
+
+#searchDiv {
+    z-index: 1 !important;
+    position: absolute;
+    left: 140px;
+    background-color: #FFFFFF;
+    width: 500px;
+    border-radius: 5px;
+}
+
+div.form-group {
+    position: relative;
+}
+
+#dropMenu, #dropMenu2{
+    position: absolute;
+    background: #ebf100;
+    border-radius: 5px;
+    padding: 10px;
+    z-index: 1;
 }
