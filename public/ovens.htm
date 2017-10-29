@@ -1,0 +1,50 @@
+<section class="row">
+    <h1> {{pageTitle}} </h1>
+
+    <aside class="col-md-3">
+        <h3>Резултати</h3>
+        <div class="col-md-12">
+            <h4>Марка</h4>
+            <ul>
+                <li ng-repeat="brand in brands"><input type="checkbox" ng-model='search.brand' ng-true-value="'{{brand}}'" ng-false-value=''> {{brand}} </li>
+            </ul>
+        </div>
+        <div class="col-md-12">
+            <h4>Ширина</h4>
+            <ul>
+                <li ng-repeat="width in widths"><input type="checkbox" ng-model='search.width' ng-true-value="'{{width}}'" ng-false-value=''> {{width}} </li>
+            </ul>
+        </div>
+        <div class="col-md-12">
+            <h4>Брой функции</h4>
+            <ul>
+                <li ng-repeat="func in functions"><input type="checkbox" ng-model='search.func' ng-true-value="'{{func}}'" ng-false-value=''> {{func}} </li>
+            </ul>
+        </div>
+        <div class="col-md-12">
+            <h4>Обем на фурната</h4>
+            <ul>
+                <li ng-repeat="capacity in capacities"><input type="checkbox" ng-model='search.capacity' ng-true-value="'{{capacity}}'" ng-false-value=''> {{capacity}} </li>
+            </ul>
+        </div>
+    </aside>
+    <div id="ovens" class="col-md-8">
+        <article class="col-md-12" ng-repeat="oven in ovens | filter:search.brand | filter:search.width | filter:search.func | filter:search.capacity">
+            <span class="col-md-2"><img ng-src="{{oven.pictures[0]}}" alt=""/></span>
+            <div class="col-md-7" class="ovenInfo">
+                <h4> {{oven.title}} </h4>
+                <ul>
+                    <li>Брой функции: {{oven.functions}} </li>
+                    <li>Енергиен клас: {{oven.energyClass}} </li>
+                    <li>Обем на формата: {{oven.capacity}} </li>
+                </ul>
+            </div>
+            <span class="purchase col-md-3"><h3> {{oven.price}}<sup>00</sup> лв</h3>
+                         <br>
+                     <button class="buy btn btn-danger">КУПИ</button>
+                    <br>
+                    <button class="info btn btn-info"><a ng-href="#!homeappliances/{{oven._id}}">ВИЖ ОЩЕ</a></button>
+                     </span>
+        </article>
+    </div>
+</section>

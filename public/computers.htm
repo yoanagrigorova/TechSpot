@@ -1,7 +1,7 @@
 <section class="row">
     <h1> {{pageTitle}} </h1>
 
-    <aside class="col-md-2">
+    <aside class="col-md-3">
         <h3>Резултати</h3>
         <div class="col-md-12">
             <h4>Марка</h4>
@@ -40,10 +40,10 @@
             </ul>
         </div>
     </aside>
-    <div class="col-md-8" id="tvs">
+    <div class="col-md-8" id="comps">
         <article class="col-md-12" ng-repeat="computer in computers | filter:search.brand | filter:search.displaysize | filter:search.ram | filter:search.os | filter:search.hdd | filter:search.pr">
             <span class="col-md-2" style="float:left"><img ng-src="{{computer.pictures[0]}}" alt=""/></span>
-            <div class="col-md-7" class="tvInfo">
+            <div class="col-md-7" class="compInfo">
                 <h4> {{computer.title}} </h4>
                 <ul>
                     <li>Капацитет RAM: {{computer.ram}} </li>
@@ -56,7 +56,7 @@
                 <br>
                 <button class="buy btn btn-danger">КУПИ</button>
                 <br>
-                <button class="info btn btn-info">ВИЖ ОЩЕ</button>
+                <button class="info btn btn-info"><a ng-href="#!computers/{{computer._id}}">ВИЖ ОЩЕ</a></button>
             </span>
         </article>
     </div>

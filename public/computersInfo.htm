@@ -1,13 +1,13 @@
-<div class="productsInfo" ng-repeat="phone in phones">
+<div class="productsInfo" ng-repeat="comp in computers">
     <div class="row">
-        <h1>{{phone.title}}</h1>
+        <h1>{{comp.title}}</h1>
         <hr>
         <div class="col-md-5">
-            <img id="phonePic" ng-src="{{phone.pictures[0]}}" alt="">
+            <img id="tvPic" ng-src="{{comp.pictures[0]}}" alt="">
         </div>
         <div class="col-md-4">
             <div class="col-md-12 price">
-                <h3> {{phone.price}}<sup>00</sup>лв </h3>
+                <h3> {{comp.price}}<sup>00</sup>лв </h3>
                 <button class="btn btn-danger pull-right">Купи</button>
                 <hr>
                 <a href="#" class="btn btn-link pull-left" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
@@ -15,11 +15,12 @@
             </div>
             <div class="col-md-12">
                 <ul>
-                    <li><strong>Процесор:</strong> {{phone.processor}}</li>
-                    <li><strong>Размер на екрана в INCH:</strong> {{phone.displaysize}}"</li>
-                    <li><strong>RAM:</strong> {{phone.ram}}</li>
-                    <li><strong>Задна камера:</strong> {{phone.rearcamera}}</li>
-                    <li><strong>DUAL SIM</strong></li>
+                    <li><strong>Тип:</strong> {{comp.type}} </li>
+                    <li><strong>Капацитет RAM:</strong> {{comp.ram}} </li>
+                    <li><strong>Капацитет HDD:</strong> {{comp.hdd}} </li>
+                    <li><strong>Размер на екрана в INCH:</strong> {{comp.displaysize}} </li>
+                    <li><strong>Тип процесор:</strong> {{comp.processor}}</li>
+                    <li><strong>Операционна система:</strong> {{comp.os}}</li>
                 </ul>
             </div>
         </div>
@@ -34,51 +35,43 @@
                     <tbody>
                         <tr>
                             <td>МАРКА</td>
-                            <td>{{phone.brand}}</td>
+                            <td>{{comp.brand}}</td>
                         </tr>
                         <tr>
                             <td>МОДЕЛ</td>
-                            <td> {{phone.model}} </td>
+                            <td> {{comp.model}} </td>
                         </tr>
                         <tr>
-                            <td>ПРОЦЕСОР</td>
-                            <td> {{phone.processor}} </td>
+                            <td>ТИП</td>
+                            <td> {{comp.type}} </td>
+                        </tr>
+                        <tr>
+                            <td>КАПАЦИТЕТ RAM</td>
+                            <td> {{comp.ram}} </td>
+                        </tr>
+                        <tr>
+                            <td>КАПАЦИТЕТ HDD</td>
+                            <td> {{comp.hdd}} </td>
                         </tr>
                         <tr>
                             <td>РАЗМЕР НА ЕКРАНА В INCH</td>
-                            <td> {{phone.displaysize}} </td>
+                            <td> {{comp.displaysize}} </td>
                         </tr>
                         <tr>
                             <td>РЕЗОЛЮЦИЯ</td>
-                            <td> {{phone.resolution}} </td>
-                        </tr>
-                        <tr>
-                            <td>ВГРАДЕНА ПАМЕТ</td>
-                            <td> {{phone.iternalmemory}} </td>
-                        </tr>
-                        <tr>
-                            <td>RAM ПАМЕТ</td>
-                            <td> {{phone.ram}} </td>
-                        </tr>
-                        <tr>
-                            <td>ЗАДНА КАМЕРА</td>
-                            <td> {{phone.rearcamera}} </td>
-                        </tr>
-                        <tr>
-                            <td>ПРЕДНА КАМЕРА</td>
-                            <td> {{phone.frontcamera}} </td>
+                            <td> {{comp.resolution}} </td>
                         </tr>
                         <tr>
                             <td>ОПЕРАЦИОННА СИСТЕМА</td>
-                            <td> {{phone.os}} </td>
-                        </tr>
-                        <tr>
-                            <td>ТЕГЛО</td>
-                            <td> {{phone.weight}} </td>
+                            <td> {{comp.os}} </td>
                         </tr>
                         <tr>
                             <td>ТИП БАТЕРИЯ</td>
-                            <td> {{phone.battery}} </td>
+                            <td> {{comp.battery}} </td>
+                        </tr>
+                        <tr>
+                            <td>ТЕГЛО</td>
+                            <td> {{comp.weight}} </td>
                         </tr>
                     </tbody>
                 </table>

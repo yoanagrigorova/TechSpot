@@ -24,7 +24,7 @@
     </aside>
     <div class="col-md-8" id="tvs">
         <article class="col-md-12" ng-repeat="tv in tvs | filter:search.brand | filter:search.displaysize | filter:search.r">
-            <span class="col-md-2" style="float:left"><img ng-src="{{tv.pictures[0]}}" alt=""/></span>
+            <span class="col-md-2"><img ng-src="{{tv.pictures[0]}}" alt=""/></span>
             <div class="tvInfo col-md-7">
                 <h4> {{tv.title}} </h4>
                 <ul>
@@ -37,7 +37,7 @@
                 <br>
                 <button class="buy btn btn-danger">КУПИ</button>
                 <br>
-                <button class="info btn btn-info">ВИЖ ОЩЕ</button>
+                <button class="info btn btn-info"><a ng-href="#!tvs/{{tv._id}}">ВИЖ ОЩЕ</a></button>
             </span>
         </article>
     </div>

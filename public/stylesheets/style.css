@@ -52,16 +52,15 @@ a {
 
 footer {
     background-color: rgb(242, 242, 242);
-    width: 100%;
-    display: inline-block;
 }
 
-footer article {
+
+/* footer article {
     width: 16%;
     float: left;
     margin-top: 1em;
     margin-left: 3em;
-}
+} */
 
 footer article h5 {
     color: black;
@@ -69,9 +68,11 @@ footer article h5 {
     padding: 5px;
 }
 
+
+/* 
 footer article ul {
     list-style: none;
-}
+} */
 
 footer article ul li {
     padding: 5px;
@@ -82,14 +83,15 @@ footer article ul li a {
     font-size: 14px;
 }
 
-footer ul li {
+
+/* footer ul li {
     text-align: left;
     padding: 5px;
 }
 
 footer h5~a {
     float: left;
-}
+} */
 
 footer a img {
     width: 30px;
@@ -125,28 +127,33 @@ header a {
 }
 
 div#phones span img,
-div#tvs span img {
+div#tvs span img,
+div#comps span img,
+div#microwaves span img,
+div#vacuums span img,
+div#conditioners span img,
+div#ovens span img {
     height: 115px;
     width: 100px;
 }
 
-div#phonesInfo div#price {
+div.productsInfo div.price {
     background-color: rgb(218, 216, 216);
 }
 
-div#phonesInfo div#price h3 {
+div.productsInfo div.price h3 {
     display: inline-block;
 }
 
-div#phonesInfo div#price+div {
+div.productsInfo div.price+div {
     margin-top: 3em !important;
 }
 
-div#phonesInfo div#price+div ul li {
+div.productsInfo div.price+div ul li {
     list-style: disc;
 }
 
-div#phonesInfo div button {
+div.productsInfo div button {
     margin-top: 0.7em;
 }
 
@@ -155,7 +162,7 @@ i img {
     height: 20px;
 }
 
-#characteristics {
+.characteristics {
     margin-top: 2em;
 }
 
@@ -167,4 +174,12 @@ i img {
 .buy {
     width: 7em !important;
     margin-bottom: 5px !important;
+}
+
+#tvPic,
+#mwPic,
+#vcPic,
+#condPic {
+    height: 450px;
+    width: 450px;
 }
