@@ -1,10 +1,20 @@
-angular.module("tvController", [])
+angular.module("tvController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
     .controller("tvCtrl", function($scope, $http) {
         $scope.search = {};
         $scope.pageTitle = "Телевизори";
         $http.get("/tvs").then(function(response) {
             response.data.sort((t1, t2) => t1.price - t2.price);
             $scope.tvs = response.data;
+           
+            $scope.slider = {
+                minValue: $scope.tvs[0].price,
+                maxValue: $scope.tvs[$scope.tvs.length-1].price,
+                options: {
+                    floor: $scope.tvs[0].price,
+                    ceil: $scope.tvs[$scope.tvs.length-1].price,
+                    step: 50
+                }
+            };
             print(response.data);
         })
 

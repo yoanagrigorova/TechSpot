@@ -3,33 +3,38 @@
 
     <aside class="col-md-2">
         <h3>Резултати</h3>
-        <div class="col-md-12">
-            <h4>Марка</h4>
-            <ul>
-                <li ng-repeat="brand in brands"><input type="checkbox" ng-model='search.brand' ng-true-value="'{{brand}}'" ng-false-value=''> {{brand}} </li>
-            </ul>
+        <div>
+            <h4> Цена в лева </h4>
+            <rzslider rz-slider-model="slider.minValue" rz-slider-high="slider.maxValue" rz-slider-options="slider.options"></rzslider>
         </div>
-        <div class="col-md-12">
-            <h4>Размер на екрана в INCH</h4>
-            <ul>
-                <li ng-repeat="ds in displaySizes"><input type="checkbox" ng-model='search.displaysize' ng-true-value="'{{ds}}'" ng-false-value=''> {{ds}} </li>
-            </ul>
-        </div>
-        <div class="col-md-12">
-            <h4>Резолюция</h4>
-            <ul>
-                <li ng-repeat="r in resolutions"><input type="checkbox" ng-model='search.r' ng-true-value="'{{r}}'" ng-false-value=''> {{r}} </li>
-            </ul>
-        </div>
+        <div>
+            <div>
+                <h4>Марка</h4>
+                <ul>
+                    <li ng-repeat="brand in brands"><input type="checkbox" ng-model='search.brand' ng-true-value="'{{brand}}'" ng-false-value=''> {{brand}} </li>
+                </ul>
+            </div>
+            <div>
+                <h4>Размер на екрана в INCH</h4>
+                <ul>
+                    <li ng-repeat="ds in displaySizes"><input type="checkbox" ng-model='search.displaysize' ng-true-value="'{{ds}}'" ng-false-value=''> {{ds}} </li>
+                </ul>
+            </div>
+            <div>
+                <h4>Резолюция</h4>
+                <ul>
+                    <li ng-repeat="r in resolutions"><input type="checkbox" ng-model='search.r' ng-true-value="'{{r}}'" ng-false-value=''> {{r}} </li>
+                </ul>
+            </div>
     </aside>
     <div class="col-md-8" id="tvs">
-        <article class="col-md-12" ng-repeat="tv in tvs | filter:search.brand | filter:search.displaysize | filter:search.r">
-            <span class="col-md-2"><img ng-src="{{tv.pictures[0]}}" alt=""/></span>
+        <article ng-repeat="tv in tvs | filter:search.brand | filter:search.displaysize | filter:search.r | sizeFilter:slider">
+            <span class="col-md-2" style="float:left"><img ng-src="{{tv.pictures[0]}}" alt=""/></span>
             <div class="tvInfo col-md-7">
                 <h4> {{tv.title}} </h4>
                 <ul>
                     <li>Марка: {{tv.brand}} </li>
-                    <li>Размер на екрана в INCH: {{tv.displaysize}} </li>
+                    <li>Размер на екрана в инчове: {{tv.displaysize}} </li>
                     <li>Резолюция: {{tv.resolution}}</li>
                 </ul>
             </div>

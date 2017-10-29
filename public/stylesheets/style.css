@@ -7,6 +7,10 @@ a {
     color: #00B7FF;
 }
 
+div['ng-view'] {
+    transition: all linear 0.5s;
+}
+
 header {
     display: flex;
     align-items: center;
@@ -169,6 +173,76 @@ i img {
 #phonePic {
     height: 450px;
     width: 400px;
+}
+
+.purchase {
+    width: 20%;
+    display: inline-block;
+}
+
+.purchase h3 {
+    color: rgb(146, 20, 20);
+}
+
+.rzslider .rz-pointer {
+    top: -9px !important;
+    z-index: 3 !important;
+    width: 10px !important;
+    height: 22px !important;
+    cursor: pointer !important;
+    background-color: #0DB9F0 !important;
+    border-radius: 16px !important;
+}
+
+.rzslider .rz-pointer::after {
+    position: absolute !important;
+    top: 7px !important;
+    left: 3px !important;
+    width: 8px !important;
+    height: 8px !important;
+    background: #0DB9F0 !important;
+    border-radius: 4px !important;
+    content: '' !important;
+}
+
+.rzslider .rz-selection {
+    z-index: 2 !important;
+    background: #0DB9F0 !important;
+    border-radius: 23px !important;
+    height: 6px !important;
+}
+
+.rz-bubble.rz-limit.rz-ceil {
+    display: none;
+}
+
+.rz-bubble.rz-limit.rz-floor {
+    display: none;
+}
+
+.rz-bubble.rz-model-value,
+.rz-bubble.rz-model-high {
+    font-size: 1.4em;
+}
+
+.animate.ng-enter {
+    -webkit-transition: 1s linear all;
+    /* Chrome */
+    transition: 1s linear all;
+    opacity: 0;
+}
+
+.animate.ng-enter.ng-enter-active {
+    opacity: 1;
+}
+
+.animate.ng-leave {
+    transition: 0.5s linear all;
+    opacity: 1;
+}
+
+.animate.ng-leave.ng-leave-active {
+    opacity: 0;
 }
 
 .buy {

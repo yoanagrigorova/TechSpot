@@ -1,10 +1,19 @@
-angular.module("computersController", [])
+angular.module("computersController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
     .controller("computersCtrl", function($scope, $http) {
         $scope.search = {};
         $scope.pageTitle = "Компютри";
         $http.get("/computers").then(function(response) {
             response.data.sort((c1, c2) => c1.price - c2.price);
             $scope.computers = response.data;
+            $scope.slider = {
+                minValue: $scope.computers[0].price,
+                maxValue: $scope.computers[$scope.computers.length-1].price,
+                options: {
+                    floor: $scope.computers[0].price,
+                    ceil: $scope.computers[$scope.computers.length-1].price,
+                    step: 50
+                }
+            };
             print(response.data);
         })
 
