@@ -111,63 +111,61 @@ header a {
     padding: 2px;
 }
 
-main {
-    width: 100%;
-    display: inline-block;
-}
-
-aside {
-    width: 20%;
-    /* display: inline-block; */
-    float: left;
-}
-
-aside div {
-    width: 100%;
-    float: left;
-    font-size: 13px;
-}
-
-section {
-    width: 100%;
-    display: inline-block;
-}
-
-section article {
-    margin-bottom: 1em;
-}
-
-.phoneInfo {
-    display: inline-block;
-    width: 60%;
-}
-
-div#phones {
-    float: left;
-    width: 70%;
-}
-
-div#phones ul {
-    display: inline-block;
-}
-
-div#phones ul li {
-    width: 100%;
-}
-
-.buy {
-    background-color: rgb(182, 69, 69);
-    margin-bottom: 10px;
-}
-
 .purchase button {
-    color: white;
-    width: 80%;
+    color: white !important;
+    width: 7em !important;
     margin: auto;
+    border: none;
+    margin-bottom: 5px !important;
 }
 
-.info {
-    background-color: rgb(36, 36, 131);
+.purchase h3 {
+    color: rgb(146, 20, 20);
+}
+
+.purchase a,
+.purchase a :hover {
+    color: white !important;
+}
+
+div#phones span img,
+div#tvs span img {
+    height: 115px;
+    width: 100px;
+}
+
+div#phonesInfo div#price {
+    background-color: rgb(218, 216, 216);
+}
+
+div#phonesInfo div#price h3 {
+    display: inline-block;
+}
+
+div#phonesInfo div#price+div {
+    margin-top: 3em !important;
+}
+
+div#phonesInfo div#price+div ul li {
+    list-style: disc;
+}
+
+div#phonesInfo div button {
+    margin-top: 0.7em;
+}
+
+i img {
+    width: 20px;
+    height: 20px;
+}
+
+#characteristics {
+    margin-top: 2em;
+}
+
+#phonePic {
+    height: 450px;
+    width: 400px;
 }
 
 .purchase {
@@ -236,3 +234,7 @@ border-radius: 16px !important;
   .animate.ng-leave.ng-leave-active {
     opacity:0;
   }
+.buy {
+    width: 7em !important;
+    margin-bottom: 5px !important;
+}

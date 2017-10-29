@@ -1,8 +1,8 @@
-<section >
+<section class="row">
     <h1> {{pageTitle}} </h1>
 
 
-    <aside>
+    <aside class="col-md-2">
         <h3>Резултати</h3>
         <div>
             <h4> Цена в лева </h4>
@@ -10,34 +10,35 @@
             rz-slider-high="slider.maxValue"
             rz-slider-options="slider.options"></rzslider></div>
         <div>
+        <div class="col-md-12">
             <h4>Марка</h4>
             <ul>
                 <li ng-repeat="brand in brands"><input type="checkbox" ng-model='search.brand' ng-true-value="'{{brand}}'" ng-false-value=''> {{brand}} </li>
             </ul>
         </div>
-        <div>
+        <div class="col-md-12">
             <h4>Размер на екрана в инчове</h4>
             <ul>
                 <li ng-repeat="ds in displaySizes"><input type="checkbox" ng-model='search.displaysize' ng-true-value="'{{ds}}'" ng-false-value=''> {{ds}} </li>
             </ul>
         </div>
-        <div>
+        <div class="col-md-12">
             <h4>Задна камера</h4>
             <ul>
                 <li ng-repeat="rc in rearCameras"><input type="checkbox" ng-model='search.rc' ng-true-value="'{{rc}}'" ng-false-value=''> {{rc}} </li>
             </ul>
         </div>
-        <div>
+        <div class="col-md-12">
             <h4>Вградена памет</h4>
             <ul>
                 <li ng-repeat="im in iternalMemory"><input type="checkbox" ng-model='search.im' ng-true-value="'{{im}}'" ng-false-value=''> {{im}} </li>
             </ul>
         </div>
     </aside>
-    <div id="phones">
-        <article class='animate' ng-repeat="phone in phones | filter:search.brand | filter:search.displaysize | filter:search.rc | filter:search.im | sizeFilter:slider" >
-            <span style="float:left"><img height="115px" width="100px" src="{{phone.pictures[0]}}" alt=""/></span>
-            <div class="phoneInfo">
+    <div id="phones" class="col-md-8">
+        <article class='animate' class="col-md-12" ng-repeat="phone in phones | filter:search.brand | filter:search.displaysize | filter:search.rc | filter:search.im | sizeFilter:slider">
+            <span class="col-md-2" style="float:left"><img ng-src="{{phone.pictures[0]}}" alt=""/></span>
+            <div class="col-md-7" class="phoneInfo">
                 <h4> {{phone.title}} </h4>
                 <ul>
                     <li>Процесор: {{phone.cpu}} </li>
@@ -46,11 +47,11 @@
                     <li>DUAL SIM</li>
                 </ul>
             </div>
-            <span class="purchase"><h3> {{phone.price}}<sup>00</sup> лв</h3>
+            <span class="purchase col-md-3"><h3> {{phone.price}}<sup>00</sup> лв</h3>
                 <br>
-                <button class='btn btn-danger'>КУПИ</button>
+                <button class="buy btn btn-danger">КУПИ</button>
                 <br>
-                <button class='btn btn-primary'>ВИЖ ОЩЕ</button>
+                <button class="info btn btn-info"><a ng-href="#!phones/{{phone._id}}">ВИЖ ОЩЕ</a></button>
             </span>
         </article>
     </div>

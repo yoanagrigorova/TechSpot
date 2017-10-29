@@ -20,6 +20,8 @@ var index = require('./routes/index');
 var login = require("./routes/login");
 var phones = require("./routes/phones");
 var registration = require('./routes/registration');
+var tvs = require("./routes/tvs");
+var computers = require("./routes/computers");
 
 // app.use(express.static('public'));
 // app.get("*", function(req, res) {
@@ -53,6 +55,8 @@ function requireLogin(req, res, next) {
 app.use('/login', login);
 app.use("/phones", phones);
 app.use('/registration', registration);
+app.use("/tvs", tvs);
+app.use("/computers", computers);
 
 // app.use('/logout', requireLogin, logout);
 

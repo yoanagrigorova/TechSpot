@@ -9,4 +9,13 @@ router.get("/", function(req, res, next) {
     });
 })
 
+router.get("/:phones_id", function(req, res, next) {
+    var db = req.db;
+    var collection = db.get('phones');
+    var id = req.params.phones_id;
+    collection.find({ _id: id }, {}, function(e, docs) {
+        res.json(docs);
+    });
+})
+
 module.exports = router;

@@ -18,6 +18,9 @@
     <script src="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
     <script src='./javascripts/phoneCtr.js'></script>
+    <script src="./javascripts/tvController.js"></script>
+    <script src="./javascripts/computersCtrl.js"></script>
+    <script src="./javascripts/phoneInfoController.js"></script>
 
 </head>
 
@@ -50,7 +53,15 @@
     <br/><br/><br/>
     <nav class="navbar navbar-default">
         <div class="container-fluid">
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="true" style="">
                 <ul class="nav navbar-nav">
                     <li><a href="#!phones">Телефони и таблети</a></li>
                     <li><a href="#!tvs">Телевизори</a></li>
@@ -67,8 +78,8 @@
         <div ng-view class='animate'></div>
 
         <script>
-            var app = angular.module("myApp", ["ngRoute", "phoneController",]);
-            app.config(function ($routeProvider, $locationProvider) {
+            var app = angular.module("myApp", ["ngRoute", "phoneController", "tvController", "computersController", "phoneInfoController"]);
+            app.config(function($routeProvider, $locationProvider) {
                 $routeProvider
                     .when("/login", {
                         templateUrl: "login.htm"
@@ -78,17 +89,27 @@
                     })
                     .when("/phones", {
                         templateUrl: "phones.htm",
-                        controller: "phonesCtrl",
-                        
-                    });
+                        controller: "phonesCtrl"
+                    })
+                    .when("/tvs", {
+                        templateUrl: "tvs.htm",
+                        controller: "tvCtrl"
+                    })
+                    .when("/computers", {
+                        templateUrl: "computers.htm",
+                        controller: "computersCtrl"
+                    })
+                    .when("/phones/:_id", {
+                        templateUrl: "phoneInfo.htm",
+                        controller: "phoneInfoCtrl"
+                    })
 
                 // $locationProvider.html5Mode(true);
 
 
             });
-           
         </script>
-        
+
     </main>
 </body>
 
