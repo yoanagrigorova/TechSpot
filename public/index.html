@@ -8,10 +8,8 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-        crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
-        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
     <link href='./stylesheets/bootstrap.min.css' rel="stylesheet" />
     <link href="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
@@ -30,17 +28,18 @@
     <script src="./javascripts/conditionersCtrl.js"></script>
     <script src="./javascripts/conditionersInfoCtrl.js"></script>
     <script src="./javascripts/ovensCtrl.js"></script>
+    <script src="./javascripts/mainController.js"></script>
 
 
 </head>
 
-<body>
+<body ng-app='myApp' ng-controller="MainController">
+    <span><img id="logo" src="./images/logo1.png" alt=""/></span>
 
-    <form method="GET" class="navbar-form navbar-left" role="search">
+    <form method="GET" class="navbar-form navbar-right" role="search">
         <div class="form-group" id='homePageApp' ng-controller="searchCtrl">
 
-            <select class='form-control' class="selectpicker" data-style="btn-primary" ng-model='selectedOption' ng-change='changeValue(selectedOption)'
-                ng-options='x.name for x in categories'></select>
+            <select class='form-control' class="selectpicker" data-style="btn-primary" ng-model='selectedOption' ng-change='changeValue(selectedOption)' ng-options='x.name for x in categories'></select>
             <input type="text" class="form-control" placeholder="Search" ng-model='search.name'>
             <div id='searchDiv'>
                 <div class='animateSearch' ng-repeat='result in searchResults | filter: search.name' ng-if='search.name.length > 0'> <img src='{{result.pictures[0]}}' width='50px' /> <a ng-href=#!/phones/{{result._id}}> {{result.title}} </a> </div>
@@ -48,47 +47,59 @@
         </div>
         <button type="submit" class="btn btn-default">Submit</button>
     </form>
-
-    <ul class="nav nav-pills pull-right">
-        <li><a href="#">Home</a></li>
-        <li><a href="#!/login">Вход</a></li>
-        <li><a href="#!/registration">Регистрация</a></li>
-    </ul>
-    <br/><br/><br/>
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
+    <div class="navBarApp">
+        <ul class="nav nav-pills pull-right">
+            <li><a href="#">Home</a></li>
+            <li><a href="#!/login">Вход</a></li>
+            <li><a href="#!/registration">Регистрация</a></li>
+            <li><img ng-mouseover='display3=true' ng-mouseleave='display3=false' class='animate' ng-model='display3' height="40px" width="40px" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt="">
+                <div ng-show='display3' id='dropMenu3'> Lorem </div>
+            </li>
+            <li><img ng-mouseover='display4=true' ng-mouseleave='display4=false' class='animate' ng-model='display4' height="40px" width="40px" src="./images/basket.png" alt="">
+                <div ng-show='display4' id='dropMenu4'> Lorem </div>
+            </li>
+        </ul>
+        <br/><br/><br/>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
                   <span class="sr-only">Toggle navigation</span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </button>
+                </div>
+                <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="true" style="">
+                    <ul class="nav navbar-nav">
+                        <li><a href="#!phones">Телефони и таблети</a></li>
+                        <li><a href="#!tvs">Телевизори</a></li>
+                        <li><a href="#!computers">Компютри</a></li>
+                        <li><a href="#!homeappliances" ng-mouseover='display=true' ng-mouseleave="display=false" class='animate' ng-model='display'>Домакински електроуреди</a>
+                            <div ng-show='display' id='dropMenu'>
+                                <button> <a href="#!homeappliances/ovens">Готварски печки</a> </button>
+                            </div>
+                        </li>
+                        <li><a href="#!smallappliances" ng-mouseover='display2=true' ng-mouseleave='display2=false' class='animate' ng-model='display2'>Малки електроуреди</a>
+                            <div ng-show='display2' id='dropMenu2'> Lorem </div>
+                        </li>
+                        <li><a href="#!conditioners">Климатици и отопление</a></li>
+                    </ul>
+                </div>
             </div>
-            <div id='navBarApp' class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="true" style="">
-                <ul class="nav navbar-nav">
-                    <li><a href="#!phones">Телефони и таблети</a></li>
-                    <li><a href="#!tvs">Телевизори</a></li>
-                    <li><a href="#!computers">Компютри</a></li>
-                    <li><a href="#!homeappliances" ng-mouseover='display=true' ng-mouseleave="display=false" class='animate' ng-model='display'>Домакински електроуреди</a><div ng-show='display' id='dropMenu'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error, ratione labore, laborum, laboriosam debitis quis placeat non voluptates reiciendis magni est temporibus fugiat eos nemo. Sunt molestias ipsa vitae voluptates. </div></li>
-                    <li><a href="#!smallappliances" ng-mouseover='display2=true' ng-mouseleave='display2=false' class='animate' ng-model='display2'>Малки електроуреди</a><div ng-show='display2' id='dropMenu2'> Lorem   </div></li>
-                    <li><a href="#!conditioners">Климатици и отопление</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-
+        </nav>
+    </div>
     <script src='./javascripts/searchCtr.js'></script>
     <script src='./javascripts/navBarApp.js'></script>
 
-    <main ng-app='myApp'>
+    <main>
         <div ng-view class='animate'></div>
 
         <script>
             var app = angular.module("myApp", ["ngRoute", "phoneController", "tvController", "computersController",
                 "phoneInfoController", "tvsInfoController", "computersInfoController", "microwaveOvensController",
                 "microwavesInfoController", "vacuumsController", "vacuumInfoController", "conditionersController",
-                "conditionersInfoController", "ovensController", 'searchApp'
+                "conditionersInfoController", "ovensController", 'searchApp', "MainCtrl"
             ]);
             app.config(function($routeProvider, $locationProvider) {
                 $routeProvider
@@ -150,6 +161,9 @@
                     .when("/homeappliances/ovens", {
                         templateUrl: "ovens.htm",
                         controller: "ovensCtrl"
+                    })
+                    .when("*", {
+                        controller: "MainController"
                     })
                     // $locationProvider.html5Mode(true);
 

@@ -49,15 +49,17 @@ app.use(session({ secret: 'Yoana' }));
 
 function requireLogin(req, res, next) {
     if (req.session.userId != undefined) {
+        console.log('1');
         next();
     } else {
+
         res.redirect('/login');
     }
 }
 
 // app.use('/', index);
 app.use('/login', login);
-app.use("/phones", phones);
+app.use("/phones", requireLogin, phones);
 app.use('/registration', registration);
 app.use("/tvs", tvs);
 app.use("/computers", computers);
