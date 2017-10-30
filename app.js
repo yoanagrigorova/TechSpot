@@ -27,9 +27,16 @@ var vacuumCleaners = require("./routes/vacuums");
 var airConditioners = require("./routes/conditioners");
 var ovens = require("./routes/ovens");
 
+
 // app.use(express.static('public'));
 // app.get("*", function(req, res) {
-//     res.sendFile(path.join(__dirname + '/public/index.html'));
+//     res.sendFile(path.join(__dirname + '/public'));
+//     next();
+// });
+
+// app.all(function(req, res) {
+//     res.sendfile(__dirname + '/public');
+//     next();
 // });
 
 
@@ -46,7 +53,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: 'Yoana' }));
-
+app.all(function(req, res) {
+    res.sendfile(__dirname + '/public');
+    next();
+});
 function requireLogin(req, res, next) {
     if (req.session.userId != undefined) {
         next();
@@ -54,8 +64,14 @@ function requireLogin(req, res, next) {
         res.redirect('/login');
     }
 }
+// app.all('/*', function(req, res, next) {
+//     // Just send the index.html for other files to support HTML5Mode
+//     res.sendFile('index.html', { root: __dirname });
+//     next();
+// });
 
 // app.use('/', index);
+// app.use('*', index)
 app.use('/login', login);
 app.use("/phones", phones);
 app.use('/registration', registration);
@@ -66,7 +82,6 @@ app.use("/vacuumCleaners", vacuumCleaners);
 app.use("/conditioners", airConditioners);
 app.use("/ovens", ovens);
 
-// app.use('/logout', requireLogin, logout);
 
 
 // catch 404 and forward to error handler

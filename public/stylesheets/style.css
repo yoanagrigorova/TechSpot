@@ -269,7 +269,9 @@ i img {
 .animateSearch.ng-leave.ng-leave-active{
     opacity:0;
   }
-
+ul {
+    padding: 0;
+}
 
 .buy {
     width: 7em !important;
