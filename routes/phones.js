@@ -1,9 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
-
-
 router.get("/", function(req, res, next) {
+    console.log('proba')
     var db = req.db;
     var phones = db.get('phones');
     phones.find({}, {}, function(err, docs) {

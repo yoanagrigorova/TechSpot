@@ -2,7 +2,7 @@ angular.module("microwaveOvensController", [])
     .controller("microwavesCtrl", function($scope, $http) {
         $scope.search = {};
         $scope.pageTitle = "Микровълнови фурни";
-        $http.get("/microwave-ovens").then(function(response) {
+        $http.get("/api/microwave-ovens").then(function(response) {
             response.data.sort((p1, p2) => p1.price - p2.price);
             $scope.microwaves = response.data;
             print(response.data);

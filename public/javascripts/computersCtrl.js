@@ -2,7 +2,7 @@ angular.module("computersController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
     .controller("computersCtrl", function($scope, $http) {
         $scope.search = {};
         $scope.pageTitle = "Компютри";
-        $http.get("/computers").then(function(response) {
+        $http.get("/api/computers").then(function(response) {
             response.data.sort((c1, c2) => c1.price - c2.price);
             $scope.computers = response.data;
             $scope.slider = {

@@ -28,18 +28,6 @@ var airConditioners = require("./routes/conditioners");
 var ovens = require("./routes/ovens");
 
 
-// app.use(express.static('public'));
-// app.get("*", function(req, res) {
-//     res.sendFile(path.join(__dirname + '/public'));
-//     next();
-// });
-
-// app.all(function(req, res) {
-//     res.sendfile(__dirname + '/public');
-//     next();
-// });
-
-
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -53,35 +41,30 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: 'Yoana' }));
-app.all(function(req, res) {
-    res.sendfile(__dirname + '/public');
-    next();
-});
+
 function requireLogin(req, res, next) {
     if (req.session.userId != undefined) {
+        console.log('1');
         next();
     } else {
         res.redirect('/login');
     }
 }
-// app.all('/*', function(req, res, next) {
-//     // Just send the index.html for other files to support HTML5Mode
-//     res.sendFile('index.html', { root: __dirname });
-//     next();
-// });
 
-// app.use('/', index);
-// app.use('*', index)
+
 app.use('/login', login);
-app.use("/phones", phones);
-app.use('/registration', registration);
-app.use("/tvs", tvs);
-app.use("/computers", computers);
-app.use("/microwave-ovens", microwaveOvens);
-app.use("/vacuumCleaners", vacuumCleaners);
-app.use("/conditioners", airConditioners);
-app.use("/ovens", ovens);
-
+app.use("/api/phones", phones);
+app.use('/api/registration', registration);
+app.use("/api/tvs", tvs);
+app.use("/api/computers", computers);
+app.use("/api/microwave-ovens", microwaveOvens);
+app.use("/api/vacuumCleaners", vacuumCleaners);
+app.use("/api/conditioners", airConditioners);
+app.use("/api/ovens", ovens);
+app.all("/*", function(req, res, next) {
+    console.log('a')
+    res.sendfile("index.html", { root: __dirname + "/public" });
+});
 
 
 // catch 404 and forward to error handler

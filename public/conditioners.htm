@@ -23,7 +23,7 @@
         </div>
     </aside>
     <div id="conditioners" class="col-md-8">
-        <article class="col-md-12" ng-repeat="cond in conditioners | filter:search.brand | filter:search.cp | filter:search.ch">
+        <article class="col-md-12 animate" ng-repeat="cond in conditioners | filter:search.brand | filter:search.cp | filter:search.ch">
             <span class="col-md-2"><img ng-src="{{cond.pictures[0]}}" alt=""/></span>
             <div class="col-md-7" class="condInfo">
                 <h4> {{cond.title}} </h4>
@@ -36,8 +36,10 @@
                      <br>
                  <button class="buy btn btn-danger">КУПИ</button>
                 <br>
-                <button class="info btn btn-info"><a ng-href="#!conditioners/{{cond._id}}">ВИЖ ОЩЕ</a></button>
+                <button class="info btn btn-info"><a ng-href="conditioners/{{cond._id}}">ВИЖ ОЩЕ</a></button>
                  </span>
+            <a href="#" class="btn btn-link favorite" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
+            <a href="#" class="btn btn-link compare" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
         </article>
     </div>
 </section>

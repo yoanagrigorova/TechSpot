@@ -137,6 +137,7 @@ div#microwaves span img,
 div#vacuums span img,
 div#conditioners span img,
 div#ovens span img {
+    margin-top: 2em;
     height: 115px;
     width: 100px;
 }
@@ -237,28 +238,31 @@ i img {
 }
 
 .animate.ng-leave {
-    transition:0.5s linear all;
-    opacity:1;
-  }
-.animate.ng-leave.ng-leave-active {
-    opacity:0;
-  }
+    transition: 0.5s linear all;
+    opacity: 1;
+}
 
-  /* .animateSearch {
+.animate.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
+
+/* .animateSearch {
     -webkit-transition: 1s linear all; 
 	transition: 1s linear all;
     opacity: 1;
     display: block !important;
   } */
 
-.animateSearch.ng-enter{
-	-webkit-transition: 1s linear all; /* Chrome */
-	transition: 1s linear all;
-	opacity: 0;
+.animateSearch.ng-enter {
+    -webkit-transition: 1s linear all;
+    /* Chrome */
+    transition: 1s linear all;
+    opacity: 0;
 }
- 
+
 .animateSearch.ng-enter.ng-enter-active {
-	opacity: 1;
+    opacity: 1;
 }
 
 .animateSearch.ng-leave{
@@ -295,17 +299,27 @@ div.form-group {
     position: relative;
 }
 
-#dropMenu, #dropMenu2{
+#dropMenu,
+#dropMenu2,
+#dropMenu3,
+#dropMenu4 {
     position: absolute;
     background: #ebf100;
     border-radius: 5px;
     padding: 10px;
     z-index: 1;
 }
+
 #tvPic,
 #mwPic,
 #vcPic,
 #condPic {
     height: 450px;
     width: 450px;
+}
+
+.favorite,
+.compare {
+    margin-bottom: 1em !important;
+    margin-top: -2em !important;
 }

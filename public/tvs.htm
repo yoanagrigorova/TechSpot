@@ -1,6 +1,5 @@
 <section class="row">
     <h1> {{pageTitle}} </h1>
-
     <aside class="col-md-2">
         <h3>Резултати</h3>
         <div>
@@ -28,7 +27,7 @@
             </div>
     </aside>
     <div class="col-md-8" id="tvs">
-        <article  class='animate' ng-repeat="tv in tvs | filter:search.brand | filter:search.displaysize | filter:search.r | sizeFilter:slider">
+        <article class='animate' ng-repeat="tv in tvs | filter:search.brand | filter:search.displaysize | filter:search.r | sizeFilter:slider">
             <span class="col-md-2" style="float:left"><img ng-src="{{tv.pictures[0]}}" alt=""/></span>
             <div class="tvInfo col-md-7">
                 <h4> {{tv.title}} </h4>
@@ -42,8 +41,10 @@
                 <br>
                 <button class="buy btn btn-danger">КУПИ</button>
                 <br>
-                <button class="info btn btn-info"><a ng-href="#!tvs/{{tv._id}}">ВИЖ ОЩЕ</a></button>
+                <button class="info btn btn-info"><a ng-href="tvs/{{tv._id}}">ВИЖ ОЩЕ</a></button>
             </span>
+            <a href="#" class="btn btn-link favorite" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
+            <a href="#" class="btn btn-link compare" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
         </article>
     </div>
 </section>

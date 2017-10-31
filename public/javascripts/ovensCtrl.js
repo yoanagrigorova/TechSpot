@@ -2,7 +2,7 @@ angular.module("ovensController", [])
     .controller("ovensCtrl", function($scope, $http) {
         $scope.search = {};
         $scope.pageTitle = "Фурни за вграждане";
-        $http.get("/ovens").then(function(response) {
+        $http.get("/api/ovens").then(function(response) {
             response.data.sort((p1, p2) => p1.price - p2.price);
             $scope.ovens = response.data;
             console.log('abv');

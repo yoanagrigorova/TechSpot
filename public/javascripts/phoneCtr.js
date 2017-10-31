@@ -1,35 +1,33 @@
 var phone = angular.module("phoneController", ['ngAnimate', 'rzModule', 'ui.bootstrap']);
 
 
-phone.filter('sizeFilter', [function () {
-    return function (phones, config) {
-            var filterResult = [];  
-            angular.forEach(phones, function (phone) {
-                if (phone.price >= config.minValue && phone.price <= config.maxValue) {
-                    filterResult.push(phone);
-                };
-            });
-            return filterResult;
-        
+phone.filter('sizeFilter', [function() {
+    return function(phones, config) {
+        var filterResult = [];
+        angular.forEach(phones, function(phone) {
+            if (phone.price >= config.minValue && phone.price <= config.maxValue) {
+                filterResult.push(phone);
+            };
+        });
+        return filterResult;
+
         return values;
     }
 }]);
 
-phone.controller("phonesCtrl", function ($scope, $http) {
-    console.log('test');
-    
-    
+phone.controller("phonesCtrl", function($scope, $http) {
     $scope.search = {};
     $scope.pageTitle = "Мобилни телефони";
-    $http.get("/phones").then(function (response) {
+    $http.get("/api/phones").then(function(response) {
+        console.log('c')
         response.data.sort((p1, p2) => p1.price - p2.price);
         $scope.phones = response.data;
         $scope.slider = {
             minValue: $scope.phones[0].price,
-            maxValue: $scope.phones[$scope.phones.length-1].price,
+            maxValue: $scope.phones[$scope.phones.length - 1].price,
             options: {
                 floor: $scope.phones[0].price,
-                ceil: $scope.phones[$scope.phones.length-1].price,
+                ceil: $scope.phones[$scope.phones.length - 1].price,
                 step: 50
             }
         };
@@ -42,7 +40,7 @@ phone.controller("phonesCtrl", function ($scope, $http) {
     }
 
     function sort(arr) {
-        arr.sort(function (arr1, arr2) {
+        arr.sort(function(arr1, arr2) {
             if (arr1 > arr2)
                 return 1;
             if (arr1 < arr2)

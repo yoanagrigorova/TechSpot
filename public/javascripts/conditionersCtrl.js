@@ -2,7 +2,7 @@ angular.module("conditionersController", [])
     .controller("conditionersCtrl", function($scope, $http) {
         $scope.search = {};
         $scope.pageTitle = "Професионална климатична техника";
-        $http.get("/conditioners").then(function(response) {
+        $http.get("/api/conditioners").then(function(response) {
             response.data.sort((p1, p2) => p1.price - p2.price);
             $scope.conditioners = response.data;
             print(response.data);

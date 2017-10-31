@@ -3,4 +3,4 @@ angular.module('navBarApp', ['ngAnimate']);
 
 
 
-angular.bootstrap(document.getElementById('navBarApp'), ['navBarApp'])
+angular.bootstrap(document.getElementsByClassName('navBarApp'), ['navBarApp'])

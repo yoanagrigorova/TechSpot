@@ -2,15 +2,14 @@ angular.module('searchApp',['ngAnimate'])
 .controller('searchCtrl', function($scope, $http){
     
   $scope.categories = [
-      {name: 'Телефони', url: '/phones'},
-      {name: 'Телевизори', url: '/tvs'},
-      {name: 'Компютри', url: '/pcs'}
+      {name: 'Телефони', url: '/api/phones'},
+      {name: 'Телевизори', url: '/api/tvs'},
+      {name: 'Компютри', url: '/api/pcs'}
   ];
  
-  $scope.selectedOption = {};
-  $scope.changeValue = function(item) {
-      $scope.selectedOption = item;
-      $http.get($scope.selectedOption.url).then(function(response){
+    $scope.changeValue = function(item) {
+      console.log(item);
+      $http.get(item.url).then(function(response){
           $scope.searchResults = response.data;
       })
   }
@@ -19,4 +18,3 @@ angular.module('searchApp',['ngAnimate'])
  
 });
 
-angular.bootstrap(document.getElementById("homePageApp"), ['searchApp']);
