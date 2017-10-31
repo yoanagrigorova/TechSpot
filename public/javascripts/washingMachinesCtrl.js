@@ -1,8 +1,8 @@
 angular.module("washingMachinesController", [])
     .controller("washingMachinesCtrl", function($scope, $http) {
         $scope.search = {};
-        $scope.pageTitle = "Хладилници";
-        $http.get("/washing-machines").then(function(response) {
+        $scope.pageTitle = "Перални";
+        $http.get("/api/washing-machines").then(function(response) {
             response.data.sort((p1, p2) => p1.price - p2.price);
             $scope.washingMachines = response.data;
             print(response.data);

@@ -1,17 +1,17 @@
 angular.module("MainCtrl", [])
     .controller("MainController", function($scope, $http) {
-        $scope.addTOBasket = function() {
-            var id = this.$$watchers[0].last;
-            console.log(this.$$watchers[0].last);
-            $http.get("/phones/" + id).then(function(response) {
-                console.log(response.data);
-                var product = response.data[0];
-                $http.post("/login", JSON.stringify({ username: 'grigorovajoana@gmail.com', password: '123456' })).then(function(response) {
-                    console.log(response.data);
-                    var user = response.data[0];
-                    user.products.push(product);
+        $scope.loginUser = {}
+        $scope.addTOBasket = function(user) {
+            console.log(user);
+            $http.post("/login", JSON.stringify(user)).then(function(response) {
 
-                })
+                console.log(response.data);
+                if (response.status == 200) {
+                    window.location.href = 'index.html'
+                } else {
+                    window.location.hash = '#loginAgain'
+                }
+
             })
 
         }

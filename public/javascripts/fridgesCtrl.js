@@ -2,8 +2,7 @@ angular.module("fridgesController", [])
     .controller("fridgesCtrl", function($scope, $http) {
         $scope.search = {};
         $scope.pageTitle = "Хладилници";
-        $http.get("/fridges").then(function(response) {
-            console.log(response.data);
+        $http.get("/api/fridges").then(function(response) {
             response.data.sort((p1, p2) => p1.price - p2.price);
             $scope.fridges = response.data;
             print(response.data);

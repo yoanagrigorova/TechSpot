@@ -2,7 +2,7 @@ angular.module("tvController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
     .controller("tvCtrl", function($scope, $http) {
         $scope.search = {};
         $scope.pageTitle = "Телевизори";
-        $http.get("/tvs").then(function(response) {
+        $http.get("/api/tvs").then(function(response) {
             response.data.sort((t1, t2) => t1.price - t2.price);
             $scope.tvs = response.data;
            

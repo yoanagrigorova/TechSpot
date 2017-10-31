@@ -29,11 +29,6 @@ var ovens = require("./routes/ovens");
 var fridges = require("./routes/fridges");
 var washingMachines = require("./routes/washingMachines");
 
-// app.use(express.static('public'));
-// app.get("*", function(req, res) {
-//     res.sendFile(path.join(__dirname + '/public/index.html'));
-// });
-
 
 
 // view engine setup
@@ -54,25 +49,26 @@ function requireLogin(req, res, next) {
         console.log('1');
         next();
     } else {
-
         res.redirect('/login');
     }
 }
 
-// app.use('/', index);
-app.use('/login', login);
-app.use("/phones", phones);
-app.use('/registration', registration);
-app.use("/tvs", tvs);
-app.use("/computers", computers);
-app.use("/microwave-ovens", microwaveOvens);
-app.use("/vacuumCleaners", vacuumCleaners);
-app.use("/conditioners", airConditioners);
-app.use("/ovens", ovens);
-app.use("/fridges", fridges);
-app.use("/washing-machines", washingMachines);
 
-// app.use('/logout', requireLogin, logout);
+app.use('/login', login);
+app.use("/api/phones", phones);
+app.use('/api/registration', registration);
+app.use("/api/tvs", tvs);
+app.use("/api/computers", computers);
+app.use("/api/microwave-ovens", microwaveOvens);
+app.use("/api/vacuumCleaners", vacuumCleaners);
+app.use("/api/conditioners", airConditioners);
+app.use("/api/ovens", ovens);
+app.use("/api/fridges", fridges);
+app.use("/api/washing-machines", washingMachines);
+app.all("/*", function(req, res, next) {
+    console.log('a')
+    res.sendfile("index.html", { root: __dirname + "/public" });
+});
 
 
 // catch 404 and forward to error handler

@@ -2,7 +2,7 @@ angular.module("vacuumsController", [])
     .controller("vacuumsCtrl", function($scope, $http) {
         $scope.search = {};
         $scope.pageTitle = "Прахосмукачки";
-        $http.get("/vacuumCleaners").then(function(response) {
+        $http.get("/api/vacuumCleaners").then(function(response) {
             response.data.sort((p1, p2) => p1.price - p2.price);
             $scope.vacuums = response.data;
             print(response.data);

@@ -18,7 +18,8 @@ phone.filter('sizeFilter', [function() {
 phone.controller("phonesCtrl", function($scope, $http) {
     $scope.search = {};
     $scope.pageTitle = "Мобилни телефони";
-    $http.get("/phones").then(function(response) {
+    $http.get("/api/phones").then(function(response) {
+        console.log('c')
         response.data.sort((p1, p2) => p1.price - p2.price);
         $scope.phones = response.data;
         $scope.slider = {

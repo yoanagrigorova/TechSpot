@@ -16,11 +16,10 @@ router.post('/', function(req, res, next) {
                 // var sesiq = req.session.userId;
                 // console.log(sesiq);
 
-                // users.find({ _id: req.session.userId }, {}).then(function(e, docs) {
-                //         console.log(docs);
-                //         res.json(docs);
-                //     })
-                //     // res.redirect('/');
+                var sesiq = req.session.userId;
+                res.json(200, data);
+                // res.json(users.find({ mail: sesiq }));
+                // res.redirect('/');
 
 
             } else {

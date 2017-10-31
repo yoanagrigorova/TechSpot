@@ -2,21 +2,20 @@ angular.module('searchApp', ['ngAnimate'])
     .controller('searchCtrl', function($scope, $http) {
 
         $scope.categories = [
-            { name: 'Телефони', url: '/phones' },
-            { name: 'Телевизори', url: '/tvs' },
-            { name: 'Компютри', url: '/computers' }
+            { name: 'Телефони', url: '/api/phones' },
+            { name: 'Телевизори', url: '/api/tvs' },
+            { name: 'Компютри', url: '/api/computers' }
         ];
 
-        $scope.selectedOption = {};
         $scope.changeValue = function(item) {
-            $scope.selectedOption = item;
-            $http.get($scope.selectedOption.url).then(function(response) {
+            console.log(item);
+            $http.get(item.url).then(function(response) {
                 $scope.searchResults = response.data;
-            });
+            })
         }
         $scope.search = {};
 
 
-    });
 
-angular.bootstrap(document.getElementById("homePageApp"), ['searchApp']);
+
+    });
