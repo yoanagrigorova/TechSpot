@@ -26,6 +26,8 @@ var microwaveOvens = require("./routes/microwaves");
 var vacuumCleaners = require("./routes/vacuums");
 var airConditioners = require("./routes/conditioners");
 var ovens = require("./routes/ovens");
+var fridges = require("./routes/fridges");
+var washingMachines = require("./routes/washingMachines");
 
 // app.use(express.static('public'));
 // app.get("*", function(req, res) {
@@ -59,7 +61,7 @@ function requireLogin(req, res, next) {
 
 // app.use('/', index);
 app.use('/login', login);
-app.use("/phones", requireLogin, phones);
+app.use("/phones", phones);
 app.use('/registration', registration);
 app.use("/tvs", tvs);
 app.use("/computers", computers);
@@ -67,6 +69,8 @@ app.use("/microwave-ovens", microwaveOvens);
 app.use("/vacuumCleaners", vacuumCleaners);
 app.use("/conditioners", airConditioners);
 app.use("/ovens", ovens);
+app.use("/fridges", fridges);
+app.use("/washing-machines", washingMachines);
 
 // app.use('/logout', requireLogin, logout);
 

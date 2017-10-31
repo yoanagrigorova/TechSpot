@@ -33,7 +33,7 @@
                 </ul>
             </div>
     </aside>
-    <div id="phones" class="col-md-8">
+    <div class="col-md-8 productsListing">
         <article class='animate' class="col-md-12" ng-repeat="phone in phones | filter:search.brand | filter:search.displaysize | filter:search.rc | filter:search.im | sizeFilter:slider">
             <span class="col-md-2" style="float:left"><img ng-src="{{phone.pictures[0]}}" alt=""/></span>
             <div class="col-md-7" class="phoneInfo">

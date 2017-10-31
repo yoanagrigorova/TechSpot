@@ -28,7 +28,7 @@
             </ul>
         </div>
     </aside>
-    <div id="ovens" class="col-md-8">
+    <div class="col-md-8 productsListing">
         <article class="col-md-12" ng-repeat="oven in ovens | filter:search.brand | filter:search.width | filter:search.func | filter:search.capacity">
             <span class="col-md-2"><img ng-src="{{oven.pictures[0]}}" alt=""/></span>
             <div class="col-md-7" class="ovenInfo">

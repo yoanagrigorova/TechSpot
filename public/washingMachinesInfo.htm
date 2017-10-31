@@ -1,13 +1,13 @@
-<div class="productsInfo" ng-repeat="microwave in microwaves">
+<div class="productsInfo" ng-repeat="washingMachine in washingMachines">
     <div class="row">
-        <h1>{{microwave.title}}</h1>
+        <h1>{{washingMachine.title}}</h1>
         <hr>
         <div class="col-md-5">
-            <img class="thumbnail" ng-src="{{microwave.pictures[0]}}" alt="">
+            <img class="thumbnail" ng-src="{{washingMachine.pictures[0]}}" alt="">
         </div>
         <div class="col-md-4">
             <div class="col-md-12 price">
-                <h3> {{microwave.price}}<sup>00</sup>лв </h3>
+                <h3> {{washingMachine.price}}<sup>00</sup>лв </h3>
                 <button class="btn btn-danger pull-right">Купи</button>
                 <hr>
                 <a href="#" class="btn btn-link pull-left" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
@@ -15,8 +15,10 @@
             </div>
             <div class="col-md-12">
                 <ul>
-                    <li><strong>Вместимост:</strong> {{microwave.capacity}} </li>
-                    <li><strong>Мощност:</strong> {{microwave.maxpower}} </li>
+                    <li><strong>Вид:</strong> {{washingMachine.type}}</li>
+                    <li><strong>Обороти:</strong> {{washingMachine.spin}}</li>
+                    <li><strong>Капацитет:</strong> {{washingMachine.capacity}}</li>
+                    <li><strong>Енергиен клас:</strong> {{washingMachine.energyClass}}</li>
                 </ul>
             </div>
         </div>
@@ -31,23 +33,35 @@
                     <tbody>
                         <tr>
                             <td>МАРКА</td>
-                            <td>{{microwave.brand}}</td>
+                            <td>{{washingMachine.brand}}</td>
                         </tr>
                         <tr>
                             <td>МОДЕЛ</td>
-                            <td> {{microwave.model}} </td>
+                            <td> {{washingMachine.model}} </td>
                         </tr>
                         <tr>
-                            <td>ВМЕСТИМОСТ ЛИТРИ</td>
-                            <td> {{microwave.capacity}} </td>
+                            <td>ВИД</td>
+                            <td> {{washingMachine.type}} </td>
                         </tr>
                         <tr>
-                            <td>МОЩНОСТ</td>
-                            <td> {{microwave.maxpower}} </td>
+                            <td>ОБОРОТИ</td>
+                            <td> {{washingMachine.spin}} </td>
+                        </tr>
+                        <tr>
+                            <td>ЕНЕРГИЕН КЛАС</td>
+                            <td> {{washingMachine.energyClass}} </td>
+                        </tr>
+                        <tr>
+                            <td>КАПАЦИТЕТ</td>
+                            <td> {{washingMachine.capacity}} </td>
                         </tr>
                         <tr>
                             <td>ЦВЯТ</td>
-                            <td> {{microwave.color}} </td>
+                            <td> {{washingMachine.color}} </td>
+                        </tr>
+                        <tr>
+                            <td>РАЗМЕР</td>
+                            <td> {{washingMachine.dimensions}} </td>
                         </tr>
                     </tbody>
                 </table>

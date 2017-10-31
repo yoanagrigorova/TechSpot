@@ -28,7 +28,7 @@
             </ul>
         </div>
     </aside>
-    <div id="vacuums" class="col-md-8">
+    <div class="col-md-8 productsListing">
         <article class="col-md-12" ng-repeat="vacuum in vacuums | filter:search.brand | filter:search.power | filter:search.capacity | filter:search.type">
             <span class="col-md-2"><img ng-src="{{vacuum.pictures[0]}}" alt=""/></span>
             <div class="col-md-7" class="vacuumsInfo">

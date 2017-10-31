@@ -10,18 +10,17 @@ router.post('/', function(req, res, next) {
     users.find({ mail: username, password: password })
         .then(function(data) {
             if (data.length > 0) {
-                // console.log(data);
-                req.session.userId = data[0]._id;
+                console.log(data);
+                req.session.user = data[0];
+                res.json(data);
+                // var sesiq = req.session.userId;
+                // console.log(sesiq);
 
-                var sesiq = req.session.userId;
-                console.log(sesiq);
-
-                users.find({ _id: data[0]._id }, {}).then(function(e, docs) {
-                        console.log(docs);
-                        res.json(docs);
-                    })
-                    // res.json(users.find({ mail: sesiq }));
-                    // res.redirect('/');
+                // users.find({ _id: req.session.userId }, {}).then(function(e, docs) {
+                //         console.log(docs);
+                //         res.json(docs);
+                //     })
+                //     // res.redirect('/');
 
 
             } else {

@@ -47,7 +47,7 @@
                 </ul>
             </div>
     </aside>
-    <div class="col-md-8" id="tvs">
+    <div class="col-md-8 productsListing">
         <article class='animate' class="col-md-12" ng-repeat="computer in computers | filter:search.brand | filter:search.displaysize | filter:search.ram | filter:search.os | filter:search.hdd | filter:search.pr | sizeFilter:slider">
             <span class="col-md-2" style="float:left"><img ng-src="{{computer.pictures[0]}}" alt=""/></span>
             <div class="col-md-7" class="compInfo">

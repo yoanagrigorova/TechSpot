@@ -1,13 +1,13 @@
-<div class="productsInfo" ng-repeat="microwave in microwaves">
+<div class="productsInfo" ng-repeat="oven in ovens">
     <div class="row">
-        <h1>{{microwave.title}}</h1>
+        <h1>{{oven.title}}</h1>
         <hr>
         <div class="col-md-5">
-            <img class="thumbnail" ng-src="{{microwave.pictures[0]}}" alt="">
+            <img class="thumbnail" ng-src="{{oven.pictures[0]}}" alt="">
         </div>
         <div class="col-md-4">
             <div class="col-md-12 price">
-                <h3> {{microwave.price}}<sup>00</sup>лв </h3>
+                <h3> {{oven.price}}<sup>00</sup>лв </h3>
                 <button class="btn btn-danger pull-right">Купи</button>
                 <hr>
                 <a href="#" class="btn btn-link pull-left" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
@@ -15,8 +15,9 @@
             </div>
             <div class="col-md-12">
                 <ul>
-                    <li><strong>Вместимост:</strong> {{microwave.capacity}} </li>
-                    <li><strong>Мощност:</strong> {{microwave.maxpower}} </li>
+                    <li><strong>Брой функции:</strong> {{oven.functions}}</li>
+                    <li><strong>Енергиен клас:</strong> {{oven.energyClass}}</li>
+                    <li><strong>Обем на фурната:</strong> {{oven.capacity}}</li>
                 </ul>
             </div>
         </div>
@@ -31,23 +32,39 @@
                     <tbody>
                         <tr>
                             <td>МАРКА</td>
-                            <td>{{microwave.brand}}</td>
+                            <td>{{oven.brand}}</td>
                         </tr>
                         <tr>
                             <td>МОДЕЛ</td>
-                            <td> {{microwave.model}} </td>
+                            <td> {{oven.model}} </td>
                         </tr>
                         <tr>
-                            <td>ВМЕСТИМОСТ ЛИТРИ</td>
-                            <td> {{microwave.capacity}} </td>
+                            <td>ВИСОЧИНА</td>
+                            <td> {{oven.height}} </td>
                         </tr>
                         <tr>
-                            <td>МОЩНОСТ</td>
-                            <td> {{microwave.maxpower}} </td>
+                            <td>ШИРИНА</td>
+                            <td> {{oven.width}} </td>
                         </tr>
                         <tr>
-                            <td>ЦВЯТ</td>
-                            <td> {{microwave.color}} </td>
+                            <td>ДЪЛБОЧИНА</td>
+                            <td> {{oven.depth}} </td>
+                        </tr>
+                        <tr>
+                            <td>БРОЙ ФУНКЦИИ</td>
+                            <td> {{oven.functions}} </td>
+                        </tr>
+                        <tr>
+                            <td>ЕНЕРГИЕН КЛАС</td>
+                            <td> {{oven.energyClass}} </td>
+                        </tr>
+                        <tr>
+                            <td>ОБЕМ НА ФУРНАТА</td>
+                            <td> {{oven.capacity}} </td>
+                        </tr>
+                        <tr>
+                            <td>ТИП НА ФУРНАТА</td>
+                            <td> {{oven.type}} </td>
                         </tr>
                     </tbody>
                 </table>

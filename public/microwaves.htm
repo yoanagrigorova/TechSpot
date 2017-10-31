@@ -22,7 +22,7 @@
             </ul>
         </div>
     </aside>
-    <div id="microwaves" class="col-md-8">
+    <div class="col-md-8 productsListing">
         <article class="col-md-12" ng-repeat="microwave in microwaves | filter:search.brand | filter:search.color | filter:search.capacity">
             <span class="col-md-2"><img ng-src="{{microwave.pictures[0]}}" alt=""/></span>
             <div class="col-md-7" class="microwaveInfo">

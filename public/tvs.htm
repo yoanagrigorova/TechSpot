@@ -26,7 +26,7 @@
                 </ul>
             </div>
     </aside>
-    <div class="col-md-8" id="tvs">
+    <div class="col-md-8 productsListing">
         <article class='animate' ng-repeat="tv in tvs | filter:search.brand | filter:search.displaysize | filter:search.r | sizeFilter:slider">
             <span class="col-md-2" style="float:left"><img ng-src="{{tv.pictures[0]}}" alt=""/></span>
             <div class="tvInfo col-md-7">

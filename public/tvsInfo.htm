@@ -3,7 +3,7 @@
         <h1>{{tv.title}}</h1>
         <hr>
         <div class="col-md-5">
-            <img id="tvPic" ng-src="{{tv.pictures[0]}}" alt="">
+            <img class="thumbnail" ng-src="{{tv.pictures[0]}}" alt="">
         </div>
         <div class="col-md-4">
             <div class="col-md-12 price">
@@ -46,11 +46,11 @@
                             <td>РЕЗОЛЮЦИЯ</td>
                             <td> {{tv.resolution}} </td>
                         </tr>
-                        <tr>
+                        <tr ng-if="tv.os">
                             <td>ОПЕРАЦИОННА СИСТЕМА</td>
                             <td> {{tv.os}} </td>
                         </tr>
-                        <tr>
+                        <tr ng-if="tv.weight">
                             <td>ТЕГЛО</td>
                             <td> {{tv.weight}} </td>
                         </tr>

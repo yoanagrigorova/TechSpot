@@ -130,13 +130,7 @@ header a {
     color: white !important;
 }
 
-div#phones span img,
-div#tvs span img,
-div#comps span img,
-div#microwaves span img,
-div#vacuums span img,
-div#conditioners span img,
-div#ovens span img {
+div.productsListing span img {
     margin-top: 2em;
     height: 115px;
     width: 100px;
@@ -301,16 +295,38 @@ div.form-group {
 #dropMenu3,
 #dropMenu4 {
     position: absolute;
-    background: #ebf100;
+    background: #d9dacf;
     border-radius: 5px;
     padding: 10px;
     z-index: 1;
 }
 
-#tvPic,
-#mwPic,
-#vcPic,
-#condPic {
+#dropMenu,
+#dropMenu2 {
+    width: 215px;
+}
+
+#dropMenu button,
+#dropMenu2 button {
+    width: 150px;
+}
+
+#dropMenu button,
+#dropMenu2 button,
+#dropMenu3 button,
+#dropMenu4 button {
+    margin-left: 20px;
+}
+
+#navigation {
+    margin-right: 9em !important;
+}
+
+#navigation li img:first-child {
+    margin-right: 1em !important;
+}
+
+.thumbnail {
     height: 450px;
     width: 450px;
 }
