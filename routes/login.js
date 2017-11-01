@@ -15,6 +15,7 @@ router.post('/', function(req, res, next) {
                 console.log(data);
                 req.session.user = data[0];
                 var sesiq = req.session.userId;
+                console.log(req.session.user);
                 res.json({success: true , message: 'Login successful!', user: data});
                 res.end();
             } else {

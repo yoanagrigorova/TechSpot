@@ -303,6 +303,7 @@ div.form-group {
     border-radius: 5px;
     padding: 10px;
     z-index: 1;
+    width: 250px;
 }
 
 #dropMenu,
@@ -320,6 +321,7 @@ div.form-group {
 #dropMenu3 button,
 #dropMenu4 button {
     margin-left: 20px;
+    
 }
 
 #navigation {
@@ -339,5 +341,10 @@ div.form-group {
 .compare {
     margin-bottom: 1em !important;
     margin-top: -2em !important;
+}
+
+.row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
 }
 

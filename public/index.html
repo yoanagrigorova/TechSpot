@@ -15,6 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
     <script src="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-cookies.js"></script>
     <script src='./javascripts/phoneCtr.js'></script>
     <script src="./javascripts/tvController.js"></script>
     <script src="./javascripts/computersCtrl.js"></script>
@@ -34,6 +35,7 @@
     <script src="./javascripts/fridgesInfoCtrl.js"></script>
     <script src="./javascripts/washingMachinesCtrl.js"></script>
     <script src="./javascripts/washingMachinesInfoCtrl.js"></script>
+    
 
 
 </head>
@@ -55,7 +57,7 @@
             <button type="submit" class="btn btn-default">Submit</button>
         </form>
 
-        <div class="navBarApp">
+        <div >
             <ul id="navigation" class="nav nav-pills pull-right">
                 <li><a href="#">Home</a></li>
                 <li><a href="login">Вход {{userInSess.mail}}</a></li>
@@ -64,7 +66,7 @@
                     <div ng-show='display3' ng-mouseover='display3=true' ng-mouseleave='display3=false' id='dropMenu3'> Lorem </div>
                 </li>
                 <li><img ng-mouseover='display4=true' ng-mouseleave='display4=false' class='animate' ng-model='display4' height="40px" width="40px" src="./images/basket.png" alt="">
-                    <div ng-show='display4' ng-mouseover='display4=true' ng-mouseleave='display4=false' id='dropMenu4'> Lorem </div>
+                    <div ng-show='display4' ng-mouseover='display4=true' ng-mouseleave='display4=false' id='dropMenu4'> <p ng-show='userInSess'><div ng-repeat='x in userInSess.products'><img ng-src='{{x.pictures[0]}}' width='50px' /> <a ng-href=/phones/{{x._id}}> {{x.title}} </a> <p> {{x.quantity}}</p></div></div>
                 </li>
             </ul>
             <br/><br/><br/>

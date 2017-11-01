@@ -1,15 +1,17 @@
-angular.module("MainCtrl", [])
-    .controller("MainController", function($scope, $http, $timeout, $location) {
-        $scope.userInSess = {};
+angular.module("MainCtrl", ['ngCookies'])
+    .controller("MainController", function($scope, $http, $timeout, $location, $rootScope, $cookies) {
+        
         $scope.errorMsg = false;
-        $scope.addTOBasket = function(user) {
-            console.log(user);
+        $scope.getCurrentUser = function(){
+            $rootScope.userInSess = JSON.parse(localStorage.getItem('currentUser'));
+        }
+        $scope.logIn= function(user) {
             $http.post("/login", JSON.stringify(user)).then(function(response) {
 
                 if (response.data.success){
                     $scope.successMsg = response.data.message;
-                    $scope.userInSess = response.data.user;
-                    console.log($scope.userInSess);
+                    $rootScope.userInSess = response.data.user[0];
+                    localStorage.setItem('currentUser', JSON.stringify(response.data.user[0]));
                     $timeout(function(){
                         $location.path('/');
                     },2000)
@@ -17,7 +19,25 @@ angular.module("MainCtrl", [])
                     $scope.errorMsg = response.data.message;
                 }
 
-            })
+            });
 
+        }
+
+        $scope.getCurrentUser();
+        
+        $scope.addToBasket = function(item) {
+            $scope.getCurrentUser();
+            if (!$rootScope.userInSess.products.some(x => x.title == item.title)){
+            $rootScope.userInSess.products.push(item);
+            } else {
+                var product = $rootScope.userInSess.products.find(x => x.title == item.title);
+                product.quantity++;
+            }
+            localStorage.setItem('currentUser',JSON.stringify($rootScope.userInSess));
+        }
+
+        $scope.removeFromBasket = function(item) {
+            $scope.getCurrentUser();
+               
         }
     })
