@@ -44,14 +44,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: 'Yoana' }));
 
-function requireLogin(req, res, next) {
-    if (req.session.userId != undefined) {
-        console.log('1');
-        next();
-    } else {
-        res.redirect('/login');
-    }
-}
+// function requireLogin(req, res, next) {
+//     if (req.session.userId != undefined) {
+//         console.log('1');
+//         next();
+//     } else {
+//         res.redirect('/login');
+//     }
+// }
 
 
 app.use('/login', login);
