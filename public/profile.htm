@@ -1,0 +1,28 @@
+<ul class="nav nav-tabs">
+    <li><a href="#personalInfo" data-toggle="tab">Лични данни</a></li>
+    <li><a href="#unprocessedOrders" data-toggle="tab">Необработени поръчки</a></li>
+    <li><a href="#processedOrders" data-toggle="tab">Обработени поръчки</a></li>
+    <li><a href="#changePass" data-toggle="tab">Промяна на парола</a></li>
+</ul>
+<div ng-repeat="user in users">
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade active in" id="personalInfo">
+            <p><strong>Име: </strong> {{user.firstName}} </p>
+            <p><strong>Фамилия: </strong> {{user.lastName}} </p>
+            <p><strong>E-mail: </strong> {{user.mail}} </p>
+            <p><strong>Телефон: </strong> {{user.phone}} </p>
+        </div>
+        <div class="tab-pane fade" id="unprocessedOrders">
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress,
+                commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+        </div>
+        <div class="tab-pane fade" id="processedOrders">
+            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth.
+                Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+        </div>
+        <div class="tab-pane fade" id="changePass">
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress,
+                commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+        </div>
+    </div>
+</div>

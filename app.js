@@ -28,6 +28,7 @@ var airConditioners = require("./routes/conditioners");
 var ovens = require("./routes/ovens");
 var fridges = require("./routes/fridges");
 var washingMachines = require("./routes/washingMachines");
+var logout = require("./routes/logout");
 
 
 
@@ -44,14 +45,14 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(session({ secret: 'Yoana' }));
 
-function requireLogin(req, res, next) {
-    if (req.session.userId != undefined) {
-        console.log('1');
-        next();
-    } else {
-        res.redirect('/login');
-    }
-}
+// function requireLogin(req, res, next) {
+//     if (req.session.userId != undefined) {
+//         console.log('1');
+//         next();
+//     } else {
+//         res.redirect('/login');
+//     }
+// }
 
 
 app.use('/login', login);
@@ -65,6 +66,7 @@ app.use("/api/conditioners", airConditioners);
 app.use("/api/ovens", ovens);
 app.use("/api/fridges", fridges);
 app.use("/api/washing-machines", washingMachines);
+app.use("/api/logout", logout);
 app.all("/*", function(req, res, next) {
     console.log('a')
     res.sendfile("index.html", { root: __dirname + "/public" });

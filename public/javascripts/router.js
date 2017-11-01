@@ -1,4 +1,7 @@
-var app = angular.module("myApp", ["ngRoute", "phoneController", "tvController", "computersController", "microwaveOvensController", "vacuumsController", "conditionersController", "ovensController", 'searchApp', "MainCtrl", "fridgesController", "washingMachinesController"]);
+var app = angular.module("myApp", ["ngRoute", "phoneController", "tvController", "computersController",
+    "microwaveOvensController", "vacuumsController", "conditionersController", "ovensController", 'searchApp',
+    "MainCtrl", "fridgesController", "washingMachinesController", "profileController"
+]);
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider
 
@@ -88,6 +91,10 @@ app.config(function($routeProvider, $locationProvider) {
         })
         .when("/smallappliances", {
             templateUrl: "smallAppliances.htm"
+        })
+        .when("/myProfile", {
+            templateUrl: "profile.htm",
+            controller: "profileCtrl"
         })
 
     $locationProvider.html5Mode({

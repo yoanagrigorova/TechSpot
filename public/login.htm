@@ -1,4 +1,4 @@
-<form ng-submit='addTOBasket(loginUser)' ng-controller='MainController' class="form-horizontal">
+<form ng-submit='logIn(loginUser)' ng-controller='MainController' class="form-horizontal">
     <fieldset>
         <legend>Вход</legend>
         <div class="form-group">
@@ -14,7 +14,7 @@
             <span class="mendatory">*</span>
         </label>
             <div class="col-lg-6">
-                <input type="password" name="password" ng-model='loginUser.password' class="form-control" id="inputPassword">
+                <input type="password" id='passwordInput' name="password" ng-model='loginUser.password' class="form-control" id="inputPassword">
             </div>
         </div>
         <div class="form-group">
@@ -23,8 +23,15 @@
             </div>
         </div>
 
-        <div class='error'>
+        <div class='row justify-content-lg-center'>
+            <div class='col-lg-2'></div>
+            <div class='alert alert-success col col-lg-4' ng-show='successMsg'> {{successMsg}} </div>
+        </div>
 
+
+        <div class='row'>
+            <div class='col-lg-4' ng-show='errorMsg'></div>
+            <div class='alert alert-danger col-lg-3' ng-show='errorMsg'> {{errorMsg}} </div>
         </div>
     </fieldset>
 </form>
