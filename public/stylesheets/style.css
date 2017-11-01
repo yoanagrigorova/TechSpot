@@ -259,18 +259,18 @@ i img {
     opacity: 1;
 }
 
-.animateSearch.ng-leave{
-    transition:0.5s linear all;
-    opacity:1;
-  }
+.animateSearch.ng-leave {
+    transition: 0.5s linear all;
+    opacity: 1;
+}
 
-.animateSearch.ng-leave.ng-leave-active{
-    opacity:0;
-  }
+.animateSearch.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
 ul {
     padding: 0;
 }
-
 
 .buy {
     width: 7em !important;
@@ -303,6 +303,7 @@ div.form-group {
     border-radius: 5px;
     padding: 10px;
     z-index: 1;
+    width: 250px;
 }
 
 #dropMenu,
@@ -341,3 +342,11 @@ div.form-group {
     margin-top: -2em !important;
 }
 
+.row {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+
+#logo {
+    width: 40%;
+}

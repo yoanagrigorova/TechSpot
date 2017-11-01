@@ -15,6 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
     <script src="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-cookies.js"></script>
     <script src='./javascripts/phoneCtr.js'></script>
     <script src="./javascripts/tvController.js"></script>
     <script src="./javascripts/computersCtrl.js"></script>
@@ -25,8 +26,10 @@
     <script src="./javascripts/mainController.js"></script>
     <script src="./javascripts/fridgesCtrl.js"></script>
     <script src="./javascripts/washingMachinesCtrl.js"></script>
-    <script src="./javascripts/router.js"></script>
+    <script src="./javascripts/router.js">
+    </script>
     <script src="./javascripts/profileCtrl.js"></script>
+
 </head>
 
 <body ng-app='myApp' ng-controller="MainController">
@@ -41,33 +44,25 @@
             <div id='searchDiv'>
                 <div class='animateSearch' ng-repeat='result in searchResults | filter: search.name' ng-if='search.name.length > 0'> <img ng-src='{{result.pictures[0]}}' width='50px' /> <a ng-href="http://localhost:3000/{{category}}/{{result._id}}"> {{result.title}} </a> </div>
             </div>
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+            <button type="submit" class="btn btn-default">Submit</button>
     </form>
 
     <div>
         <ul id="navigation" class="nav nav-pills pull-right">
             <li><a href="#">Home</a></li>
-            <li><a ng-hide="login" href="login">Вход</a></li>
-            <li><a ng-show="login" ng-click="logout()">Изход</a></li>
-            <li><a ng-hide="login" href="registration">Регистрация</a></li>
-            <li><a ng-show="login" href='myProfile'>Моят профил</a></li>
+            <li><a href="login">Вход {{userInSess.mail}}</a></li>
+            <li><a href="registration">Регистрация</a></li>
             <li><img ng-mouseover='display3=true' ng-mouseleave='display3=false' class='animate' ng-model='display3' height="40px" width="40px" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt="">
-                <div ng-show='display3' ng-mouseover='display3=true' ng-mouseleave='display3=false' id='dropMenu3'>
-                    <ul>
-                        <li> </li>
-                    </ul>
-                    <hr>
-                    <button class="btn btn-default btn-xs ">Виж любимите</button>
-                </div>
+                <div ng-show='display3' ng-mouseover='display3=true' ng-mouseleave='display3=false' id='dropMenu3'> Lorem </div>
             </li>
             <li><img ng-mouseover='display4=true' ng-mouseleave='display4=false' class='animate' ng-model='display4' height="40px" width="40px" src="./images/basket.png" alt="">
                 <div ng-show='display4' ng-mouseover='display4=true' ng-mouseleave='display4=false' id='dropMenu4'>
-                    <ul>
-                        <li> </li>
-                    </ul>
-                    <hr>
-                    <button class="btn btn-default btn-xs">Поръчай</button>
+                    <p ng-show='userInSess'>
+                        <div ng-repeat='x in userInSess.products'><img ng-src='{{x.pictures[0]}}' width='50px' /> <a ng-href=/phones/{{x._id}}> {{x.title}} </a>
+                            <p> {{x.quantity}}</p>
+                        </div>
+                        <hr>
+                        <button class="btn btn-default btn-xs">Поръчай</button>
                 </div>
             </li>
         </ul>
@@ -82,7 +77,7 @@
                   <span class="icon-bar"></span>
                 </button>
                 </div>
-                <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="true" style="">
+                <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="true">
                     <ul class="nav navbar-nav">
                         <li><a href="phones">Телефони и таблети</a></li>
                         <li><a href="tvs">Телевизори</a></li>
