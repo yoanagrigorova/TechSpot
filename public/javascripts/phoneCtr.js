@@ -67,4 +67,11 @@ phone.controller("phonesCtrl", function($scope, $http) {
         iternalMemory = iternalMemory.map(x => parseFloat(x)).sort((x1, x2) => x1 - x2).map(x => x + " GB");
         $scope.iternalMemory = iternalMemory;
     }
-});
+})
+
+.controller("phoneInfoCtrl", function($scope, $http) {
+    var url = window.location.href.substr(21);
+    $http.get('/api' + url).then(function(response) {
+        $scope.phones = response.data;
+    })
+})

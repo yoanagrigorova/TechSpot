@@ -40,3 +40,9 @@ angular.module("ovensController", [])
             $scope.capacities = capacities;
         }
     })
+    .controller("ovensInfoCtrl", function($scope, $http) {
+        var url = window.location.pathname.substr(15);
+        $http.get("/api" + url).then(function(response) {
+            $scope.ovens = response.data;
+        })
+    })

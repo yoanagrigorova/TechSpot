@@ -37,3 +37,10 @@ angular.module("microwaveOvensController", [])
             $scope.capacities = capacities;
         }
     })
+
+.controller("microwavesInfoCtrl", function($scope, $http) {
+    var url = window.location.href.substr(37);
+    $http.get('/api' + url).then(function(response) {
+        $scope.microwaves = response.data;
+    })
+})

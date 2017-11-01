@@ -7,10 +7,10 @@ angular.module("computersController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
             $scope.computers = response.data;
             $scope.slider = {
                 minValue: $scope.computers[0].price,
-                maxValue: $scope.computers[$scope.computers.length-1].price,
+                maxValue: $scope.computers[$scope.computers.length - 1].price,
                 options: {
                     floor: $scope.computers[0].price,
-                    ceil: $scope.computers[$scope.computers.length-1].price,
+                    ceil: $scope.computers[$scope.computers.length - 1].price,
                     step: 50
                 }
             };
@@ -58,3 +58,10 @@ angular.module("computersController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
             $scope.processors = processors;
         }
     })
+
+.controller("computersInfoCtrl", function($scope, $http) {
+    var url = window.location.href.substr(21);
+    $http.get('/api' + url).then(function(response) {
+        $scope.computers = response.data;
+    })
+})

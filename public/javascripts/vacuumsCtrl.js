@@ -29,7 +29,7 @@ angular.module("vacuumsController", [])
             $scope.brands = brands;
             var powers = data.map((vc) => vc.power);
             powers = powers.filter(onlyUnique);
-            powers = powers.map(x => parseFloat(x)).sort((x1, x2) => x1 - x2).map(x => x + " W");
+            powers = powers.map(x => parseFloat(x)).sort((x1, x2) => x1 - x2).map(x => x + ".0 W");
             $scope.powers = powers;
             var capacities = data.map((mw) => mw.capacity);
             capacities = capacities.filter(onlyUnique);
@@ -40,3 +40,10 @@ angular.module("vacuumsController", [])
             $scope.types = types;
         }
     })
+
+.controller("vocuumsInfoCtrl", function($scope, $http) {
+    var url = window.location.pathname.substr(16);
+    $http.get("/api" + url).then(function(response) {
+        $scope.vacuums = response.data;
+    })
+})
