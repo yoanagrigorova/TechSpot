@@ -1,4 +1,4 @@
-angular.module("MainCtrl", ['ngCookies'])
+angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
     .controller("MainController", function($scope, $http, $timeout, $location, $rootScope, $cookies) {
         
         $scope.errorMsg = false;
