@@ -45,6 +45,7 @@
                 <div class='animateSearch' ng-repeat='result in searchResults | filter: search.name' ng-if='search.name.length > 0'> <img ng-src='{{result.pictures[0]}}' width='50px' /> <a ng-href="http://localhost:3000/{{category}}/{{result._id}}"> {{result.title}} </a> </div>
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
+        </div>
     </form>
 
     <div>
@@ -53,7 +54,12 @@
             <li><a href="login">Вход {{userInSess.mail}}</a></li>
             <li><a href="registration">Регистрация</a></li>
             <li><img ng-mouseover='display3=true' ng-mouseleave='display3=false' class='animate' ng-model='display3' height="40px" width="40px" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt="">
-                <div ng-show='display3' ng-mouseover='display3=true' ng-mouseleave='display3=false' id='dropMenu3'> Lorem </div>
+                <div ng-show='display3' ng-mouseover='display3=true' ng-mouseleave='display3=false' id='dropMenu3'>
+                    <p ng-show='userInSess'>
+                        <div ng-repeat='x in userInSess.favorites'><img ng-src='{{x.pictures[0]}}' width='50px' /> <a ng-href=/phones/{{x._id}}> {{x.title}} </a>
+                        </div>
+                        <hr>
+                        <button class="btn btn-default btn-xs">Виж любими</button> </div>
             </li>
             <li><img ng-mouseover='display4=true' ng-mouseleave='display4=false' class='animate' ng-model='display4' height="40px" width="40px" src="./images/basket.png" alt="">
                 <div ng-show='display4' ng-mouseover='display4=true' ng-mouseleave='display4=false' id='dropMenu4'>

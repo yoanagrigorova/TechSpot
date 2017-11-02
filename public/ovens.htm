@@ -41,11 +41,11 @@
             </div>
             <span class="purchase col-md-3"><h3> {{oven.price}}<sup>00</sup> лв</h3>
                          <br>
-                     <button class="buy btn btn-danger">КУПИ</button>
+                     <button class="buy btn btn-danger" ng-click='addToBasket(oven)'>КУПИ</button>
                     <br>
                     <button class="info btn btn-info"><a ng-href="homeappliances/ovens/{{oven._id}}">ВИЖ ОЩЕ</a></button>
                      </span>
-            <a href="#" class="btn btn-link favorite" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
+            <a href="#" ng-click="addToFavorites(oven)" class="btn btn-link favorite" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
             <a href="#" class="btn btn-link compare" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
         </article>
     </div>
