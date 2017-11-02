@@ -7,9 +7,11 @@ angular.module('searchApp', ['ngAnimate'])
             { name: 'Компютри', url: '/api/computers' }
         ];
 
+
         $scope.changeValue = function(item) {
             console.log(item);
             $http.get(item.url).then(function(response) {
+                $scope.category = item.url.substr(5);
                 $scope.searchResults = response.data;
             })
         }

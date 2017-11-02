@@ -259,18 +259,18 @@ i img {
     opacity: 1;
 }
 
-.animateSearch.ng-leave{
-    transition:0.5s linear all;
-    opacity:1;
-  }
+.animateSearch.ng-leave {
+    transition: 0.5s linear all;
+    opacity: 1;
+}
 
-.animateSearch.ng-leave.ng-leave-active{
-    opacity:0;
-  }
+.animateSearch.ng-leave.ng-leave-active {
+    opacity: 0;
+}
+
 ul {
     padding: 0;
 }
-
 
 .buy {
     width: 7em !important;
@@ -321,7 +321,6 @@ div.form-group {
 #dropMenu3 button,
 #dropMenu4 button {
     margin-left: 20px;
-    
 }
 
 #navigation {
@@ -348,6 +347,7 @@ div.form-group {
     margin-right: 0px !important;
 }
 
+<<<<<<< HEAD
 strong {
     font-size: 1.8em;
 }
@@ -360,3 +360,8 @@ main {
     background-color: white;
     padding: 20px;
 }
+=======
+#logo {
+    width: 40%;
+}
+>>>>>>> 152040c5282dce6b1f76183449004f3d02a0a9a8

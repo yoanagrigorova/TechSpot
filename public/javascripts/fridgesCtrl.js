@@ -41,3 +41,9 @@ angular.module("fridgesController", [])
             $scope.capacitiesR = capacitiesR;
         }
     })
+    .controller("fridgesInfoCtrl", function($scope, $http) {
+        var url = window.location.pathname.substr(15);
+        $http.get("/api" + url).then(function(response) {
+            $scope.fridges = response.data;
+        })
+    })

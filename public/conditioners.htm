@@ -23,7 +23,7 @@
         </div>
     </aside>
     <div class="col-md-8 productsListing">
-        <article class="col-md-12 animate" ng-repeat="cond in conditioners | filter:search.brand | filter:search.cp | filter:search.ch">
+        <article class="col-md-12 animate" ng-repeat="cond in conditioners | filter:search.brand | filter:search.cp:true | filter:search.ch:true">
             <span class="col-md-2"><img ng-src="{{cond.pictures[0]}}" alt=""/></span>
             <div class="col-md-7" class="condInfo">
                 <h4> {{cond.title}} </h4>

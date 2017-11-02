@@ -1,20 +1,20 @@
 angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
     .controller("MainController", function($scope, $http, $timeout, $location, $rootScope, $cookies) {
-        
+
         $scope.errorMsg = false;
-        $scope.getCurrentUser = function(){
+        $scope.getCurrentUser = function() {
             $rootScope.userInSess = JSON.parse(localStorage.getItem('currentUser'));
         }
-        $scope.logIn= function(user) {
+        $scope.logIn = function(user) {
             $http.post("/login", JSON.stringify(user)).then(function(response) {
 
-                if (response.data.success){
+                if (response.data.success) {
                     $scope.successMsg = response.data.message;
                     $rootScope.userInSess = response.data.user[0];
                     localStorage.setItem('currentUser', JSON.stringify(response.data.user[0]));
-                    $timeout(function(){
+                    $timeout(function() {
                         $location.path('/');
-                    },2000)
+                    }, 2000)
                 } else {
                     $scope.errorMsg = response.data.message;
                 }
@@ -27,13 +27,13 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
         
         $scope.addToCart = function(item) {
             $scope.getCurrentUser();
-            if (!$rootScope.userInSess.products.some(x => x.title == item.title)){
-            $rootScope.userInSess.products.push(item);
+            if (!$rootScope.userInSess.products.some(x => x.title == item.title)) {
+                $rootScope.userInSess.products.push(item);
             } else {
                 var product = $rootScope.userInSess.products.find(x => x.title == item.title);
                 product.quantity++;
             }
-            localStorage.setItem('currentUser',JSON.stringify($rootScope.userInSess));
+            localStorage.setItem('currentUser', JSON.stringify($rootScope.userInSess));
         }
 
         $scope.removeFromCart = function(item) {

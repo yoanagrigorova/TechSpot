@@ -4,20 +4,6 @@ var User = require('../public/javascripts/users.js');
 
 router.post('/', function(req, res, next) {
 
-    // function User(firstName, lastName, mail, phone, password) {
-    //     if (firstName.trim().length > 0 && lastName.trim().length > 0 && mail.trim().length > 0 && mail.indexOf("@") !== -1 &&
-    //         phone.startsWith("08") && phone.length === 10 && password.length >= 5) {
-    //         this.firstName = firstName;
-    //         this.lastName = lastName;
-    //         this.mail = mail;
-    //         this.phone = phone;
-    //         this.password = password;
-    //     } else {
-    //         throw new Error("Incorrect information");
-
-    //     }
-    // }
-
     var name = req.body.name;
     var lastName = req.body.lastName;
     var mail = req.body.mail;
@@ -25,13 +11,10 @@ router.post('/', function(req, res, next) {
     var password = req.body.pass;
     var repeatPass = req.body.repeatPass;
 
-    console.log(name + " " + lastName);
+    console.log(name + " " + lastName + " " + mail + " " + phone + " " + password + " ");
+
     var db = req.db;
     var users = db.get("users");
-    // if (password === repeatPass) {
-    //     $http.post('users', new User(name, lastName, mail, phone, password));
-    //     res.redirect('/');
-    // }
     users.find({ mail: mail }).then(function(data) {
         if (data.length == 0) {
             if (password === repeatPass) {

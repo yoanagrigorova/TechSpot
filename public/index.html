@@ -8,8 +8,10 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
     <link href='./stylesheets/bootstrap.min.css' rel="stylesheet" />
     <link href="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
@@ -19,260 +21,164 @@
     <script src='./javascripts/phoneCtr.js'></script>
     <script src="./javascripts/tvController.js"></script>
     <script src="./javascripts/computersCtrl.js"></script>
-    <script src="./javascripts/phoneInfoController.js"></script>
-    <script src="./javascripts/tvsInfoCtrl.js"></script>
-    <script src="./javascripts/computersInfoCtrl.js"></script>
     <script src="./javascripts/microwavesCtrl.js"></script>
-    <script src="./javascripts/microwavesInfoCtrl.js"></script>
     <script src="./javascripts/vacuumsCtrl.js"></script>
-    <script src="./javascripts/vacuumsInfoCtrl.js"></script>
     <script src="./javascripts/conditionersCtrl.js"></script>
-    <script src="./javascripts/conditionersInfoCtrl.js"></script>
     <script src="./javascripts/ovensCtrl.js"></script>
     <script src="./javascripts/mainController.js"></script>
-    <script src="./javascripts/ovensInfoCtrl.js"></script>
     <script src="./javascripts/fridgesCtrl.js"></script>
-    <script src="./javascripts/fridgesInfoCtrl.js"></script>
     <script src="./javascripts/washingMachinesCtrl.js"></script>
-    <script src="./javascripts/washingMachinesInfoCtrl.js"></script>
-    
+    <script src="./javascripts/router.js">
 
+    </script>
+    <script src="./javascripts/profileCtrl.js"></script>
 
 </head>
 
 
 
-    <body ng-app='myApp' ng-controller="MainController">
-        <span><img id="logo" src="./images/logo1.png" alt=""/></span>
+<body ng-app='myApp' ng-controller="MainController">
+    <span><img id="logo" src="./images/logo1.png" alt=""/></span>
 
-        <form method="GET" class="navbar-form navbar-right" role="search">
-            <div class="form-group" ng-controller="searchCtrl">
+    <form method="GET" class="navbar-form navbar-right" role="search">
+        <div class="form-group" ng-controller="searchCtrl">
 
-                <select class='form-control selectpicker' data-style="btn-primary" ng-model='selectedOption' ng-change='changeValue(selectedOption)' ng-options='x.name for x in categories'></select>
-                <input type="text" class="form-control" placeholder="Search" ng-model='search.name'>
-                <div id='searchDiv'>
-                    <div class='animateSearch' ng-repeat='result in searchResults | filter: search.name' ng-if='search.name.length > 0'> <img ng-src='{{result.pictures[0]}}' width='50px' /> <a ng-href=/phones/{{result._id}}> {{result.title}} </a> </div>
-                </div>
+            <select class='form-control selectpicker' data-style="btn-primary" ng-model='selectedOption' ng-change='changeValue(selectedOption)'
+                ng-options='x.name for x in categories'></select>
+            <input type="text" class="form-control" placeholder="Search" ng-model='search.name'>
+            <div id='searchDiv'>
+                <div class='animateSearch' ng-repeat='result in searchResults | filter: search.name' ng-if='search.name.length > 0'> <img ng-src='{{result.pictures[0]}}' width='50px' /> <a ng-href=/phones/{{result._id}}> {{result.title}} </a>                    </div>
             </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-        </form>
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+    </form>
 
-        <div >
-            <ul id="navigation" class="nav nav-pills pull-right">
-                <li><a href="#">Home</a></li>
-                <li><a href="login">Вход {{userInSess.mail}}</a></li>
-                <li><a href="registration">Регистрация</a></li>
-                <li><img ng-mouseover='display3=true' ng-mouseleave='display3=false' class='animate' ng-model='display3' height="40px" width="40px" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt="">
-                    <div ng-show='display3' ng-mouseover='display3=true' ng-mouseleave='display3=false' id='dropMenu3'> Lorem </div>
-                </li>
-                <li><img ng-mouseover='cart=true' ng-mouseleave='cart=false' class='animate' ng-model='display4' height="40px" width="40px" src="./images/basket.png" alt="">
-                    <div ng-show='cart' ng-mouseover='cart=true' ng-mouseleave='cart=false' id='dropMenu4'> 
-                        <div ng-repeat='x in userInSess.products' class='animate'>
-                            <img ng-src='{{x.pictures[0]}}' width='50px' /> 
-                            <a ng-href=/phones/{{x._id}}> {{x.title}} </a> 
+    <div>
+        <ul id="navigation" class="nav nav-pills pull-right">
+            <li><a href="#">Home</a></li>
+            <li><a href="login">Вход {{userInSess.mail}}</a></li>
+            <li><a href="registration">Регистрация</a></li>
+            <li><img ng-mouseover='display3=true' ng-mouseleave='display3=false' class='animate' ng-model='display3' height="40px"
+                    width="40px" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png"
+                    alt="">
+                <div ng-show='display3' ng-mouseover='display3=true' ng-mouseleave='display3=false' id='dropMenu3'> Lorem </div>
+            </li>
+            <li><img ng-mouseover='cart=true' ng-mouseleave='cart=false' class='animate' ng-model='display4' height="40px" width="40px"
+                    src="./images/basket.png" alt="">
+                <div ng-show='cart' ng-mouseover='cart=true' ng-mouseleave='cart=false' id='dropMenu4'>
+                    <div ng-repeat='x in userInSess.products' class='animate'>
+                        <img ng-src='{{x.pictures[0]}}' width='50px' />
+                        <a ng-href=/phones/{{x._id}}> {{x.title}} </a>
                         <img width='20px' src='images/x-mark-3-16.ico' ng-click='removeFromCart(x)'>
                         <p> {{x.quantity}} бр.</p>
                     </div>
                     <strong ng-show='userInSess.products.length == 0'> Кошницата е празна! </strong>
                 </div>
-                </li>
-            </ul>
-            <br/><br/><br/>
-            <nav class="navbar navbar-default">
-                
-                    <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="true" style="">
-                        <ul class="nav navbar-nav">
-                            <li><a href="phones">Телефони и таблети</a></li>
-                            <li><a href="tvs">Телевизори</a></li>
-                            <li><a href="computers">Компютри</a></li>
-                            <li><a href="homeappliances" ng-mouseover='display=true' ng-mouseleave="display=false" class='animate' ng-model='display'>Домакински електроуреди</a>
-                                <div ng-show='display' ng-mouseover="display=true" ng-mouseleave="display=false" id='dropMenu'>
-                                    <button class="btn"> <a href="homeappliances/ovens">Готварски печки</a> </button>
-                                    <button class="btn"> <a href="homeappliances/fridges">Хладилници</a> </button>
-                                    <button class="btn"> <a href="homeappliances/washing-machines">Перални</a> </button>
-                                </div>
-                            </li>
-                            <li><a href="smallappliances" ng-mouseover='display2=true' ng-mouseleave='display2=false' class='animate' ng-model='display2'>Малки електроуреди</a>
-                                <div ng-show='display2' ng-mouseover='display2=true' ng-mouseleave='display2=false' id='dropMenu2'>
-                                    <button class="btn"> <a href="smallappliances/microwave-ovens">Микровълнови</a> </button>
-                                    <button class="btn"> <a href="smallappliances/vacuumCleaners">Прахосмукачки</a> </button>
-                                </div>
-                            </li>
-                            <li><a href="conditioners">Климатици и отопление</a></li>
-                        </ul>
-                    </div>
+            </li>
+        </ul>
+        <br/><br/><br/>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                        aria-expanded="true">
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
                 </div>
-            </nav>
-        </div>
-        <script src='./javascripts/searchCtr.js'></script>
-        <script src='./javascripts/navBarApp.js'></script>
+                <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="true" style="">
+                    <ul class="nav navbar-nav">
+                        <li><a href="phones">Телефони и таблети</a></li>
+                        <li><a href="tvs">Телевизори</a></li>
+                        <li><a href="computers">Компютри</a></li>
+                        <li><a href="homeappliances" ng-mouseover='display=true' ng-mouseleave="display=false" class='animate'
+                                ng-model='display'>Домакински електроуреди</a>
+                            <div ng-show='display' ng-mouseover="display=true" ng-mouseleave="display=false" id='dropMenu'>
+                                <button class="btn"> <a href="homeappliances/ovens">Готварски печки</a> </button>
+                                <button class="btn"> <a href="homeappliances/fridges">Хладилници</a> </button>
+                                <button class="btn"> <a href="homeappliances/washing-machines">Перални</a> </button>
+                            </div>
+                        </li>
+                        <li><a href="smallappliances" ng-mouseover='display2=true' ng-mouseleave='display2=false' class='animate'
+                                ng-model='display2'>Малки електроуреди</a>
+                            <div ng-show='display2' ng-mouseover='display2=true' ng-mouseleave='display2=false' id='dropMenu2'>
+                                <button class="btn"> <a href="smallappliances/microwave-ovens">Микровълнови</a> </button>
+                                <button class="btn"> <a href="smallappliances/vacuumCleaners">Прахосмукачки</a> </button>
+                            </div>
+                        </li>
+                        <li><a href="conditioners">Климатици и отопление</a></li>
+                    </ul>
+                </div>
 
-        <main ng-app='myApp'>
-            <div ng-view class='animate'></div>
-
-            <script>
-                var app = angular.module("myApp", ["ngRoute", "phoneController", "tvController", "computersController",
-                    "phoneInfoController", "tvsInfoController", "computersInfoController", "microwaveOvensController",
-                    "microwavesInfoController", "vacuumsController", "vacuumInfoController", "conditionersController",
-                    "conditionersInfoController", "ovensController", 'searchApp', "MainCtrl", "ovensInfoController",
-                    "fridgesController", "fridgesInfoController", "washingMachinesController", "washingMachinesInfoController"
-                ]);
-                app.config(function($routeProvider, $locationProvider) {
-                    $routeProvider
-
-                        .when("/login", {
-                            templateUrl: "login.htm"
-                        })
-                        .when("/registration", {
-                            templateUrl: "registration.htm"
-                        })
-                        .when("/phones", {
-                            templateUrl: "phones.htm",
-                            controller: "phonesCtrl"
-                        })
-                        .when("/tvs", {
-                            templateUrl: "tvs.htm",
-                            controller: "tvCtrl"
-                        })
-                        .when("/computers", {
-                            templateUrl: "computers.htm",
-                            controller: "computersCtrl"
-                        })
-                        .when("/phones/:_id", {
-                            templateUrl: "phoneInfo.htm",
-                            controller: "phoneInfoCtrl"
-                        })
-                        .when("/tvs/:_id", {
-                            templateUrl: "tvsInfo.htm",
-                            controller: "tvsInfoCtrl"
-                        })
-                        .when("/computers/:_id", {
-                            templateUrl: "computersInfo.htm",
-                            controller: "computersInfoCtrl"
-                        })
-                        .when("/smallappliances/microwave-ovens", {
-                            templateUrl: "microwaves.htm",
-                            controller: "microwavesCtrl"
-                        })
-                        .when("/smallappliances/microwave-ovens/:_id", {
-                            templateUrl: "microwavesInfo.htm",
-                            controller: "microwavesInfoCtrl"
-                        })
-                        .when("/smallappliances/vacuumCleaners", {
-                            templateUrl: "vacuums.htm",
-                            controller: "vacuumsCtrl"
-                        })
-                        .when("/smallappliances/vacuumCleaners/:_id", {
-                            templateUrl: "vacuumsInfo.htm",
-                            controller: "vocuumsInfoCtrl"
-                        })
-                        .when("/conditioners", {
-                            templateUrl: "conditioners.htm",
-                            controller: "conditionersCtrl"
-                        })
-                        .when("/conditioners/:_id", {
-                            templateUrl: "conditionersInfo.htm",
-                            controller: "conditionersInfoCtrl"
-                        })
-                        .when("/homeappliances/ovens", {
-                            templateUrl: "ovens.htm",
-                            controller: "ovensCtrl"
-                        })
-                        .when("*", {
-                            controller: "MainController"
-                        })
-                        .when("/homeappliances", {
-                            templateUrl: "homeAppliances.htm"
-                        })
-                        .when("/homeappliances/ovens/:_id", {
-                            templateUrl: "ovensInfo.htm",
-                            controller: "ovensInfoCtrl"
-                        })
-                        .when("/homeappliances/fridges", {
-                            templateUrl: "fridges.htm",
-                            controller: "fridgesCtrl"
-                        })
-                        .when("/homeappliances/fridges/:_id", {
-                            templateUrl: "fridgesInfo.htm",
-                            controller: "fridgesInfoCtrl"
-                        })
-                        .when("/homeappliances/washing-machines", {
-                            templateUrl: "washingMachines.htm",
-                            controller: "washingMachinesCtrl"
-                        })
-                        .when("/homeappliances/washing-machines/:_id", {
-                            templateUrl: "washingMachinesInfo.htm",
-                            controller: "washingMachinesInfoCtrl"
-                        })
-                        .when("/smallappliances", {
-                            templateUrl: "smallAppliances.htm"
-                        })
-
-                    $locationProvider.html5Mode({
-                        enabled: true,
-                        requireBase: false
-                    });
+            </div>
+        </nav>
+    </div>
+</body>
 
 
+<script src='./javascripts/searchCtr.js'></script>
+<script src='./javascripts/navBarApp.js'></script>
 
-                });
-            </script>
+<main>
+    <div ng-view class='animate'></div>
 
-        </main>
+</main>
 
-        <footer class="row">
-            <article class="col-md-2">
-                <h5>ТЕХНОПОЛИС</h5>
-                <ul>
-                    <li><a href="">Компанията</a></li>
-                    <li><a href="">Работа при нас</a></li>
-                    <li><a href="">Новини</a></li>
-                    <li><a href="">Общи условия</a></li>
-                </ul>
-            </article>
-            <article class="col-md-2">
-                <h5>КОНТАКТИ</h5>
-                <ul>
-                    <li><a href="">Контакти</a></li>
-                    <li><a href="">Магазини</a></li>
-                    <li><a href="">Сервизи</a></li>
-                </ul>
-            </article>
-            <article class="col-md-2">
-                <h5>ЗА КЛИЕНТА</h5>
-                <ul>
-                    <li><a href="">Съвети</a></li>
-                    <li><a href="">Транспорт</a></li>
-                    <li><a href="">Доставка при онлайн поръчка</a></li>
-                    <li><a href="">Вземи от магазин</a></li>
-                    <li><a href="">Услуги</a></li>
-                    <li><a href="">Връщане на поръчка</a></li>
-                </ul>
-            </article>
-            <article class="col-md-2">
-                <h5>ОБЩА ИНФОРМАЦИЯ</h5>
-                <ul>
-                    <li><a href="">Как да поръчам</a></li>
-                    <li><a href="">Лоялни клиенти</a></li>
-                    <li><a href="">Рециклиране</a></li>
-                </ul>
+<footer class="row">
+    <article class="col-md-2">
+        <h5>ТЕХНОПОЛИС</h5>
+        <ul>
+            <li><a href="">Компанията</a></li>
+            <li><a href="">Работа при нас</a></li>
+            <li><a href="">Новини</a></li>
+            <li><a href="">Общи условия</a></li>
+        </ul>
+    </article>
+    <article class="col-md-2">
+        <h5>КОНТАКТИ</h5>
+        <ul>
+            <li><a href="">Контакти</a></li>
+            <li><a href="">Магазини</a></li>
+            <li><a href="">Сервизи</a></li>
+        </ul>
+    </article>
+    <article class="col-md-2">
+        <h5>ЗА КЛИЕНТА</h5>
+        <ul>
+            <li><a href="">Съвети</a></li>
+            <li><a href="">Транспорт</a></li>
+            <li><a href="">Доставка при онлайн поръчка</a></li>
+            <li><a href="">Вземи от магазин</a></li>
+            <li><a href="">Услуги</a></li>
+            <li><a href="">Връщане на поръчка</a></li>
+        </ul>
+    </article>
+    <article class="col-md-2">
+        <h5>ОБЩА ИНФОРМАЦИЯ</h5>
+        <ul>
+            <li><a href="">Как да поръчам</a></li>
+            <li><a href="">Лоялни клиенти</a></li>
+            <li><a href="">Рециклиране</a></li>
+        </ul>
 
-                <h5>НАМЕРЕТЕ НИ В</h5>
-                <ul>
-                    <a href=""><img src="/images/facebook.png" alt=""></a>
-                    <a href=""><img src="/images/yt.png" alt=""></a>
-                    <a href=""><img src="/images/g+.png" alt=""></a>
-                </ul>
-            </article>
-            <article class="col-md-3" id="payment">
-                <h5>ПАЗАРУВАЙТЕ С</h5>
-                <ul>
-                    <a href=""><img src="/images/visa.png" alt=""></a>
-                    <a href=""><img src="/images/master.png" alt=""></a>
-                    <a href=""><img src="/images/maestro.png" alt=""></a>
-                </ul>
-            </article>
-        </footer>
-    </body>
+        <h5>НАМЕРЕТЕ НИ В</h5>
+        <ul>
+            <a href=""><img src="/images/facebook.png" alt=""></a>
+            <a href=""><img src="/images/yt.png" alt=""></a>
+            <a href=""><img src="/images/g+.png" alt=""></a>
+        </ul>
+    </article>
+    <article class="col-md-3" id="payment">
+        <h5>ПАЗАРУВАЙТЕ С</h5>
+        <ul>
+            <a href=""><img src="/images/visa.png" alt=""></a>
+            <a href=""><img src="/images/master.png" alt=""></a>
+            <a href=""><img src="/images/maestro.png" alt=""></a>
+        </ul>
+    </article>
+</footer>
+</body>
 
 </html>

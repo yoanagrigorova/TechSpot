@@ -28,6 +28,7 @@ var airConditioners = require("./routes/conditioners");
 var ovens = require("./routes/ovens");
 var fridges = require("./routes/fridges");
 var washingMachines = require("./routes/washingMachines");
+var logout = require("./routes/logout");
 
 
 
@@ -65,6 +66,7 @@ app.use("/api/conditioners", airConditioners);
 app.use("/api/ovens", ovens);
 app.use("/api/fridges", fridges);
 app.use("/api/washing-machines", washingMachines);
+app.use("/api/logout", logout);
 app.all("/*", function(req, res, next) {
     console.log('a')
     res.sendfile("index.html", { root: __dirname + "/public" });

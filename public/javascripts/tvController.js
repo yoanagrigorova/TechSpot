@@ -5,13 +5,13 @@ angular.module("tvController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
         $http.get("/api/tvs").then(function(response) {
             response.data.sort((t1, t2) => t1.price - t2.price);
             $scope.tvs = response.data;
-           
+
             $scope.slider = {
                 minValue: $scope.tvs[0].price,
-                maxValue: $scope.tvs[$scope.tvs.length-1].price,
+                maxValue: $scope.tvs[$scope.tvs.length - 1].price,
                 options: {
                     floor: $scope.tvs[0].price,
-                    ceil: $scope.tvs[$scope.tvs.length-1].price,
+                    ceil: $scope.tvs[$scope.tvs.length - 1].price,
                     step: 50
                 }
             };
@@ -46,3 +46,10 @@ angular.module("tvController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
             $scope.resolutions = resolutions;
         }
     })
+
+.controller("tvsInfoCtrl", function($scope, $http) {
+    var url = window.location.href.substr(21);
+    $http.get('/api' + url).then(function(response) {
+        $scope.tvs = response.data;
+    })
+})
