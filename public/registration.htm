@@ -1,22 +1,34 @@
-<form method="POST" action="/registration" class="form-horizontal">
+<form method="POST" action="/registration" name="myform" class="form-horizontal">
     <fieldset>
         <legend>Регистрация</legend>
 
-        <div class="form-group">
+        <div class='form-group'>
             <label for="name" class="col-lg-2 control-label">Име
             <span class="mendatory">*</span>
         </label>
-            <div class="col-lg-6">
-                <input name="name" type="text" class="form-control" id="name">
+            <div ng-class="{'has-success': myform.name.$valid, 'has-error': (myform.name.$invalid && myform.name.$dirty)}" class="col-lg-6">
+                <input type='text' ng-pattern='/^[a-zA-Z]+$/' ng-minlength="2" ng-maxlength="10" required name="name" class="form-control" ng-model='name' id="name"/>
+            </div>
+
+            <div ng-show="myform.name.$dirty && myform.name.$invalid">
+                    <strong ng-show="myform.name.$error.required"> Required field !</strong>
+                    <strong ng-show="myform.name.$error.minlength"> Min 2 characters !</strong>
+                    <strong ng-show="myform.name.$error.maxlength"> Max 10 characters !</strong>
+                    <strong ng-show='myform.name.$error.pattern'> Can contain only letters ! </strong>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="lastName" class="col-lg-2 control-label">Фамилия
-            <span class="mendatory">*</span>
-        </label>
-            <div class="col-lg-6">
-                <input name="lastName" type="text" class="form-control" id="lastName">
+            <label for="lastName" class="col-lg-2 control-label">Фамилия </label>
+            <div ng-class="{'has-success': myform.lastName.$valid, 'has-error': (myform.lastName.$invalid && myform.lastName.$dirty)}" class="col-lg-6">
+                <input type='text' ng-pattern='/^[a-zA-Z]+$/' ng-minlength="2" ng-maxlength="10" required name="lastName" class="form-control" ng-model='lastName'  id="name"/>
+            </div>
+
+            <div ng-show="myform.lastName.$dirty && myform.lastName.$invalid">
+                    <strong ng-show="myform.lastName.$error.required"> Required field !</strong>
+                    <strong ng-show="myform.lastName.$error.minlength"> Min 2 characters !</strong>
+                    <strong ng-show="myform.lastName.$error.maxlength"> Max 10 characters !</strong>
+                    <strong ng-show='myform.lastName.$error.pattern'> Can contain only letters ! </strong>
             </div>
         </div>
 
@@ -59,7 +71,7 @@
         <div class="form-group">
             <div class="col-lg-6 col-lg-offset-2">
                 <button type="reset" class="btn btn-default">Отмени</button>
-                <button type="submit" class="btn btn-primary">Запази</button>
+                <button type="submit" class="btn btn-primary" ng-show='myform.$valid'>Запази</button>
             </div>
         </div>
 

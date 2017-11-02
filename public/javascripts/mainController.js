@@ -25,7 +25,7 @@ angular.module("MainCtrl", ['ngCookies'])
 
         $scope.getCurrentUser();
         
-        $scope.addToBasket = function(item) {
+        $scope.addToCart = function(item) {
             $scope.getCurrentUser();
             if (!$rootScope.userInSess.products.some(x => x.title == item.title)){
             $rootScope.userInSess.products.push(item);
@@ -36,8 +36,10 @@ angular.module("MainCtrl", ['ngCookies'])
             localStorage.setItem('currentUser',JSON.stringify($rootScope.userInSess));
         }
 
-        $scope.removeFromBasket = function(item) {
+        $scope.removeFromCart = function(item) {
             $scope.getCurrentUser();
-               
+            var index = $rootScope.userInSess.products.findIndex(x => x.title == item.title);
+            $rootScope.userInSess.products.splice(index,1);
+            localStorage.setItem('currentUser',JSON.stringify($rootScope.userInSess));
         }
     })
