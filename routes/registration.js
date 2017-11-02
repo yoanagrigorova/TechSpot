@@ -20,10 +20,10 @@ router.post('/', function(req, res, next) {
             if (password === repeatPass) {
                 var user = new User(name, lastName, mail, phone, password);
                 users.insert(user);
-                res.redirect("back");
+                res.json({message: 'Successful registration!'}).redirect("/");
             }
         } else {
-            res.render('registration', { message: 'E-mail is taken.' });
+            res.json({message: 'Email is already taken!'})
         }
     });
 })

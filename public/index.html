@@ -32,8 +32,9 @@
 
 </head>
 
-<body ng-app='myApp' ng-controller="MainController">
 
+
+<body ng-app='myApp' ng-controller="MainController">
     <span><img id="logo" src="./images/logo1.png" alt=""/></span>
 
     <form method="GET" class="navbar-form navbar-right" role="search">
@@ -61,14 +62,15 @@
                         <hr>
                         <button class="btn btn-default btn-xs">Виж любими</button> </div>
             </li>
-            <li><img ng-mouseover='display4=true' ng-mouseleave='display4=false' class='animate' ng-model='display4' height="40px" width="40px" src="./images/basket.png" alt="">
-                <div ng-show='display4' ng-mouseover='display4=true' ng-mouseleave='display4=false' id='dropMenu4'>
-                    <p ng-show='userInSess'>
-                        <div ng-repeat='x in userInSess.products'><img ng-src='{{x.pictures[0]}}' width='50px' /> <a ng-href=/phones/{{x._id}}> {{x.title}} </a>
-                            <p> {{x.quantity}}</p>
-                        </div>
-                        <hr>
-                        <button class="btn btn-default btn-xs">Поръчай</button>
+            <li><img ng-mouseover='cart=true' ng-mouseleave='cart=false' class='animate' ng-model='display4' height="40px" width="40px" src="./images/basket.png" alt="">
+                <div ng-show='cart' ng-mouseover='cart=true' ng-mouseleave='cart=false' id='dropMenu4'>
+                    <div ng-repeat='x in userInSess.products' class='animate'>
+                        <img ng-src='{{x.pictures[0]}}' width='50px' />
+                        <a ng-href=/phones/{{x._id}}> {{x.title}} </a>
+                        <img width='20px' src='images/x-mark-3-16.ico' ng-click='removeFromCart(x)'>
+                        <p> {{x.quantity}} бр.</p>
+                    </div>
+                    <strong ng-show='userInSess.products.length == 0'> Кошницата е празна! </strong>
                 </div>
             </li>
         </ul>
@@ -77,13 +79,13 @@
             <div class="container-fluid">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
+                      <span class="sr-only">Toggle navigation</span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                      <span class="icon-bar"></span>
+                    </button>
                 </div>
-                <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="true">
+                <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="true" style="">
                     <ul class="nav navbar-nav">
                         <li><a href="phones">Телефони и таблети</a></li>
                         <li><a href="tvs">Телевизори</a></li>
@@ -104,70 +106,74 @@
                         <li><a href="conditioners">Климатици и отопление</a></li>
                     </ul>
                 </div>
+
             </div>
         </nav>
     </div>
-    <script src='./javascripts/searchCtr.js'></script>
-    <script src='./javascripts/navBarApp.js'></script>
+</body>
 
-    <main>
-        <div ng-view class='animate'></div>
 
-    </main>
+<script src='./javascripts/searchCtr.js'></script>
+<script src='./javascripts/navBarApp.js'></script>
 
-    <footer class="row">
-        <article class="col-md-2">
-            <h5>ТЕХНОПОЛИС</h5>
-            <ul>
-                <li><a href="">Компанията</a></li>
-                <li><a href="">Работа при нас</a></li>
-                <li><a href="">Новини</a></li>
-                <li><a href="">Общи условия</a></li>
-            </ul>
-        </article>
-        <article class="col-md-2">
-            <h5>КОНТАКТИ</h5>
-            <ul>
-                <li><a href="">Контакти</a></li>
-                <li><a href="">Магазини</a></li>
-                <li><a href="">Сервизи</a></li>
-            </ul>
-        </article>
-        <article class="col-md-2">
-            <h5>ЗА КЛИЕНТА</h5>
-            <ul>
-                <li><a href="">Съвети</a></li>
-                <li><a href="">Транспорт</a></li>
-                <li><a href="">Доставка при онлайн поръчка</a></li>
-                <li><a href="">Вземи от магазин</a></li>
-                <li><a href="">Услуги</a></li>
-                <li><a href="">Връщане на поръчка</a></li>
-            </ul>
-        </article>
-        <article class="col-md-2">
-            <h5>ОБЩА ИНФОРМАЦИЯ</h5>
-            <ul>
-                <li><a href="">Как да поръчам</a></li>
-                <li><a href="">Лоялни клиенти</a></li>
-                <li><a href="">Рециклиране</a></li>
-            </ul>
+<main>
+    <div ng-view class='animate'></div>
 
-            <h5>НАМЕРЕТЕ НИ В</h5>
-            <ul>
-                <a href=""><img src="/images/facebook.png" alt=""></a>
-                <a href=""><img src="/images/yt.png" alt=""></a>
-                <a href=""><img src="/images/g+.png" alt=""></a>
-            </ul>
-        </article>
-        <article class="col-md-3" id="payment">
-            <h5>ПАЗАРУВАЙТЕ С</h5>
-            <ul>
-                <a href=""><img src="/images/visa.png" alt=""></a>
-                <a href=""><img src="/images/master.png" alt=""></a>
-                <a href=""><img src="/images/maestro.png" alt=""></a>
-            </ul>
-        </article>
-    </footer>
+</main>
+
+<footer class="row">
+    <article class="col-md-2">
+        <h5>ТЕХНОПОЛИС</h5>
+        <ul>
+            <li><a href="">Компанията</a></li>
+            <li><a href="">Работа при нас</a></li>
+            <li><a href="">Новини</a></li>
+            <li><a href="">Общи условия</a></li>
+        </ul>
+    </article>
+    <article class="col-md-2">
+        <h5>КОНТАКТИ</h5>
+        <ul>
+            <li><a href="">Контакти</a></li>
+            <li><a href="">Магазини</a></li>
+            <li><a href="">Сервизи</a></li>
+        </ul>
+    </article>
+    <article class="col-md-2">
+        <h5>ЗА КЛИЕНТА</h5>
+        <ul>
+            <li><a href="">Съвети</a></li>
+            <li><a href="">Транспорт</a></li>
+            <li><a href="">Доставка при онлайн поръчка</a></li>
+            <li><a href="">Вземи от магазин</a></li>
+            <li><a href="">Услуги</a></li>
+            <li><a href="">Връщане на поръчка</a></li>
+        </ul>
+    </article>
+    <article class="col-md-2">
+        <h5>ОБЩА ИНФОРМАЦИЯ</h5>
+        <ul>
+            <li><a href="">Как да поръчам</a></li>
+            <li><a href="">Лоялни клиенти</a></li>
+            <li><a href="">Рециклиране</a></li>
+        </ul>
+
+        <h5>НАМЕРЕТЕ НИ В</h5>
+        <ul>
+            <a href=""><img src="/images/facebook.png" alt=""></a>
+            <a href=""><img src="/images/yt.png" alt=""></a>
+            <a href=""><img src="/images/g+.png" alt=""></a>
+        </ul>
+    </article>
+    <article class="col-md-3" id="payment">
+        <h5>ПАЗАРУВАЙТЕ С</h5>
+        <ul>
+            <a href=""><img src="/images/visa.png" alt=""></a>
+            <a href=""><img src="/images/master.png" alt=""></a>
+            <a href=""><img src="/images/maestro.png" alt=""></a>
+        </ul>
+    </article>
+</footer>
 </body>
 
 </html>

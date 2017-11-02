@@ -29,7 +29,7 @@
         </div>
     </aside>
     <div class="col-md-8 productsListing">
-        <article class="col-md-12" ng-repeat="washingMachine in washingMachines | filter:search.brand | filter:search.power | filter:search.type | filter:search.dimension">
+        <article class="col-md-12 animate" ng-repeat="washingMachine in washingMachines | filter:search.brand | filter:search.power | filter:search.type | filter:search.dimension">
             <span class="col-md-2"><img ng-src="{{washingMachine.pictures[0]}}" alt=""/></span>
             <div class="col-md-7">
                 <h4> {{washingMachine.title}} </h4>

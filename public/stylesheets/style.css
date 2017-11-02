@@ -284,7 +284,7 @@ option {
 #searchDiv {
     z-index: 1 !important;
     position: absolute;
-    left: 140px;
+    left: -15px;
     background-color: #FFFFFF;
     width: 500px;
     border-radius: 5px;
@@ -303,7 +303,7 @@ div.form-group {
     border-radius: 5px;
     padding: 10px;
     z-index: 1;
-    width: 250px;
+    width: 200px;
 }
 
 #dropMenu,
@@ -347,6 +347,21 @@ div.form-group {
     margin-right: 0px !important;
 }
 
+<<<<<<< HEAD
+strong {
+    font-size: 1.8em;
+}
+
+body {
+    background-image: url('../images/promo-wallpaper1.jpg');
+}
+
+main {
+    background-color: white;
+    padding: 20px;
+}
+=======
 #logo {
     width: 40%;
 }
+>>>>>>> 152040c5282dce6b1f76183449004f3d02a0a9a8
