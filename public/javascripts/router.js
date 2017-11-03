@@ -1,6 +1,6 @@
 var app = angular.module("myApp", ["ngRoute", "phoneController", "tvController", "computersController",
     "microwaveOvensController", "vacuumsController", "conditionersController", "ovensController", 'searchApp',
-    "MainCtrl", "fridgesController", "washingMachinesController", "profileController"
+    "MainCtrl", "fridgesController", "washingMachinesController", "profileController", 'adminApp'
 ]);
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider

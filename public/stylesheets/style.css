@@ -347,7 +347,6 @@ div.form-group {
     margin-right: 0px !important;
 }
 
-<<<<<<< HEAD
 strong {
     font-size: 1.8em;
 }
@@ -360,8 +359,30 @@ main {
     background-color: white;
     padding: 20px;
 }
-=======
 #logo {
     width: 40%;
 }
->>>>>>> 152040c5282dce6b1f76183449004f3d02a0a9a8
+
+#adminPanel {
+    padding: 20px;
+    position: fixed;
+    top: 260px;
+    left: 1150px;
+    z-index: 2;
+    background-color: gray;
+    border-radius: 5px;
+}
+#adminPanel input {
+    display: block;
+    margin-bottom: 5px;
+}
+.nav.navbar-nav{
+    width: 100% !important;
+}
+
+.nav.navbar-nav li {
+    font-size: 1.2em;
+    text-align: center;
+    width: 15%;
+}
+

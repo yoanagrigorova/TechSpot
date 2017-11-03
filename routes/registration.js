@@ -8,8 +8,8 @@ router.post('/', function(req, res, next) {
     var lastName = req.body.lastName;
     var mail = req.body.mail;
     var phone = req.body.phone;
-    var password = req.body.pass;
-    var repeatPass = req.body.repeatPass;
+    var password = req.body.password;
+    var password2 = req.body.password2;
 
     console.log(name + " " + lastName + " " + mail + " " + phone + " " + password + " ");
 
@@ -17,10 +17,16 @@ router.post('/', function(req, res, next) {
     var users = db.get("users");
     users.find({ mail: mail }).then(function(data) {
         if (data.length == 0) {
-            if (password === repeatPass) {
+            if (password === password2) {
+
+                try {
                 var user = new User(name, lastName, mail, phone, password);
                 users.insert(user);
                 res.json({message: 'Successful registration!'}).redirect("/");
+                }
+                catch (err) {
+                    res.json({message: err});
+                }
             }
         } else {
             res.json({message: 'Email is already taken!'})
