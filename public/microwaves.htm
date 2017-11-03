@@ -1,8 +1,14 @@
 <section class="row">
     <h1> {{pageTitle}} </h1>
 
-    <aside class="col-md-2">
+    <aside class="col-md-3">
         <h3>Резултати</h3>
+
+        <div class="col-md-12">
+            <h4> Цена в лева </h4>
+            <rzslider rz-slider-model="slider.minValue" rz-slider-high="slider.maxValue" rz-slider-options="slider.options"></rzslider>
+        </div>
+
         <div class="col-md-12">
             <h4>Марка</h4>
             <ul>
@@ -23,7 +29,7 @@
         </div>
     </aside>
     <div class="col-md-8 productsListing">
-        <article class="col-md-12" ng-repeat="microwave in microwaves | filter:search.brand | filter:search.color | filter:search.capacity">
+        <article class="col-md-12" ng-repeat="microwave in microwaves | filter:search.brand | filter:search.color | filter:search.capacity | sizeFilter:slider">
             <span class="col-md-2"><img ng-src="{{microwave.pictures[0]}}" alt=""/></span>
             <div class="col-md-7" class="microwaveInfo">
                 <h4> {{microwave.title}} </h4>
@@ -39,7 +45,7 @@
                     <button class="info btn btn-info"><a ng-href="smallappliances/microwave-ovens/{{microwave._id}}">ВИЖ ОЩЕ</a></button>
                 </span>
             <a href="#" ng-click="addToFavorites(microwave)" class="btn btn-link favorite" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
-            <a href="#" class="btn btn-link compare" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
+            <a href="#" ng-click="addToCompare(microwave)" class="btn btn-link compare" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
         </article>
     </div>
 </section>

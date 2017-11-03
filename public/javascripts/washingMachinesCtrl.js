@@ -1,10 +1,19 @@
-angular.module("washingMachinesController", [])
+angular.module("washingMachinesController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
     .controller("washingMachinesCtrl", function($scope, $http) {
         $scope.search = {};
         $scope.pageTitle = "Перални";
         $http.get("/api/washing-machines").then(function(response) {
             response.data.sort((p1, p2) => p1.price - p2.price);
             $scope.washingMachines = response.data;
+            $scope.slider = {
+                minValue: $scope.washingMachines[0].price,
+                maxValue: $scope.washingMachines[$scope.washingMachines.length - 1].price,
+                options: {
+                    floor: $scope.washingMachines[0].price,
+                    ceil: $scope.washingMachines[$scope.washingMachines.length - 1].price,
+                    step: 10
+                }
+            };
             print(response.data);
         });
 

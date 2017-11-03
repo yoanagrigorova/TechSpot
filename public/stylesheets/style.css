@@ -347,10 +347,10 @@ div.form-group {
     margin-right: 0px !important;
 }
 
-<<<<<<< HEAD
-strong {
+
+/* strong {
     font-size: 1.8em;
-}
+} */
 
 body {
     background-image: url('../images/promo-wallpaper1.jpg');
@@ -360,8 +360,26 @@ main {
     background-color: white;
     padding: 20px;
 }
-=======
-#logo {
-    width: 40%;
+
+.popUp.ng-hide {
+    opacity: 0;
 }
->>>>>>> 152040c5282dce6b1f76183449004f3d02a0a9a8
+
+.popUp.ng-hide-add,
+.popUp.ng-hide-remove {
+    transition: all linear 0.5s;
+}
+
+.menu {
+    height: 200px;
+    overflow: scroll;
+}
+
+table tr td {
+    height: 58px !important;
+    text-align: center;
+}
+
+table tr th {
+    text-align: center;
+}

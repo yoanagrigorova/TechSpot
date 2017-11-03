@@ -97,6 +97,10 @@ app.config(function($routeProvider, $locationProvider) {
             controller: "profileCtrl"
         })
 
+    .when("/compare", {
+        templateUrl: "compare.htm"
+    })
+
     $locationProvider.html5Mode({
         enabled: true,
         requireBase: false

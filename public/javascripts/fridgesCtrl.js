@@ -1,10 +1,19 @@
-angular.module("fridgesController", [])
+angular.module("fridgesController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
     .controller("fridgesCtrl", function($scope, $http) {
         $scope.search = {};
         $scope.pageTitle = "Хладилници";
         $http.get("/api/fridges").then(function(response) {
             response.data.sort((p1, p2) => p1.price - p2.price);
             $scope.fridges = response.data;
+            $scope.slider = {
+                minValue: $scope.fridges[0].price,
+                maxValue: $scope.fridges[$scope.fridges.length - 1].price,
+                options: {
+                    floor: $scope.fridges[0].price,
+                    ceil: $scope.fridges[$scope.fridges.length - 1].price,
+                    step: 10
+                }
+            };
             print(response.data);
         });
 
@@ -23,8 +32,7 @@ angular.module("fridgesController", [])
         }
 
         function print(data) {
-            var brands = data.map((fr) => fr.brand);
-            brands = brands.filter(onlyUnique);
+            var brands = data.map((fr) => fr.brand).filter(onlyUnique);
             sort(brands);
             $scope.brands = brands;
             var totalCapacity = data.map((fr) => fr.totalCapacity).filter(onlyUnique);

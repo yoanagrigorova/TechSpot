@@ -12,7 +12,7 @@ angular.module("tvController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
                 options: {
                     floor: $scope.tvs[0].price,
                     ceil: $scope.tvs[$scope.tvs.length - 1].price,
-                    step: 50
+                    step: 10
                 }
             };
             print(response.data);
@@ -33,16 +33,13 @@ angular.module("tvController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
         }
 
         function print(data) {
-            var brands = data.map((tv) => tv.brand);
-            brands = brands.filter(onlyUnique);
+            var brands = data.map((tv) => tv.brand).filter(onlyUnique);
             sort(brands);
             $scope.brands = brands;
-            var displaySizes = data.map((tv) => tv.displaysize);
-            displaySizes = displaySizes.filter(onlyUnique);
+            var displaySizes = data.map((tv) => tv.displaysize).filter(onlyUnique);
             sort(displaySizes);
             $scope.displaySizes = displaySizes;
-            var resolutions = data.map((tv) => tv.resolution);
-            resolutions = resolutions.filter(onlyUnique);
+            var resolutions = data.map((tv) => tv.resolution).filter(onlyUnique);
             $scope.resolutions = resolutions;
         }
     })

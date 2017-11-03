@@ -3,6 +3,12 @@
 
     <aside class="col-md-3">
         <h3>Резултати</h3>
+
+        <div class="col-md-12">
+            <h4> Цена в лева </h4>
+            <rzslider rz-slider-model="slider.minValue" rz-slider-high="slider.maxValue" rz-slider-options="slider.options"></rzslider>
+        </div>
+
         <div class="col-md-12">
             <h4>Марка</h4>
             <ul>
@@ -29,7 +35,7 @@
         </div>
     </aside>
     <div class="col-md-8 productsListing">
-        <article class="col-md-12" ng-repeat="oven in ovens | filter:search.brand | filter:search.width | filter:search.func:true | filter:search.capacity">
+        <article class="col-md-12" ng-repeat="oven in ovens | filter:search.brand | filter:search.width | filter:search.func:true | filter:search.capacity | sizeFilter:slider">
             <span class="col-md-2"><img ng-src="{{oven.pictures[0]}}" alt=""/></span>
             <div class="col-md-7" class="ovenInfo">
                 <h4> {{oven.title}} </h4>
@@ -46,7 +52,7 @@
                     <button class="info btn btn-info"><a ng-href="homeappliances/ovens/{{oven._id}}">ВИЖ ОЩЕ</a></button>
                      </span>
             <a href="#" ng-click="addToFavorites(oven)" class="btn btn-link favorite" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
-            <a href="#" class="btn btn-link compare" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
+            <a href="#" ng-click="addToCompare(oven)" class="btn btn-link compare" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
         </article>
     </div>
 </section>
