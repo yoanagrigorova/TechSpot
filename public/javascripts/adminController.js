@@ -16,7 +16,7 @@ angular.module('adminApp', [])
 
         $scope.changePrice = function() {
             console.log(p._id);
-            p.price = $scope.product.price;
+            p.price = parseInt($scope.product.price);
             console.log(p.price);   
         }
 
