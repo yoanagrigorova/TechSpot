@@ -29,8 +29,7 @@ var ovens = require("./routes/ovens");
 var fridges = require("./routes/fridges");
 var washingMachines = require("./routes/washingMachines");
 var logout = require("./routes/logout");
-
-
+var admin = require('./routes/admin')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -43,19 +42,25 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: 'Yoana' }));
+app.use(session({ secret: 'Yoana', maxAge: 600000}));
 
-// function requireLogin(req, res, next) {
-//     if (req.session.userId != undefined) {
-//         console.log('1');
-//         next();
-//     } else {
-//         res.redirect('/login');
-//     }
-// }
+function requireAdmin(req, res, next) {
+    console.log('test');
+    console.log(req.session.user);
+    next();
+    // if (req.session.user.permission == 'admin') {
+    //     console.log('1');
+    //     next();
+    // } else {
+    //     console.log('error')
+    //     res.json({message: "Admin rights required !"});
+    // }
+}
+
 
 
 app.use('/login', login);
+app.use('/admin',requireAdmin, admin);
 app.use("/api/phones", phones);
 app.use('/api/registration', registration);
 app.use("/api/tvs", tvs);
@@ -69,7 +74,7 @@ app.use("/api/washing-machines", washingMachines);
 app.use("/api/logout", logout);
 app.all("/*", function(req, res, next) {
     console.log('a')
-    res.sendfile("index.html", { root: __dirname + "/public" });
+    res.sendFile("index.html", { root: __dirname + "/public" });
 });
 
 

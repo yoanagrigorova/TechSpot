@@ -1,5 +1,5 @@
 angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
-    .controller("MainController", function($scope, $http, $timeout, $location, $rootScope, $cookies) {
+    .controller("MainController", function($scope, $http, $timeout, $location, $rootScope) {
 
         // $rootScope.login = false;
         $scope.errorMsg = false;
@@ -19,6 +19,21 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
                     $timeout(function() {
                         $location.path('/');
                     }, 2000)
+                } else {
+                    $scope.errorMsg = response.data.message;
+                }
+
+            });
+
+        }
+
+        $scope.register = function(user) {
+            console.log(user);
+            $http.post("/api/registration", JSON.stringify(user)).then(function(response) {
+
+                if (response.data.success) {
+                    $scope.successMsg = response.data.message;
+                    $location.path('/')
                 } else {
                     $scope.errorMsg = response.data.message;
                 }

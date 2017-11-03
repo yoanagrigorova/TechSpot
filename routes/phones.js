@@ -17,6 +17,12 @@ router.get("/:phones_id", function(req, res, next) {
     collection.find({ _id: id }, {}, function(e, docs) {
         res.json(docs);
     });
-})
+});
+
+// router.post('/', function(req,res,next){
+//     var db = req.db;
+//     var collection = db.get('phones');
+//     req.session
+// });
 
 module.exports = router;

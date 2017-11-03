@@ -9,7 +9,7 @@ router.post('/', function(req, res, next) {
     users.find({ mail: username, password: password }).then(function(data) {
         if (data.length > 0) {
             req.session.user = data[0];
-            console.log(req.session.user);
+            console.log(req.session.user.permission);
             var sesiq = req.session.userId;
             res.json({ success: true, message: 'Login successful!', user: data });
             res.end();

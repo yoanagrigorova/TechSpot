@@ -350,7 +350,7 @@ div.form-group {
 
 /* strong {
     font-size: 1.8em;
-} */
+}  */
 
 body {
     background-image: url('../images/promo-wallpaper1.jpg');
@@ -382,4 +382,33 @@ table tr td {
 
 table tr th {
     text-align: center;
+}
+
+#logo {
+    width: 40%;
+}
+
+#adminPanel {
+    padding: 20px;
+    position: fixed;
+    top: 260px;
+    left: 1150px;
+    z-index: 2;
+    background-color: gray;
+    border-radius: 5px;
+}
+
+#adminPanel input {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.nav.navbar-nav {
+    width: 100% !important;
+}
+
+.nav.navbar-nav li {
+    font-size: 1.2em;
+    text-align: center;
+    width: 15%;
 }
