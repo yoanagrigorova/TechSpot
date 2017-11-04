@@ -347,9 +347,10 @@ div.form-group {
     margin-right: 0px !important;
 }
 
-strong {
+
+/* strong {
     font-size: 1.8em;
-}
+}  */
 
 body {
     background-image: url('../images/promo-wallpaper1.jpg');
@@ -359,6 +360,39 @@ main {
     background-color: white;
     padding: 20px;
 }
+
+.popUp.ng-hide {
+    opacity: 0;
+}
+
+.popUp.ng-hide-add,
+.popUp.ng-hide-remove {
+    transition: all linear 0.5s;
+}
+
+#popUp.ng-hide{
+    opacity: 0
+}
+
+#popUp.ng-hide-add,
+#popUp.ng-hide-remove{
+    transition: all linear 0.5s;
+}
+
+.menu {
+    height: 200px;
+    /* overflow: scroll; */
+}
+
+table tr td {
+    height: 58px !important;
+    text-align: center;
+}
+
+table tr th {
+    text-align: center;
+}
+
 #logo {
     width: 40%;
 }
@@ -372,11 +406,13 @@ main {
     background-color: gray;
     border-radius: 5px;
 }
+
 #adminPanel input {
     display: block;
     margin-bottom: 5px;
 }
-.nav.navbar-nav{
+
+.nav.navbar-nav {
     width: 100% !important;
 }
 
@@ -386,3 +422,78 @@ main {
     width: 15%;
 }
 
+.adminButtons {
+    float: right;
+    margin-right: 10px;
+}
+
+#navigation {
+    background-color: #2c3e50;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+#commentBox {
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+#commentBox div {
+    padding: 5px;
+    border: 2px solid #1881E9;
+    width: 40%;
+    border-radius: 5px;
+}
+
+#commentBox strong {
+    font-size: 1.6em;
+}
+
+#myTabContent {
+    padding: 10px;
+}
+
+#tabContent {
+    margin-top: 10px;
+}
+
+.thumbnail {
+    padding:0px;
+}
+.panel {
+	position:relative;
+}
+.panel>.panel-heading:after,.panel>.panel-heading:before{
+	position:absolute;
+	top:11px;left:-16px;
+	right:100%;
+	width:0;
+	height:0;
+	display:block;
+	content:" ";
+	border-color:transparent;
+	border-style:solid solid outset;
+	pointer-events:none;
+}
+.panel>.panel-heading:after{
+	border-width:7px;
+	border-right-color:#f7f7f7;
+	margin-top:1px;
+	margin-left:2px;
+}
+.panel>.panel-heading:before{
+	border-right-color:#ddd;
+	border-width:8px;
+}
+
+#addComment {
+    font-size: 10px;
+}
+
+.articleTech {
+    width: 40%;
+    margin: auto;
+}

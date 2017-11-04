@@ -11,7 +11,7 @@ angular.module("computersController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
                 options: {
                     floor: $scope.computers[0].price,
                     ceil: $scope.computers[$scope.computers.length - 1].price,
-                    step: 50
+                    step: 10
                 }
             };
             print(response.data);
@@ -32,28 +32,22 @@ angular.module("computersController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
         }
 
         function print(data) {
-            var brands = data.map((comp) => comp.brand);
-            brands = brands.filter(onlyUnique);
+            var brands = data.map((comp) => comp.brand).filter(onlyUnique);
             sort(brands);
             $scope.brands = brands;
-            var displaySizes = data.map((comp) => comp.displaysize);
-            displaySizes = displaySizes.filter(onlyUnique);
+            var displaySizes = data.map((comp) => comp.displaysize).filter(onlyUnique);
             sort(displaySizes);
             $scope.displaySizes = displaySizes;
-            var rams = data.map((comp) => comp.ram);
-            rams = rams.filter(onlyUnique);
+            var rams = data.map((comp) => comp.ram).filter(onlyUnique);
             sort(rams);
             $scope.rams = rams;
-            var hdds = data.map((comp) => comp.hdd);
-            hdds = hdds.filter(onlyUnique);
+            var hdds = data.map((comp) => comp.hdd).filter(onlyUnique);
             hdds = hdds.map(x => parseFloat(x)).sort((x1, x2) => x1 - x2).map(x => x + " GB")
             $scope.hdds = hdds;
-            var oss = data.map((comp) => comp.os);
-            oss = oss.filter(onlyUnique);
+            var oss = data.map((comp) => comp.os).filter(onlyUnique);
             sort(oss);
             $scope.oss = oss;
-            var processors = data.map((comp) => comp.processor);
-            processors = processors.filter(onlyUnique);
+            var processors = data.map((comp) => comp.processor).filter(onlyUnique);
             sort(processors);
             $scope.processors = processors;
         }

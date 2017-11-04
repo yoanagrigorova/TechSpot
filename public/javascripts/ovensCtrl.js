@@ -1,10 +1,19 @@
-angular.module("ovensController", [])
+angular.module("ovensController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
     .controller("ovensCtrl", function($scope, $http) {
         $scope.search = {};
         $scope.pageTitle = "Фурни за вграждане";
         $http.get("/api/ovens").then(function(response) {
             response.data.sort((p1, p2) => p1.price - p2.price);
             $scope.ovens = response.data;
+            $scope.slider = {
+                minValue: $scope.ovens[0].price,
+                maxValue: $scope.ovens[$scope.ovens.length - 1].price,
+                options: {
+                    floor: $scope.ovens[0].price,
+                    ceil: $scope.ovens[$scope.ovens.length - 1].price,
+                    step: 10
+                }
+            };
             print(response.data);
         });
 
@@ -23,16 +32,13 @@ angular.module("ovensController", [])
         }
 
         function print(data) {
-            var brands = data.map((ov) => ov.brand);
-            brands = brands.filter(onlyUnique);
+            var brands = data.map((ov) => ov.brand).filter(onlyUnique);
             sort(brands);
             $scope.brands = brands;
-            var widths = data.map((ov) => ov.width);
-            widths = widths.filter(onlyUnique);
+            var widths = data.map((ov) => ov.width).filter(onlyUnique);
             sort(widths);
             $scope.widths = widths;
-            var functions = data.map((ov) => ov.functions);
-            functions = functions.filter(onlyUnique);
+            var functions = data.map((ov) => ov.functions).filter(onlyUnique);
             sort(functions);
             $scope.functions = functions;
             var capacities = data.map((ov) => ov.capacity).filter(onlyUnique);

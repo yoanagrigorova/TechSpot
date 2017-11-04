@@ -28,7 +28,7 @@ phone.controller("phonesCtrl", function($scope, $http) {
             options: {
                 floor: $scope.phones[0].price,
                 ceil: $scope.phones[$scope.phones.length - 1].price,
-                step: 50
+                step: 10
             }
         };
         print(response.data);
@@ -50,20 +50,16 @@ phone.controller("phonesCtrl", function($scope, $http) {
     }
 
     function print(data) {
-        var brands = data.map((phone) => phone.brand);
-        brands = brands.filter(onlyUnique);
+        var brands = data.map((phone) => phone.brand).filter(onlyUnique);
         sort(brands);
         $scope.brands = brands;
-        var displaySizes = data.map((phone) => phone.displaysize);
-        displaySizes = displaySizes.filter(onlyUnique);
+        var displaySizes = data.map((phone) => phone.displaysize).filter(onlyUnique);
         sort(displaySizes);
         $scope.displaySizes = displaySizes;
-        var rearCameras = data.map((phone) => phone.rearcamera);
-        rearCameras = rearCameras.filter(onlyUnique);
+        var rearCameras = data.map((phone) => phone.rearcamera).filter(onlyUnique);
         sort(rearCameras.map(x => parseFloat(x)));
         $scope.rearCameras = rearCameras;
-        var iternalMemory = data.map((phone) => phone.iternalmemory);
-        iternalMemory = iternalMemory.filter(onlyUnique);
+        var iternalMemory = data.map((phone) => phone.iternalmemory).filter(onlyUnique);
         iternalMemory = iternalMemory.map(x => parseFloat(x)).sort((x1, x2) => x1 - x2).map(x => x + " GB");
         $scope.iternalMemory = iternalMemory;
     }

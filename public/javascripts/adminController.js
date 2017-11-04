@@ -1,45 +1,25 @@
-angular.module('adminApp', [])
+angular.module('adminApp', ['ngAnimate'])
 
-.controller('adminCtrl', function($scope,$http){
-    
-   $scope.product = {};
+    .controller('adminCtrl', function ($scope, $http) {
+        $scope.editMode = false;
+        
 
-    $scope.editProduct = function(p) {
-        $scope.editMode = true;
-        console.log(p.title);
-        $scope.product.ime = p.title;
-        $scope.product.price = p.price;
+        $scope.editProduct = function (p) {
+            $scope.editMode = true;
+            $scope.productToEdit = p;
 
-        $scope.changeName = function() {
-            p.title = $scope.product.ime;
+            $scope.saveProduct = function () {
+                console.log($scope.productToEdit);
+                $http.post('/admin' + '/' + p.type + '/' + p._id, angular.toJson($scope.productToEdit)).then(function (response) {
+                    console.log(response);
+                });
+            };
+
+            $scope.deleteProduct = function() {
+                $http.delete('/admin' + '/' + p.type + '/' + p._id, angular.toJson($scope.productToEdit)).then(function(response){
+                    console.log(response)
+                })
+            };
+        
         }
-
-        $scope.changePrice = function() {
-            console.log(p._id);
-            p.price = parseInt($scope.product.price);
-            console.log(p.price);   
-        }
-
-        // $scope.propFields = function() {
-        //     $scope.options = [];
-        //     for (prop in p) {
-        //         console.log(prop)
-        //         $scope.options.push(prop);
-        //     }
-        //     console.log($scope.options);
-        // }
-
-        // $scope.propFields();
-
-        $scope.saveProduct = function() {
-            console.log(p);
-           $http.post('/admin' + '/' + p.type + '/' + p._id, angular.toJson(p)).then(function(response){
-                console.log(response);
-            });
-        }
-    }
-
-    
-
-
-})
+    })

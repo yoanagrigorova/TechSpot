@@ -1,7 +1,8 @@
+
 <section class="row">
     <h1> {{pageTitle}} </h1>
 
-    <aside class="col-md-2">
+    <aside class="col-md-3">
         <h3>Резултати</h3>
         <div>
             <h4> Цена в лева </h4>
@@ -34,19 +35,11 @@
             </div>
     </aside>
     <div class="col-md-8 productsListing" ng-controller='adminCtrl'>
-            <div id='adminPanel' ng-show='editMode'>
-                <h1> Admin panel </h1>
-                <label for='changeName'> <strong> Промени име </strong> </label>
-                <input id='changeName' class='form-control' type='text' ng-change='changeName()' ng-model='product.ime'>
-                <label for='changePrice'> <strong> Промени цена </strong> </label>
-                <input id='changePrice' class='form-control' type='text' ng-change='changePrice()' ng-model='product.price'>
-                <button ng-click='saveProduct()' class="btn btn-success"> ЗАПАЗИ </button>
-                <button ng-click='removeProduct()' class="btn btn-danger"> ИЗТРИЙ </button>
-                 </div>
+      
         <article class='animate' class="col-md-12" ng-repeat="phone in phones | filter:search.brand | filter:search.displaysize:true | filter:search.rc | filter:search.im | sizeFilter:slider">
             <span class="col-md-2" style="float:left"><img ng-src="{{phone.pictures[0]}}" alt=""/></span>
-           
-            
+
+
             <div class="col-md-7" class="phoneInfo">
                 <h4> {{phone.title}} </h4>
                 <ul>
@@ -61,11 +54,13 @@
                 <button class="buy btn btn-danger" ng-click='addToCart(phone)'>КУПИ</button>
                 <br>
                 <button class="info btn btn-info"><a ng-href="phones/{{phone._id}}">ВИЖ ОЩЕ</a></button>
-                <span ng-show='userInSess.permission == "admin"'><button class="btn btn-warning" ng-click='editProduct(phone)'> EDIT </button></span>
+                
             </span>
             <a href="#" ng-click="addToFavorites(phone)" class="btn btn-link favorite" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
-            <a href="#" class="btn btn-link compare" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
-           
+            <a href="#" ng-click="addToCompare(phone)" class="btn btn-link compare" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
         </article>
     </div>
 </section>
+
+
+
