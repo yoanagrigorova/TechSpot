@@ -98,8 +98,14 @@ app.config(function($routeProvider, $locationProvider) {
         })
 
     .when("/compare", {
-        templateUrl: "compare.htm"
-    })
+            templateUrl: "compare.htm"
+        })
+        .when("/cart", {
+            templateUrl: "cart.htm"
+        })
+        .when("/checkout", {
+            templateUrl: "checkout.htm"
+        })
 
     $locationProvider.html5Mode({
         enabled: true,

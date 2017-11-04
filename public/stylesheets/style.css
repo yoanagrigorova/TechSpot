@@ -375,12 +375,12 @@ main {
     overflow: scroll;
 }
 
-table tr td {
+div#comparePanel table tr td {
     height: 58px !important;
     text-align: center;
 }
 
-table tr th {
+div#comparePanel table tr th {
     text-align: center;
 }
 
@@ -411,4 +411,36 @@ table tr th {
     font-size: 1.2em;
     text-align: center;
     width: 15%;
+}
+
+div#productsToBuy td img {
+    height: 40px;
+    width: 40px;
+}
+
+button a {
+    color: white;
+}
+
+div#checkout div#adressDiv span.step {
+    background-color: rgb(168, 69, 69);
+    color: white;
+    text-align: center;
+    height: 60px;
+}
+
+div#checkout div#adressDiv h2 {
+    height: 60px;
+    /* vertical-align: middle; */
+}
+
+div#checkout div#adressDiv {
+    height: 60px;
+    box-sizing: border-box
+}
+
+div#checkout span img {
+    height: 40px;
+    width: 40px;
+    margin-top: 1em;
 }

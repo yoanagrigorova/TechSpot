@@ -30,12 +30,27 @@
     <script src="./javascripts/router.js">
     </script>
     <script src="./javascripts/profileCtrl.js"></script>
+    <!-- <script src="http://connect.facebook.net/en_US/all.js"></script> -->
 
 </head>
 
 
 
 <body ng-app='myApp' ng-controller="MainController">
+
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=127323264645300';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
     <span><img id="logo" src="./images/logo1.png" alt=""/></span>
 
     <form method="GET" class="navbar-form navbar-right" role="search">
@@ -61,7 +76,7 @@
                 <div ng-show='display3' class="popUp menu" ng-mouseover='display3=true' ng-mouseleave='display3=false' id='dropMenu3'>
                     <p ng-show='userInSess'>
                         <div ng-repeat='x in userInSess.favorites'><img ng-src='{{x.pictures[0]}}' width='50px' /> <a ng-href=/phones/{{x._id}}> {{x.title}} </a>
-                            <img width='20px' src='images/x-mark-3-16.ico' ng-click='removeFromFavorite(x)'>
+                            <img width='20px' src='images/remove.png' ng-click='removeFromFavorite(x)'>
                         </div>
                         <hr>
                         <button class="btn btn-default btn-xs">Виж любими</button>
@@ -72,9 +87,11 @@
                     <div ng-repeat='x in userInSess.products' class='animate'>
                         <img ng-src='{{x.pictures[0]}}' width='50px' />
                         <a ng-href=/phones/{{x._id}}> {{x.title}} </a>
-                        <img width='20px' src='images/x-mark-3-16.ico' ng-click='removeFromCart(x)'>
+                        <img width='20px' src='images/remove.png' ng-click='removeFromCart(x)'>
                         <p> {{x.quantity}} бр.</p>
+                        <hr>
                     </div>
+                    <button class="btn btn-default btn-xs"><a ng-href="/cart">Поръчай</a></button>
                     <strong ng-show='userInSess.products.length == 0'> Кошницата е празна! </strong>
                 </div>
             </li>

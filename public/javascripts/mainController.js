@@ -1,11 +1,10 @@
 angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
     .controller("MainController", function($scope, $http, $timeout, $location, $rootScope) {
 
-        // $rootScope.login = false;
         $scope.errorMsg = false;
         $scope.getCurrentUser = function() {
             $rootScope.userInSess = JSON.parse(localStorage.getItem('currentUser'));
-            console.log($rootScope.userInSess);
+            // console.log($rootScope.userInSess);
         }
         $scope.logIn = function(user) {
             $http.post("/login", JSON.stringify(user)).then(function(response) {
@@ -22,7 +21,6 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
                 } else {
                     $scope.errorMsg = response.data.message;
                 }
-
             });
 
         }
@@ -109,4 +107,30 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
         $scope.showCategory = function(products, property) {
             return products.some(pr => pr.hasOwnProperty(property));
         }
+
+        $scope.getMyLastName = function() {
+            facebookService.getMyLastName()
+                .then(function(response) {
+                    $scope.last_name = response.last_name;
+                });
+        };
     })
+    .factory('facebookService', function($q) {
+        console.log("test");
+        return {
+            getMyLastName: function() {
+                var deferred = $q.defer();
+                FB.api('/1682503738435015', {
+                    fields: 'last_name'
+                }, function(response) {
+                    console.log(response);
+                    if (!response || response.error) {
+                        deferred.reject('Error occured');
+                    } else {
+                        deferred.resolve(response);
+                    }
+                });
+                return deferred.promise;
+            }
+        }
+    });
