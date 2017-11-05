@@ -303,7 +303,8 @@ div.form-group {
     border-radius: 5px;
     padding: 10px;
     z-index: 1;
-    width: 200px;
+    right: 45px;
+    width: 300px;
 }
 
 #dropMenu,
@@ -496,4 +497,8 @@ a:hover {
 .articleTech {
     width: 40%;
     margin: auto;
+}
+
+button.close {
+    margin: 0 !important;
 }
