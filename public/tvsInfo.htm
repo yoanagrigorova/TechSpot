@@ -1,62 +1,208 @@
-<div class="productsInfo" ng-repeat="tv in tvs">
-    <div class="row">
-        <h1>{{tv.title}}</h1>
-        <hr>
-        <div class="col-md-5">
-            <img class="thumbnail" ng-src="{{tv.pictures[0]}}" alt="">
-        </div>
-        <div class="col-md-4">
-            <div class="col-md-12 price">
-                <h3> {{tv.price}}<sup>00</sup>лв </h3>
-                <button class="btn btn-danger pull-right" ng-click='addToCart(tv)'>Купи</button>
-                <hr>
-                <a href="#" ng-click="addToFavorites(tv)" class="btn btn-link pull-left" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
-                <a href="#" ng-click="addToCompare(tv)" class="btn btn-link" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
+<div ng-controller="adminCtrl">
+    <div class="productsInfo" ng-repeat="tv in tvs" ng-show='editMode==false'>
+        <div class="row">
+            <h1>{{tv.title}}</h1>
+            <span style='float:right' ng-show='userInSess.permission == "admin"'><button class="btn btn-warning" ng-click='editProduct(tv)'> EDIT </button></span>
+            <hr>
+            <div class="col-md-5">
+                <img class="thumbnail" ng-src="{{tv.pictures[0]}}" alt="">
             </div>
-            <div class="col-md-12">
-                <ul>
-                    <li><strong>Марка:</strong> {{tv.brand}}</li>
-                    <li><strong>Размер на екрана в INCH:</strong> {{tv.displaysize}}"</li>
-                    <li><strong>Резолюция:</strong> {{tv.resolution}}</li>
-                </ul>
+            <div class="col-md-4">
+                <div class="col-md-12 price">
+                    <h3> {{tv.price}}<sup>00</sup>лв </h3>
+                    <button class="btn btn-danger pull-right" ng-click='addToCart(tv)'>Купи</button>
+                    <hr>
+                    <a href="#" ng-click="addToFavorites(tv)" class="btn btn-link pull-left" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
+                    <a href="#" ng-click="addToCompare(tv)" class="btn btn-link" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
+                </div>
+                <div class="col-md-12">
+                    <ul>
+                        <li><strong>Процесор:</strong> {{tv.processor}}</li>
+                        <li><strong>Размер на екрана в INCH:</strong> {{tv.displaysize}}"</li>
+                        <li><strong>RAM:</strong> {{tv.ram}}</li>
+                        <li><strong>Задна камера:</strong> {{tv.rearcamera}}</li>
+                        <li><strong>DUAL SIM</strong></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="row" class="characteristics">
+            <ul class="nav nav-tabs">
+                <li ng-class="{'active': selectedTab == 1}"> <a ng-click='selectedTab = 1'>Характеристика</a></li>
+                <li ng-class="{'active': selectedTab == 2}"> <a ng-click='selectedTab = 2'> Ревюта </a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div ng-show='selectedTab == 1' id='popUp'>
+                    <table class="table table-striped table-hover">
+                        <tbody>
+                            <tr>
+                                <td>МАРКА</td>
+                                <td>{{tv.brand}}</td>
+                            </tr>
+                            <tr>
+                                <td>МОДЕЛ</td>
+                                <td> {{tv.model}} </td>
+                            </tr>
+
+                            <tr>
+                                <td>РАЗМЕР НА ЕКРАНА В ИНЧОВЕ</td>
+                                <td> {{tv.displaysize}} </td>
+                            </tr>
+                            <tr>
+                                <td>РЕЗОЛЮЦИЯ</td>
+                                <td> {{tv.resolution}} </td>
+                            </tr>
+
+                            <tr>
+                                <td>ОПЕРАЦИОННА СИСТЕМА</td>
+                                <td> {{tv.os}} </td>
+                            </tr>
+                            <tr>
+                                <td>ТЕГЛО</td>
+                                <td> {{tv.weight}} </td>
+                            </tr>
+                            <tr>
+                                <td>ГАБАРИТИ</td>
+                                <td> {{tv.gabarites}} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div ng-show='selectedTab == 2' id='popUp' class='row'>
+                    <div class="col-sm-5">
+                        <div class="panel panel-default" ng-repeat='comment in tv.comments'>
+                            <div class="panel-heading">
+                                <strong>{{comment.user}}</strong> <span class="text-muted">{{comment.date}}</span>
+                            </div>
+                            <div class="panel-body">
+                                {{comment.text}}
+                            </div>
+                        </div>
+
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>{{userInSess.firstName}}</strong>
+                            </div>
+                            <div class="panel-body">
+                                <input type='text' class='form-control' ng-model='newComment.text'> </input>
+                                <button ng-click='addCommentToProduct(tvs[0])' id='addComment' class='btn btn-info'> ДОБАВИ КОМЕНТАР </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
-    <div class="row" class="characteristics">
-        <ul class="nav nav-tabs">
-            <li><a data-toggle="tab">Характеристика</a></li>
-        </ul>
-        <div id="myTabContent" class="tab-content">
-            <div class="tab-pane fade active in">
-                <table class="table table-striped table-hover ">
-                    <tbody>
-                        <tr>
-                            <td>МАРКА</td>
-                            <td>{{tv.brand}}</td>
-                        </tr>
-                        <tr>
-                            <td>МОДЕЛ</td>
-                            <td> {{tv.model}} </td>
-                        </tr>
-                        <tr>
-                            <td>РАЗМЕР НА ЕКРАНА В INCH</td>
-                            <td> {{tv.displaysize}} </td>
-                        </tr>
-                        <tr>
-                            <td>РЕЗОЛЮЦИЯ</td>
-                            <td> {{tv.resolution}} </td>
-                        </tr>
-                        <tr ng-if="tv.os">
-                            <td>ОПЕРАЦИОННА СИСТЕМА</td>
-                            <td> {{tv.os}} </td>
-                        </tr>
-                        <tr ng-if="tv.weight">
-                            <td>ТЕГЛО</td>
-                            <td> {{tv.weight}} </td>
-                        </tr>
-                    </tbody>
-                </table>
+
+
+
+
+
+    <div class="productsInfo" id='popUp' ng-show='editMode'>
+        <h1> Admin panel </h1>
+        <div class="row">
+            <span ng-show='userInSess.permission == "admin"' class='adminButtons'><button class="btn btn-success" ng-click='saveProduct()'> SAVE </button></span>
+            <span ng-show='userInSess.permission == "admin"' class='adminButtons'><button class='btn btn-danger'  ng-click='deleteProduct()'> DELETE </button></span>
+            <input type='text' style='width:40%' class='form-control' ng-model='productToEdit.title'></input>
+
+            <hr>
+            <div class="col-md-5">
+                <img class="thumbnail" ng-src="{{productToEdit.pictures[0]}}" alt="">
+                <label for='img'> PHOTO URL: </label>
+                <input class='form-control' type='text' ng-model='productToEdit.pictures[0]'>
+            </div>
+            <div class="col-md-4">
+                <div class="col-md-12 price">
+                    <label for='input'> ЦЕНА </label>
+                    <input type='number' class='form-control' ng-model='productToEdit.price'>
+                    <button class="btn btn-danger pull-right" ng-click='addToCart(tv)'>Купи</button>
+                    <hr>
+                    <a href="#" ng-click="addToFavorites(tv)" class="btn btn-link pull-left" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
+                    <a href="#" ng-click="addToCompare(tv)" class="btn btn-link" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
+                </div>
+                <div class="col-md-12">
+                    <ul>
+                        <li><strong>Процесор:</strong> {{productToEdit.processor}}</li>
+                        <li><strong>Размер на екрана в INCH:</strong> {{productToEdit.displaysize}}"</li>
+                        <li><strong>RAM:</strong> {{productToEdit.ram}}</li>
+                        <li><strong>Задна камера:</strong> {{productToEdit.rearcamera}}</li>
+                        <li><strong>DUAL SIM</strong></li>
+                    </ul>
+                </div>
             </div>
         </div>
+
+        <div ng-init='selectedTab = 1' id='tabContent'>
+            <ul class="nav nav-tabs">
+                <li ng-class="{'active': selectedTab == 1}"> <a ng-click='selectedTab = 1'>Характеристика</a></li>
+                <li ng-class="{'active': selectedTab == 2}"> <a ng-click='selectedTab = 2'> Ревюта </a></li>
+            </ul>
+            <div id='myTabContent' class="tab-content">
+                <div ng-show='selectedTab == 1' id='popUp'>
+                    <table class="table table-striped table-hover">
+                        <tbody>
+                            <tr>
+                                <td>МАРКА</td>
+                                <td>{{productToEdit.brand}}</td>
+                            </tr>
+                            <tr>
+                                <td>МОДЕЛ</td>
+                                <td> {{productToEdit.model}} </td>
+                            </tr>
+
+                            <tr>
+                                <td>РАЗМЕР НА ЕКРАНА В ИНЧОВЕ</td>
+                                <td> {{productToEdit.displaysize}} </td>
+                            </tr>
+                            <tr>
+                                <td>РЕЗОЛЮЦИЯ</td>
+                                <td> {{productToEdit.resolution}} </td>
+                            </tr>
+
+                            <tr>
+                                <td>ОПЕРАЦИОННА СИСТЕМА</td>
+                                <td> {{productToEdit.os}} </td>
+                            </tr>
+                            <tr>
+                                <td>ТЕГЛО</td>
+                                <td> {{productToEdit.weight}} </td>
+                            </tr>
+                            <tr>
+                                <td>ГАБАРИТИ</td>
+                                <td> {{productToEdit.gabarites}} </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div ng-show='selectedTab == 2' id='popUp' class='row'>
+                    <div class="col-sm-5">
+                        <div class="panel panel-default" ng-repeat='comment in productToEdit.comments'>
+                            <div class="panel-heading">
+                                <strong>{{comment.user}}</strong> <span class="text-muted">{{comment.date}}</span>
+                            </div>
+                            <div class="panel-body">
+                                {{comment.text}}
+                            </div>
+                        </div>
+
+
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <strong>{{userInSess.firstName}}</strong>
+                            </div>
+                            <div class="panel-body">
+                                <input type='text' class='form-control' ng-model='newComment.text'> </input>
+                                <button ng-click='addCommentToProduct(tvs[0])' id='addComment' class='btn btn-info'> ДОБАВИ КОМЕНТАР </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
     </div>
 </div>

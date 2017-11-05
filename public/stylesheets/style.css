@@ -1,6 +1,7 @@
 body {
     padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-image: url('http://freebackgroundweb.files.wordpress.com/2012/05/pattern8-pattern-m316-452.jpg');
 }
 
 a {
@@ -303,12 +304,17 @@ div.form-group {
     border-radius: 5px;
     padding: 10px;
     z-index: 1;
-    width: 200px;
+    width: 300px;
 }
 
 #dropMenu,
 #dropMenu2 {
     width: 215px;
+}
+
+#dropMenu3,
+#dropMenu4 {
+    right: 10px;
 }
 
 #dropMenu button,
@@ -357,10 +363,6 @@ div.form-group {
 /* strong {
     font-size: 1.8em;
 }  */
-
-body {
-    background-image: url('../images/promo-wallpaper1.jpg');
-}
 
 main {
     background-color: white;
@@ -572,4 +574,8 @@ div#finalPrice {
 
 #finalMessage {
     text-align: center;
+}
+
+button.close {
+    margin: 0 !important;
 }

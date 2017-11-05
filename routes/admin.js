@@ -6,16 +6,15 @@ router.post('/:collection/:id', function (req, res, next) {
     var collection = req.params.collection;
     var id = req.params.id;
     var selection = db.get(collection);  
-    selection.update({_id: id}, req.body).then(function(e, docs) {
+    selection.update({_id: id}, req.body, function(e, docs) {
       if (e){
-          console.log(e);
+          console.log('greshka')
       } else {
+          console.log('stignah')
           res.json({message: 'Продуктът беше променен успешно!'})
       }
 
     });
-    
-
 });
 
 router.delete('/:collection/:id', function (req, res, next) {
@@ -23,11 +22,11 @@ router.delete('/:collection/:id', function (req, res, next) {
     var collection = req.params.collection;
     var id = req.params.id;
     var selection = db.get(collection);
-    selection.deleteOne({_id: id}, {}).then(function(e, docs){
+    selection.remove({_id: id}, {}, function(e, docs){
       if (e){
-          throw e
+           res.json({message: e});
       } else {
-          res.json({message: 'Продуктът беше изтрит успешно!'})
+          res.json({message: 'Продуктът беше изтрит успешно!'});
       }
     })  
 });

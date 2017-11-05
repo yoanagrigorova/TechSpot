@@ -30,7 +30,7 @@
     <script src="./javascripts/router.js">
     </script>
     <script src="./javascripts/profileCtrl.js"></script>
-    <!-- <script src="http://connect.facebook.net/en_US/all.js"></script> -->
+    <script src='./javascripts/fbScript.js'></script>
 
 </head>
 
@@ -53,9 +53,8 @@
 
     <span><img id="logo" src="./images/logo1.png" alt=""/></span>
 
-    <form method="GET" class="navbar-form navbar-right" role="search">
+    <form class="navbar-form navbar-right" role="search">
         <div class="form-group" ng-controller="searchCtrl">
-
             <select class='form-control selectpicker' data-style="btn-primary" ng-model='selectedOption' ng-change='changeValue(selectedOption)' ng-options='x.name for x in categories'></select>
             <input type="text" class="form-control" placeholder="Search" ng-model='search.name'>
             <div id='searchDiv'>

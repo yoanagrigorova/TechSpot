@@ -1,6 +1,8 @@
 angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
     .controller("MainController", function($scope, $http, $timeout, $location, $rootScope, $route, $window) {
 
+        // $rootScope.login = false;
+        $scope.userRegister = {};
         $scope.errorMsg = false;
         $scope.getCurrentUser = function() {
             $rootScope.userInSess = JSON.parse(localStorage.getItem('currentUser'));
@@ -21,7 +23,7 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
 
                     $timeout(function() {
                         localStorage.clear();
-                    }, 600000)
+                    }, 600000);
                 } else {
                     $scope.errorMsg = response.data.message;
                 }
@@ -30,6 +32,8 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
         }
 
         $scope.register = function(user) {
+            console.log($scope.userRegister)
+            console.log(user);
             $http.post("/api/registration", JSON.stringify(user)).then(function(response) {
 
                 if (response.data.success) {
@@ -43,8 +47,14 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
 
         }
         $scope.logOut = function() {
-            $http.get('/logout');
+            $rootScope.userInSess = {};
+            var user = localStorage.getItem('currentUser');
+
+            $http.post('/api/logout', user).then(function(response) {
+                console.log()
+            });
             localStorage.clear();
+
             $rootScope.login = false;
 
         }
@@ -73,7 +83,7 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
                 var product = $rootScope.userInSess.products.find(x => x.title == item.title);
                 product.quantity++;
             }
-            localStorage.setItem('currentUser', JSON.stringify($rootScope.userInSess));
+            localStorage.setItem('currentUser', angular.toJson($rootScope.userInSess));
             $scope.addProduct = true;
             $timeout(function() {
                 $scope.addProduct = false;
@@ -142,4 +152,37 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
             $scope.final = true;
             items.forEach(it => $scope.removeFromCart(it));
         }
-    })
+
+        $scope.FBLogin = function() {
+            FB.login(function(response) {
+                if (response.authResponse) {
+                    console.log('Welcome');
+                    FB.api('/me', 'GET', { fields: 'picture' }, function(response) {
+                        console.log(response)
+                        console.log('GOod to see you' + response.name + ' ' + response.mail)
+
+                    });
+                } else {
+                    console.log('Not authorized!')
+                }
+            }, { scope: 'public_profile, email' })
+        }
+
+        $scope.getInfo = function() {
+            FB.login(function(response) {
+                if (response.authResponse) {
+                    FB.api('/me', { fields: 'first_name, last_name, email' }, function(response) {
+                        console.log($scope.userRegister);
+                        $scope.userRegister.name = response.first_name;
+                        $scope.userRegister.lastName = response.last_name;
+                        $scope.userRegister.email = response.email;
+                    })
+                } else {
+                    console.log('Not authorized!')
+                }
+
+            })
+        };
+
+
+    });
