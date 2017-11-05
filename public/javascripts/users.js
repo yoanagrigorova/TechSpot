@@ -8,6 +8,7 @@ var User = function(firstName, lastName, mail, phone, password) {
         this.password = password;
         this.products = [];
         this.favorites = [];
+        this.boughtProducts = [];
 
     } else {
         throw new Error("Invalid data");

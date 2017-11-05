@@ -9,6 +9,7 @@ var mongodb = require('mongodb');
 var monk = require('monk');
 var db = monk('angelov21:plf13017@ds237445.mlab.com:37445/final-project');
 var express = require("express");
+var sha1 = require("sha1");
 var app = express();
 
 app.use(function(req, res, next) {

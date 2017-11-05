@@ -1,143 +1,56 @@
-<!-- <div>
-    <form class="form-horizontal" action="">
-        <fieldset>
-            <div class="form-group">
-                <label for="title" class="col-lg-2 control-label">Заглавие </label>
-                <div class="col-lg-6">
-                    <input type="text" name="title" ng-model="" class="form-control" id="title">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="brand" class="col-lg-2 control-label">Марка </label>
-                <div class="col-lg-6">
-                    <input type="text" name="brand" ng-model="" class="form-control" id="brand">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="model" class="col-lg-2 control-label">Модел</label>
-                <div class="col-lg-6">
-                    <input type="text" name="model" ng-model="" class="form-control" id="model">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="processor" class="col-lg-2 control-label">Процесор</label>
-                <div class="col-lg-6">
-                    <input type="text" name="processor" ng-model="" class="form-control" id="processor">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="displaysize" class="col-lg-2 control-label">Размер на екрана </label>
-                <div class="col-lg-6">
-                    <input type="text" name="displaysize" ng-model="" class="form-control" id="displaysize">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="resolution" class="col-lg-2 control-label">Резолюция</label>
-                <div class="col-lg-6">
-                    <input type="text" name="resolution" ng-model="" class="form-control" id="resolution">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="ram" class="col-lg-2 control-label">Капацитет RAM</label>
-                <div class="col-lg-6">
-                    <input type="text" name="ram" ng-model="" class="form-control" id="ram">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="hdd" class="col-lg-2 control-label">Капацитет HDD</label>
-                <div class="col-lg-6">
-                    <input type="text" name="hdd" ng-model="" class="form-control" id="hdd">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="rearCamera" class="col-lg-2 control-label">Задна камера</label>
-                <div class="col-lg-6">
-                    <input type="text" name="rearCamera" ng-model="" class="form-control" id="rearCamera">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="os" class="col-lg-2 control-label">Операционна система</label>
-                <div class="col-lg-6">
-                    <input type="text" name="os" ng-model="" class="form-control" id="os">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="weight" class="col-lg-2 control-label">Тегло</label>
-                <div class="col-lg-6">
-                    <input type="text" name="weight" ng-model="" class="form-control" id="weight">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="battery" class="col-lg-2 control-label">Тип батерия</label>
-                <div class="col-lg-6">
-                    <input type="text" name="battery" ng-model="" class="form-control" id="battery">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-6 col-lg-offset-2">
-                    <button type="button" class="btn btn-secondary">Отмени</button>
-                    <button type="submit" class="btn btn-primary">Запази</button>
-                </div>
-            </div>
-
-        </fieldset>
-    </form>
-</div> -->
-
-
 <section class="row">
     <h1> {{pageTitle}} </h1>
 
-    <aside class="col-md-3">
+    <aside class="col-sm-3">
         <h3>Резултати</h3>
 
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <h4> Цена в лева </h4>
             <rzslider rz-slider-model="slider.minValue" rz-slider-high="slider.maxValue" rz-slider-options="slider.options"></rzslider>
         </div>
         <div>
 
-            <div class="col-md-12">
+            <div class="col-sm-12">
                 <h4>Марка</h4>
                 <ul>
                     <li ng-repeat="brand in brands"><input type="checkbox" ng-model='search.brand' ng-true-value="'{{brand}}'" ng-false-value=''> {{brand}} </li>
                 </ul>
             </div>
-            <div class="col-md-12">
+            <div class="col-sm-12">
                 <h4>Капацитет RAM</h4>
                 <ul>
                     <li ng-repeat="ram in rams"><input type="checkbox" ng-model='search.ram' ng-true-value="'{{ram}}'" ng-false-value=''> {{ram}} </li>
                 </ul>
             </div>
-            <div class="col-md-12">
+            <div class="col-sm-12">
                 <h4>Капацитет HDD</h4>
                 <ul>
                     <li ng-repeat="hdd in hdds"><input type="checkbox" ng-model='search.hdd' ng-true-value="'{{hdd}}'" ng-false-value=''> {{hdd}} </li>
                 </ul>
             </div>
-            <div class="col-md-12">
+            <div class="col-sm-12">
                 <h4>Размер на екрана в INCH</h4>
                 <ul>
                     <li ng-repeat="ds in displaySizes"><input type="checkbox" ng-model='search.displaysize' ng-true-value="'{{ds}}'" ng-false-value=''> {{ds}} </li>
                 </ul>
             </div>
-            <div class="col-md-12">
+            <div class="col-sm-12">
                 <h4>Операционна система</h4>
                 <ul>
                     <li ng-repeat="os in oss"><input type="checkbox" ng-model='search.os' ng-true-value="'{{os}}'" ng-false-value=''> {{os}} </li>
                 </ul>
             </div>
-            <div class="col-md-12">
+            <div class="col-sm-12">
                 <h4>Тип процесор</h4>
                 <ul>
                     <li ng-repeat="pr in processors"><input type="checkbox" ng-model='search.pr' ng-true-value="'{{pr}}'" ng-false-value=''> {{pr}} </li>
                 </ul>
             </div>
     </aside>
-    <div class="col-md-8 productsListing">
-        <article class='animate' class="col-md-12" ng-repeat="computer in computers | filter:search.brand | filter:search.displaysize | filter:search.ram | filter:search.os | filter:search.hdd | filter:search.pr | sizeFilter:slider">
-            <span class="col-md-2" style="float:left"><img ng-src="{{computer.pictures[0]}}" alt=""/></span>
-            <div class="col-md-7" class="compInfo">
+    <div class="col-sm-8 productsListing">
+        <article class='animate' class="col-sm-12" ng-repeat="computer in computers | filter:search.brand | filter:search.displaysize | filter:search.ram | filter:search.os | filter:search.hdd | filter:search.pr | sizeFilter:slider">
+            <span class="col-sm-2" style="float:left"><img ng-src="{{computer.pictures[0]}}" alt=""/></span>
+            <div class="col-sm-7" class="compInfo">
                 <h4> {{computer.title}} </h4>
                 <ul>
                     <li>Капацитет RAM: {{computer.ram}} </li>
@@ -146,14 +59,17 @@
                     <li>Операционна система: {{computer.os}}</li>
                 </ul>
             </div>
-            <span class="purchase col-md-3"><h3> {{computer.price}}<sup>00</sup> лв</h3>
+            <span class="purchase col-sm-3"><h3> {{computer.price}}<sup>00</sup> лв</h3>
                 <br>
                 <button class="buy btn btn-danger" ng-click='addToCart(computer)'>КУПИ</button>
                 <br>
                 <button class="info btn btn-info"><a ng-href="computers/{{computer._id}}">ВИЖ ОЩЕ</a></button>
             </span>
-            <a href="#" class="btn btn-link favorite" ng-click="addToFavorites(computer)" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
-            <a href="#" class="btn btn-link compare" ng-click="addToCompare(computer)" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
+            <br><br>
+            <div class="row">
+                <a href="#" class="btn btn-link favorite" ng-click="addToFavorites(computer)" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
+                <a href="#" class="btn btn-link compare" ng-click="addToCompare(computer)" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
+            </div>
         </article>
     </div>
 </section>

@@ -1,35 +1,34 @@
 <section class="row">
     <h1> {{pageTitle}} </h1>
-    <aside class="col-md-3">
+    <aside class="col-sm-3">
         <h3>Резултати</h3>
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <h4> Цена в лева </h4>
             <rzslider rz-slider-model="slider.minValue" rz-slider-high="slider.maxValue" rz-slider-options="slider.options"></rzslider>
         </div>
-        <div>
-            <div>
-                <h4>Марка</h4>
-                <ul>
-                    <li ng-repeat="brand in brands"><input type="checkbox" ng-model='search.brand' ng-true-value="'{{brand}}'" ng-false-value=''> {{brand}} </li>
-                </ul>
-            </div>
-            <div>
-                <h4>Размер на екрана в инчове</h4>
-                <ul>
-                    <li ng-repeat="ds in displaySizes"><input type="checkbox" ng-model='search.displaysize' ng-true-value="'{{ds}}'" ng-false-value=''> {{ds}} </li>
-                </ul>
-            </div>
-            <div>
-                <h4>Резолюция</h4>
-                <ul>
-                    <li ng-repeat="r in resolutions"><input type="checkbox" ng-model='search.r' ng-true-value="'{{r}}'" ng-false-value=''> {{r}} </li>
-                </ul>
-            </div>
+        <div class="col-sm-12">
+            <h4>Марка</h4>
+            <ul>
+                <li ng-repeat="brand in brands"><input type="checkbox" ng-model='search.brand' ng-true-value="'{{brand}}'" ng-false-value=''> {{brand}} </li>
+            </ul>
+        </div>
+        <div class="col-sm-12">
+            <h4>Размер на екрана в инчове</h4>
+            <ul>
+                <li ng-repeat="ds in displaySizes"><input type="checkbox" ng-model='search.displaysize' ng-true-value="'{{ds}}'" ng-false-value=''> {{ds}} </li>
+            </ul>
+        </div>
+        <div class="col-sm-12">
+            <h4>Резолюция</h4>
+            <ul>
+                <li ng-repeat="r in resolutions"><input type="checkbox" ng-model='search.r' ng-true-value="'{{r}}'" ng-false-value=''> {{r}} </li>
+            </ul>
+        </div>
     </aside>
-    <div class="col-md-8 productsListing">
+    <div class="col-sm-8 productsListing">
         <article class='animate' ng-repeat="tv in tvs | filter:search.brand | filter:search.displaysize | filter:search.r | sizeFilter:slider">
-            <span class="col-md-2" style="float:left"><img ng-src="{{tv.pictures[0]}}" alt=""/></span>
-            <div class="tvInfo col-md-7">
+            <span class="col-sm-2" style="float:left"><img ng-src="{{tv.pictures[0]}}" alt=""/></span>
+            <div class="tvInfo col-sm-7">
                 <h4> {{tv.title}} </h4>
                 <ul>
                     <li>Марка: {{tv.brand}} </li>
@@ -37,14 +36,17 @@
                     <li>Резолюция: {{tv.resolution}}</li>
                 </ul>
             </div>
-            <span class="purchase col-md-3"><h3> {{tv.price}}<sup>00</sup> лв</h3>
+            <span class="purchase col-sm-3"><h3> {{tv.price}}<sup>00</sup> лв</h3>
                 <br>
                 <button class="buy btn btn-danger" ng-click='addToCart(tv)'>КУПИ</button>
                 <br>
                 <button class="info btn btn-info"><a ng-href="tvs/{{tv._id}}">ВИЖ ОЩЕ</a></button>
             </span>
-            <a href="#" ng-click="addToFavorites(tv)" class="btn btn-link favorite" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
-            <a href="#" ng-click="addToCompare(tv)" class="btn btn-link compare" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
+            <br><br>
+            <div class="row">
+                <a href="#" ng-click="addToFavorites(tv)" class="btn btn-link favorite" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
+                <a href="#" ng-click="addToCompare(tv)" class="btn btn-link compare" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
+            </div>
         </article>
     </div>
 </section>

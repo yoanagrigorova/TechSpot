@@ -1,43 +1,43 @@
 <section class="row">
     <h1> {{pageTitle}} </h1>
 
-    <aside class="col-md-3">
+    <aside class="col-sm-3">
         <h3>Резултати</h3>
 
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <h4> Цена в лева </h4>
             <rzslider rz-slider-model="slider.minValue" rz-slider-high="slider.maxValue" rz-slider-options="slider.options"></rzslider>
         </div>
 
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <h4>Марка</h4>
             <ul>
                 <li ng-repeat="brand in brands"><input type="checkbox" ng-model='search.brand' ng-true-value="'{{brand}}'" ng-false-value=''> {{brand}} </li>
             </ul>
         </div>
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <h4>Мощност</h4>
             <ul>
                 <li ng-repeat="power in powers"><input type="checkbox" ng-model='search.power' ng-true-value="'{{power}}'" ng-false-value=''> {{power}} </li>
             </ul>
         </div>
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <h4>Вместимост</h4>
             <ul>
                 <li ng-repeat="capacity in capacities"><input type="checkbox" ng-model='search.capacity' ng-true-value="'{{capacity}}'" ng-false-value=''> {{capacity}} </li>
             </ul>
         </div>
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <h4>Тип</h4>
             <ul>
                 <li ng-repeat="type in types"><input type="checkbox" ng-model='search.type' ng-true-value="'{{type}}'" ng-false-value=''> {{type}} </li>
             </ul>
         </div>
     </aside>
-    <div class="col-md-8 productsListing">
-        <article class="col-md-12" ng-repeat="vacuum in vacuums | filter:search.brand | filter:search.power | filter:search.capacity | filter:search.type | sizeFilter:slider">
-            <span class="col-md-2"><img ng-src="{{vacuum.pictures[0]}}" alt=""/></span>
-            <div class="col-md-7" class="vacuumsInfo">
+    <div class="col-sm-8 productsListing">
+        <article class="col-sm-12" ng-repeat="vacuum in vacuums | filter:search.brand | filter:search.power | filter:search.capacity | filter:search.type | sizeFilter:slider">
+            <span class="col-sm-2"><img ng-src="{{vacuum.pictures[0]}}" alt=""/></span>
+            <div class="col-sm-7" class="vacuumsInfo">
                 <h4> {{vacuum.title}} </h4>
                 <ul>
                     <li>Тип: {{vacuum.type}} </li>
@@ -45,14 +45,17 @@
                     <li>Капацитет: {{vacuum.capacity}} </li>
                 </ul>
             </div>
-            <span class="purchase col-md-3"><h3> {{vacuum.price}}<sup>00</sup> лв</h3>
+            <span class="purchase col-sm-3"><h3> {{vacuum.price}}<sup>00</sup> лв</h3>
                  <br>
              <button class="buy btn btn-danger" ng-click='addToCart(vacuum)'>КУПИ</button>
             <br>
             <button class="info btn btn-info"><a ng-href="smallappliances/vacuumCleaners/{{vacuum._id}}">ВИЖ ОЩЕ</a></button>
              </span>
-            <a href="#" ng-click="addToFavorites(vacuum)" class="btn btn-link favorite" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
-            <a href="#" ng-click="addToCompare(vacuum)" class="btn btn-link compare" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
+            <br><br>
+            <div class="row">
+                <a href="#" ng-click="addToFavorites(vacuum)" class="btn btn-link favorite" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
+                <a href="#" ng-click="addToCompare(vacuum)" class="btn btn-link compare" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
+            </div>
         </article>
     </div>
 </section>

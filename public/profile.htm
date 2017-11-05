@@ -16,22 +16,30 @@
             </div>
         </div>
         <div ng-show="activeTab == 2" id='popUp'>
-            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore
-                velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
-                Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR.
-                Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress,
+                commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
         </div>
         <div ng-show="activeTab == 3" id='popUp'>
-            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth
-                master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro
-                keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat
-                salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+            <div>
+                <table class="table table-striped table-hover table-bordered">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Продукт</th>
+                            <th>Единична цена</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="product in userInSess.boughtProducts">
+                            <td><img height="90px" width="90px" src="{{product.pictures[0]}}" alt="" /><span>{{product.title}}</span> </td>
+                            <td>{{product.price}} лв</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div ng-show="activeTab == 4" id='popUp'>
-            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore
-                velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
-                Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR.
-                Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress,
+                commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
         </div>
     </div>
 </div>
