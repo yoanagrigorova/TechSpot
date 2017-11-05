@@ -146,33 +146,33 @@
                                 <tbody>
                                     <tr>
                                         <td>МАРКА</td>
-                                        <td>{{productToEdit.brand}}</td>
+                                        <td> <input type='text' class='form-control' ng-model='productToEdit.brand'/>  </input></td>
                                     </tr>
                                     <tr>
                                         <td>МОДЕЛ</td>
-                                        <td> {{productToEdit.model}} </td>
+                                        <td> <input type='text' class='form-control' ng-model='productToEdit.model'/> </td>
                                     </tr>
                                     
                                     <tr>
                                         <td>РАЗМЕР НА ЕКРАНА В ИНЧОВЕ</td>
-                                        <td> {{productToEdit.displaysize}} </td>
+                                        <td> <input type='text' class='form-control' ng-model='productToEdit.displaysize'/></td>
                                     </tr>
                                     <tr>
                                         <td>РЕЗОЛЮЦИЯ</td>
-                                        <td> {{productToEdit.resolution}} </td>
+                                        <td> <input type='text' class='form-control' ng-model='productToEdit.resolution'/> </td>
                                     </tr>
                                    
                                     <tr>
                                         <td>ОПЕРАЦИОННА СИСТЕМА</td>
-                                        <td> {{productToEdit.os}} </td>
+                                        <td> <input type='text' class='form-control' ng-model='productToEdit.os'/> </td>
                                     </tr>
                                     <tr>
                                         <td>ТЕГЛО</td>
-                                        <td> {{productToEdit.weight}} </td>
+                                        <td> <input type='text' class='form-control' ng-model='productToEdit.weight'/> </td>
                                     </tr>
                                     <tr>
                                         <td>ГАБАРИТИ</td>
-                                        <td> {{productToEdit.gabarites}} </td>
+                                        <td> <input type='text' class='form-control' ng-model='productToEdit.gabarites'/> </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -180,7 +180,9 @@
                 <div ng-show='selectedTab == 2' id='popUp' class='row'>
                     <div class="col-sm-5">
                         <div class="panel panel-default" ng-repeat='comment in productToEdit.comments'>
+                                
                             <div class="panel-heading">
+                                    <button type="button" ng-click='deleteComment(comment)' class="close" data-dismiss="alert">&times;</button>
                                 <strong>{{comment.user}}</strong> <span class="text-muted">{{comment.date}}</span>
                             </div>
                             <div class="panel-body">
