@@ -1,51 +1,54 @@
 <section class="row">
     <h1> {{pageTitle}} </h1>
 
-    <aside class="col-md-3">
+    <aside class="col-sm-3">
         <h3>Резултати</h3>
 
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <h4> Цена в лева </h4>
             <rzslider rz-slider-model="slider.minValue" rz-slider-high="slider.maxValue" rz-slider-options="slider.options"></rzslider>
         </div>
 
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <h4>Марка</h4>
             <ul>
                 <li ng-repeat="brand in brands"><input type="checkbox" ng-model='search.brand' ng-true-value="'{{brand}}'" ng-false-value=''> {{brand}} </li>
             </ul>
         </div>
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <h4>Мощност на охлаждане</h4>
             <ul>
                 <li ng-repeat="cp in coolingPowers"><input type="checkbox" ng-model='search.cp' ng-true-value="'{{cp}}'" ng-false-value=''> {{cp}} </li>
             </ul>
         </div>
-        <div class="col-md-12">
+        <div class="col-sm-12">
             <h4>Мощност на отопление</h4>
             <ul>
                 <li ng-repeat="ch in heatingPowers"><input type="checkbox" ng-model='search.ch' ng-true-value="'{{ch}}'" ng-false-value=''> {{ch}} </li>
             </ul>
         </div>
     </aside>
-    <div class="col-md-8 productsListing">
-        <article class="col-md-12 animate" ng-repeat="cond in conditioners | filter:search.brand | filter:search.cp:true | filter:search.ch:true | sizeFilter:slider">
-            <span class="col-md-2"><img ng-src="{{cond.pictures[0]}}" alt=""/></span>
-            <div class="col-md-7" class="condInfo">
+    <div class="col-sm-8 productsListing">
+        <article class="col-sm-12 animate" ng-repeat="cond in conditioners | filter:search.brand | filter:search.cp:true | filter:search.ch:true | sizeFilter:slider">
+            <span class="col-sm-2"><img ng-src="{{cond.pictures[0]}}" alt=""/></span>
+            <div class="col-sm-7" class="condInfo">
                 <h4> {{cond.title}} </h4>
                 <ul>
                     <li>Мощност на охлаждане: {{cond.capacityCooling}} </li>
                     <li>Мощност на отопление: {{cond.capacityHeating}} </li>
                 </ul>
             </div>
-            <span class="purchase col-md-3"><h3> {{cond.price}}<sup>00</sup> лв</h3>
+            <span class="purchase col-sm-3"><h3> {{cond.price}}<sup>00</sup> лв</h3>
                      <br>
                  <button class="buy btn btn-danger" ng-click='addToCart(cond)'>КУПИ</button>
                 <br>
                 <button class="info btn btn-info"><a ng-href="conditioners/{{cond._id}}">ВИЖ ОЩЕ</a></button>
                  </span>
-            <a href="#" ng-click="addToFavorites(cond)" class="btn btn-link favorite" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
-            <a href="#" ng-click="addToCompare(cond)" class="btn btn-link compare" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
+            <br><br>
+            <div class="row">
+                <a href="#" ng-click="addToFavorites(cond)" class="btn btn-link favorite" style="color:rgb(32,83,178)"><i><img src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt=""></i> Добави в любими</a>
+                <a href="#" ng-click="addToCompare(cond)" class="btn btn-link compare" style="color:rgb(32,83,178)"><i><img src="https://cdn2.iconfinder.com/data/icons/flat-arrows/100/arrow-04-128.png" alt=""></i> Сравни</a>
+            </div>
         </article>
     </div>
 </section>

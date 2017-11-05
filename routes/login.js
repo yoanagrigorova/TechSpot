@@ -1,9 +1,11 @@
 var express = require('express');
+var sha1 = require("sha1");
 var router = express.Router();
 
 router.post('/', function(req, res, next) {
     var username = req.body.user;
     var password = req.body.password;
+    // var cryptedPass = sha1(password);
     var db = req.db;
     var users = db.get('users');
     users.find({ mail: username, password: password }).then(function(data) {

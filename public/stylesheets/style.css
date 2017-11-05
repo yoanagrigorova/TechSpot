@@ -1,7 +1,7 @@
 body {
     padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-    background-image: url('http://freebackgroundweb.files.wordpress.com/2012/05/pattern8-pattern-m316-452.jpg');
+    background-image: url('../images/background.jpg');
 }
 
 a {
@@ -304,7 +304,7 @@ div.form-group {
     border-radius: 5px;
     padding: 10px;
     z-index: 1;
-    width: 300px;
+    width: 350px;
 }
 
 #dropMenu,
@@ -334,10 +334,6 @@ div.form-group {
 #dropMenu4 button {
     margin-left: 20px;
 } */
-
-#navigation {
-    margin-right: 9em !important;
-}
 
 #navigation li img:first-child {
     margin-right: 1em !important;
@@ -403,7 +399,7 @@ div#comparePanel table tr th {
 }
 
 #logo {
-    width: 40%;
+    margin-top: -2em;
 }
 
 #adminPanel {

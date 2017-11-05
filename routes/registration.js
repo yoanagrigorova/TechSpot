@@ -1,4 +1,5 @@
 var express = require('express');
+var sha1 = require("sha1");
 var router = express.Router();
 var User = require('../public/javascripts/users.js');
 
@@ -18,18 +19,17 @@ router.post('/', function(req, res, next) {
     users.find({ mail: mail }).then(function(data) {
         if (data.length == 0) {
             if (password === password2) {
-
                 try {
-                var user = new User(name, lastName, mail, phone, password);
-                users.insert(user);
-                res.json({message: 'Successful registration!'}).redirect("/");
-                }
-                catch (err) {
-                    res.json({message: err});
+                    console.log(sha1(password));
+                    var user = new User(name, lastName, mail, phone, sha1(password));
+                    users.insert(user);
+                    res.json({ message: 'Successful registration!' }).redirect("/");
+                } catch (err) {
+                    res.json({ message: err });
                 }
             }
         } else {
-            res.json({message: 'Email is already taken!'})
+            res.json({ message: 'Email is already taken!' })
         }
     });
 })

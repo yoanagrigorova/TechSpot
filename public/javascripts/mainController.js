@@ -9,6 +9,7 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
             $scope.userInfo = [$rootScope.userInSess];
         }
         $scope.logIn = function(user) {
+            user.password = sha1(user.password);
             $http.post("/login", JSON.stringify(user)).then(function(response) {
 
                 if (response.data.success) {
@@ -35,7 +36,7 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
             console.log($scope.userRegister)
             console.log(user);
             $http.post("/api/registration", JSON.stringify(user)).then(function(response) {
-
+                console.log(response.data);
                 if (response.data.success) {
                     $scope.successMsg = response.data.message;
                     $location.path('/')
@@ -94,7 +95,7 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
             $scope.getCurrentUser();
             var index = $rootScope.userInSess.products.findIndex(x => x.title == item.title);
             $rootScope.userInSess.products.splice(index, 1);
-            localStorage.setItem('currentUser', JSON.stringify($rootScope.userInSess));
+            localStorage.setItem('currentUser', angular.toJson($rootScope.userInSess));
         }
 
         $scope.addToFavorites = function(item) {
@@ -105,7 +106,7 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
                 var product = $rootScope.userInSess.favorites.find(x => x.title == item.title);
                 product.quantity++;
             }
-            localStorage.setItem('currentUser', JSON.stringify($rootScope.userInSess));
+            localStorage.setItem('currentUser', angular.toJson($rootScope.userInSess));
 
             $scope.addProductToFavorites = true;
             $timeout(function() {
@@ -117,7 +118,7 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
             $scope.getCurrentUser();
             var index = $rootScope.userInSess.favorites.findIndex(x => x.title == item.title);
             $rootScope.userInSess.favorites.splice(index, 1);
-            localStorage.setItem('currentUser', JSON.stringify($rootScope.userInSess));
+            localStorage.setItem('currentUser', angular.toJson($rootScope.userInSess));
         }
 
         var products = [];
@@ -144,12 +145,14 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
         $scope.getTotal = function() {
             var total = 0;
             $rootScope.userInSess.products.forEach(pr => total += (pr.price * pr.quantity));
-            localStorage.setItem("totalPrice", JSON.stringify(total));
+            localStorage.setItem("totalPrice", angular.toJson(total));
             return localStorage.getItem("totalPrice");;
         }
 
         $scope.finalPurchase = function(items) {
             $scope.final = true;
+            items.forEach(it => $rootScope.userInSess.boughtProducts.push(it));
+            localStorage.setItem('currentUser', angular.toJson($rootScope.userInSess));
             items.forEach(it => $scope.removeFromCart(it));
         }
 
