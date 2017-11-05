@@ -1,4 +1,4 @@
-<div ng-init='activeTab = 1' id='tabContent'>
+<div ng-init='activeTab = 1' id='tabContent' ng-show='userInSess.permission != "admin" '>
     <ul class="nav nav-tabs">
         <li ng-class="{'active': activeTab == 1}"><a ng-click='activeTab = 1'>Лични данни</a></li>
         <li ng-class="{'active': activeTab == 2}"><a ng-click='activeTab = 2'>Необработени поръчки</a></li>
@@ -35,3 +35,38 @@
         </div>
     </div>
 </div>
+
+<div ng-init='activeTab = 1' id='tabContent' ng-show='userInSess.permission == "admin" '>
+        <ul class="nav nav-tabs">
+            <li ng-class="{'active': activeTab == 1}"><a ng-click='activeTab = 1'>Лични данни</a></li>
+            <li ng-class="{'active': activeTab == 2}"><a ng-click='activeTab = 2'>Редактиране на потребителите</a></li>
+     
+            <li ng-class="{'active': activeTab == 4}"><a ng-click='activeTab = 4'>Промяна на парола</a></li>
+        </ul>
+    
+        <div id="myTabContent" class='tab-conten'>
+            <div ng-show="activeTab == 1" id='popUp'>
+                <div ng-repeat="user in userInfo">
+                    <p><strong>Име: </strong> {{user.firstName}} </p>
+                    <p><strong>Фамилия: </strong> {{user.lastName}} </p>
+                    <p><strong>Имейл: </strong> {{user.mail}} </p>
+                    <p><strong>Телефон: </strong> {{user.phone}} </p>
+                </div>
+            </div>
+            <div ng-show="activeTab == 2" id='popUp'>
+                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore
+                    velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
+                    Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR.
+                    Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+            </div>
+         
+            <div ng-show="activeTab == 4" id='popUp'>
+                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore
+                    velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee.
+                    Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR.
+                    Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+            </div>
+        </div>
+    </div>
+
+

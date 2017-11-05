@@ -12,7 +12,7 @@ router.post('/:collection/:id', function (req, res, next) {
            if (err){
                console.log(err)
            } else {
-               res.json({message: 'Продуктът беше добавен успешно!'});
+               res.json({message: 'Продуктът беше променен успешно!'});
            }
         });
     } else {
@@ -20,7 +20,7 @@ router.post('/:collection/:id', function (req, res, next) {
          if(err){
              console.log(err)
          } else {
-             res.json({message: 'Продуктът беше променен успешно!'})
+             res.json({message: 'Продуктът беше добавен успешно!'})
          }
      })
     }
