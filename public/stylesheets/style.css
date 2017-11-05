@@ -1,6 +1,7 @@
 body {
     padding: 50px;
     font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-image: url('http://freebackgroundweb.files.wordpress.com/2012/05/pattern8-pattern-m316-452.jpg');
 }
 
 a {
@@ -303,7 +304,6 @@ div.form-group {
     border-radius: 5px;
     padding: 10px;
     z-index: 1;
-    right: 45px;
     width: 300px;
 }
 
@@ -312,17 +312,28 @@ div.form-group {
     width: 215px;
 }
 
+#dropMenu3,
+#dropMenu4 {
+    right: 10px;
+}
+
 #dropMenu button,
 #dropMenu2 button {
     width: 150px;
 }
 
-#dropMenu button,
+#dropMenu button a,
+#dropMenu2 button a {
+    color: black !important;
+}
+
+
+/* #dropMenu button,
 #dropMenu2 button,
 #dropMenu3 button,
 #dropMenu4 button {
     margin-left: 20px;
-}
+} */
 
 #navigation {
     margin-right: 9em !important;
@@ -353,10 +364,6 @@ div.form-group {
     font-size: 1.8em;
 }  */
 
-body {
-    background-image: url('../images/promo-wallpaper1.jpg');
-}
-
 main {
     background-color: white;
     padding: 20px;
@@ -371,26 +378,27 @@ main {
     transition: all linear 0.5s;
 }
 
-#popUp.ng-hide{
+#popUp.ng-hide {
     opacity: 0
 }
 
 #popUp.ng-hide-add,
-#popUp.ng-hide-remove{
+#popUp.ng-hide-remove {
     transition: all linear 0.5s;
 }
 
-.menu {
-    height: 200px;
-    /* overflow: scroll; */
-}
 
-table tr td {
+/* .menu {
+    height: 200px;
+    /* overflow: scroll; 
+} */
+
+div#comparePanel table tr td {
     height: 58px !important;
     text-align: center;
 }
 
-table tr th {
+div#comparePanel table tr th {
     text-align: center;
 }
 
@@ -423,6 +431,43 @@ table tr th {
     width: 15%;
 }
 
+div#productsToBuy td img,
+div#favoriteProducts td img {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+button a {
+    color: white;
+}
+
+div#checkout span.step {
+    background-color: rgb(168, 69, 69);
+    color: white;
+    text-align: center;
+    height: 60px;
+}
+
+div#checkout h2 {
+    height: 60px;
+    box-sizing: border-box;
+    margin: 0px;
+    /* vertical-align: middle; */
+}
+
+div#checkout div#adressDiv {
+    height: 60px;
+    box-sizing: border-box
+}
+
+div#checkout span img {
+    height: 40px;
+    width: 40px;
+    margin-top: 1em;
+    cursor: pointer;
+}
+
 .adminButtons {
     float: right;
     margin-right: 10px;
@@ -442,6 +487,7 @@ a:hover {
     border-radius: 6px;
     margin-bottom: 10px;
 }
+
 #commentBox div {
     padding: 5px;
     border: 2px solid #1881E9;
@@ -462,32 +508,38 @@ a:hover {
 }
 
 .thumbnail {
-    padding:0px;
+    padding: 0px;
 }
+
 .panel {
-	position:relative;
+    position: relative;
 }
-.panel>.panel-heading:after,.panel>.panel-heading:before{
-	position:absolute;
-	top:11px;left:-16px;
-	right:100%;
-	width:0;
-	height:0;
-	display:block;
-	content:" ";
-	border-color:transparent;
-	border-style:solid solid outset;
-	pointer-events:none;
+
+.panel>.panel-heading:after,
+.panel>.panel-heading:before {
+    position: absolute;
+    top: 11px;
+    left: -16px;
+    right: 100%;
+    width: 0;
+    height: 0;
+    display: block;
+    content: " ";
+    border-color: transparent;
+    border-style: solid solid outset;
+    pointer-events: none;
 }
-.panel>.panel-heading:after{
-	border-width:7px;
-	border-right-color:#f7f7f7;
-	margin-top:1px;
-	margin-left:2px;
+
+.panel>.panel-heading:after {
+    border-width: 7px;
+    border-right-color: #f7f7f7;
+    margin-top: 1px;
+    margin-left: 2px;
 }
-.panel>.panel-heading:before{
-	border-right-color:#ddd;
-	border-width:8px;
+
+.panel>.panel-heading:before {
+    border-right-color: #ddd;
+    border-width: 8px;
 }
 
 #addComment {
@@ -497,6 +549,31 @@ a:hover {
 .articleTech {
     width: 40%;
     margin: auto;
+}
+
+h2#totalPrice {
+    text-align: right;
+}
+
+div#paymentDiv+div label:first-of-type {
+    margin-right: 1em;
+}
+
+div#paymentDiv+div {
+    text-align: center;
+}
+
+div#confirm+div,
+div#adressDiv+div {
+    margin-left: 7em !important;
+}
+
+div#finalPrice {
+    margin-top: 2em;
+}
+
+#finalMessage {
+    text-align: center;
 }
 
 button.close {

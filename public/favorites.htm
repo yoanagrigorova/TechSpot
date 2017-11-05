@@ -1,0 +1,23 @@
+<div id="favoriteProducts">
+    <h1>Любими продукти</h1>
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Продукт</th>
+                <th>Единична цена</th>
+                <th>Опции</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="product in userInSess.favorites">
+                <td><img height="90px" width="90px" src="{{product.pictures[0]}}" alt="" /><span>{{product.title}}</span> </td>
+                <td>{{product.price}} лв</td>
+                <td>
+                    <button class="buy btn btn-danger" ng-click='addToCart(product)'>КУПИ</button>
+                    <img src='images/remove.png' ng-click='removeFromFavorite(product)' />
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

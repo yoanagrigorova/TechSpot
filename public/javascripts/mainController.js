@@ -1,44 +1,40 @@
 angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
-    .controller("MainController", function ($scope, $http, $timeout, $location, $rootScope, $route, $window) {
+    .controller("MainController", function($scope, $http, $timeout, $location, $rootScope, $route, $window) {
 
         // $rootScope.login = false;
         $scope.userRegister = {};
         $scope.errorMsg = false;
-        $scope.getCurrentUser = function () {
+        $scope.getCurrentUser = function() {
             $rootScope.userInSess = JSON.parse(localStorage.getItem('currentUser'));
-            console.log($rootScope.userInSess);
             $scope.userInfo = [$rootScope.userInSess];
-            console.log($scope.userInfo)
         }
-        $scope.logIn = function (user) {
-            $http.post("/login", JSON.stringify(user)).then(function (response) {
+        $scope.logIn = function(user) {
+            $http.post("/login", JSON.stringify(user)).then(function(response) {
 
                 if (response.data.success) {
                     $scope.successMsg = response.data.message;
                     $rootScope.userInSess = response.data.user[0];
                     $rootScope.login = true;
                     $rootScope.users = [$rootScope.userInSess];
-                    console.log($rootScope.users)
                     localStorage.setItem('currentUser', JSON.stringify(response.data.user[0]));
-                    $timeout(function () {
+                    $timeout(function() {
                         $location.path('/');
                     }, 2000);
 
-                    $timeout(function () {
+                    $timeout(function() {
                         localStorage.clear();
                     }, 600000);
                 } else {
                     $scope.errorMsg = response.data.message;
                 }
-
             });
 
         }
 
-        $scope.register = function (user) {
+        $scope.register = function(user) {
             console.log($scope.userRegister)
             console.log(user);
-            $http.post("/api/registration", JSON.stringify(user)).then(function (response) {
+            $http.post("/api/registration", JSON.stringify(user)).then(function(response) {
 
                 if (response.data.success) {
                     $scope.successMsg = response.data.message;
@@ -50,12 +46,12 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
             });
 
         }
-        $scope.logOut = function () {
+        $scope.logOut = function() {
             $rootScope.userInSess = {};
             var user = localStorage.getItem('currentUser');
-            
-            $http.post('/api/logout',user).then(function(response){
-                 console.log()
+
+            $http.post('/api/logout', user).then(function(response) {
+                console.log()
             });
             localStorage.clear();
 
@@ -69,18 +65,17 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
         }
 
         $scope.newComment = {};
-        $scope.addCommentToProduct = function (product) {
+        $scope.addCommentToProduct = function(product) {
             $scope.date = new Date().toLocaleString('en-GB');
             product.comments.push({ user: $rootScope.userInSess.mail, date: $scope.date, text: $scope.newComment.text });
-            console.log(product);
             $scope.newComment.text = '';
-            $http.post('/admin' + '/' + product.type + '/' + product._id, angular.toJson(product)).then(function (response) {
+            $http.post('/admin' + '/' + product.type + '/' + product._id, angular.toJson(product)).then(function(response) {
                 console.log(response);
             });
         }
 
 
-        $scope.addToCart = function (item) {
+        $scope.addToCart = function(item) {
             $scope.getCurrentUser();
             if (!$rootScope.userInSess.products.some(x => x.title == item.title)) {
                 $rootScope.userInSess.products.push(item);
@@ -90,19 +85,19 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
             }
             localStorage.setItem('currentUser', angular.toJson($rootScope.userInSess));
             $scope.addProduct = true;
-            $timeout(function () {
+            $timeout(function() {
                 $scope.addProduct = false;
             }, 2000);
         }
 
-        $scope.removeFromCart = function (item) {
+        $scope.removeFromCart = function(item) {
             $scope.getCurrentUser();
             var index = $rootScope.userInSess.products.findIndex(x => x.title == item.title);
             $rootScope.userInSess.products.splice(index, 1);
             localStorage.setItem('currentUser', JSON.stringify($rootScope.userInSess));
         }
 
-        $scope.addToFavorites = function (item) {
+        $scope.addToFavorites = function(item) {
             $scope.getCurrentUser();
             if (!$rootScope.userInSess.favorites.some(x => x.title == item.title)) {
                 $rootScope.userInSess.favorites.push(item);
@@ -111,9 +106,14 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
                 product.quantity++;
             }
             localStorage.setItem('currentUser', JSON.stringify($rootScope.userInSess));
+
+            $scope.addProductToFavorites = true;
+            $timeout(function() {
+                $scope.addProductToFavorites = false;
+            }, 2000);
         }
 
-        $scope.removeFromFavorite = function (item) {
+        $scope.removeFromFavorite = function(item) {
             $scope.getCurrentUser();
             var index = $rootScope.userInSess.favorites.findIndex(x => x.title == item.title);
             $rootScope.userInSess.favorites.splice(index, 1);
@@ -121,7 +121,7 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
         }
 
         var products = [];
-        $scope.addToCompare = function (item) {
+        $scope.addToCompare = function(item) {
             $scope.compare = true;
             if (products.length <= 5 && products.find(pr => pr._id === item._id) === undefined) {
                 products.push(item);
@@ -129,7 +129,7 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
             $scope.compareProducts = products;
         }
 
-        $scope.removeCompare = function (item) {
+        $scope.removeCompare = function(item) {
             var index = products.findIndex(pr => pr._id == item._id);
             products.splice(index, 1);
             if (products.length == 0) {
@@ -137,15 +137,27 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
             }
         }
 
-        $scope.showCategory = function (products, property) {
+        $scope.showCategory = function(products, property) {
             return products.some(pr => pr.hasOwnProperty(property));
         }
 
-        $scope.FBLogin = function () {
-            FB.login(function (response) {
+        $scope.getTotal = function() {
+            var total = 0;
+            $rootScope.userInSess.products.forEach(pr => total += (pr.price * pr.quantity));
+            localStorage.setItem("totalPrice", JSON.stringify(total));
+            return localStorage.getItem("totalPrice");;
+        }
+
+        $scope.finalPurchase = function(items) {
+            $scope.final = true;
+            items.forEach(it => $scope.removeFromCart(it));
+        }
+
+        $scope.FBLogin = function() {
+            FB.login(function(response) {
                 if (response.authResponse) {
                     console.log('Welcome');
-                    FB.api('/me', 'GET', { fields: 'picture' }, function (response) {
+                    FB.api('/me', 'GET', { fields: 'picture' }, function(response) {
                         console.log(response)
                         console.log('GOod to see you' + response.name + ' ' + response.mail)
 
@@ -156,10 +168,10 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
             }, { scope: 'public_profile, email' })
         }
 
-        $scope.getInfo = function () {
-            FB.login(function (response) {
+        $scope.getInfo = function() {
+            FB.login(function(response) {
                 if (response.authResponse) {
-                    FB.api('/me', { fields: 'first_name, last_name, email' }, function (response) {
+                    FB.api('/me', { fields: 'first_name, last_name, email' }, function(response) {
                         console.log($scope.userRegister);
                         $scope.userRegister.name = response.first_name;
                         $scope.userRegister.lastName = response.last_name;

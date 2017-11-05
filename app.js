@@ -29,20 +29,21 @@ var ovens = require("./routes/ovens");
 var fridges = require("./routes/fridges");
 var washingMachines = require("./routes/washingMachines");
 var logout = require("./routes/logout");
-var admin = require('./routes/admin')
+var admin = require('./routes/admin');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', './images/favicon.png')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: 'Yoana', maxAge: 600000}));
+app.use(session({ secret: 'Yoana', maxAge: 600000 }));
 
 function requireAdmin(req, res, next) {
     console.log('test');
@@ -60,7 +61,7 @@ function requireAdmin(req, res, next) {
 
 
 app.use('/login', login);
-app.use('/admin',requireAdmin, admin);
+app.use('/admin', requireAdmin, admin);
 app.use("/api/phones", phones);
 app.use('/api/registration', registration);
 app.use("/api/tvs", tvs);
@@ -73,7 +74,6 @@ app.use("/api/fridges", fridges);
 app.use("/api/washing-machines", washingMachines);
 app.use("/api/logout", logout);
 app.all("/*", function(req, res, next) {
-    console.log('a')
     res.sendFile("index.html", { root: __dirname + "/public" });
 });
 

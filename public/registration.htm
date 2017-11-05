@@ -1,3 +1,6 @@
+<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+
+
 <form ng-submit='register(userRegister)' name="myform" class="form-horizontal">
     <fieldset>
         <legend>Регистрация</legend>
@@ -7,28 +10,28 @@
             <span class="mendatory">*</span>
         </label>
             <div ng-class="{'has-success': myform.name.$valid, 'has-error': (myform.name.$invalid && myform.name.$dirty)}" class="col-lg-6">
-                <input type='text' ng-pattern='/^[a-zA-Z]+$/' ng-minlength="2" ng-maxlength="10" required name="name" class="form-control" ng-model='userRegister.name' id="name"/>
+                <input type='text' ng-pattern='/^[a-zA-Z]+$/' ng-minlength="2" ng-maxlength="10" required name="name" class="form-control" ng-model='userRegister.name' id="name" />
             </div>
 
             <div ng-show="myform.name.$dirty && myform.name.$invalid">
-                    <strong ng-show="myform.name.$error.required"> Required field !</strong>
-                    <strong ng-show="myform.name.$error.minlength"> Min 2 characters !</strong>
-                    <strong ng-show="myform.name.$error.maxlength"> Max 10 characters !</strong>
-                    <strong ng-show='myform.name.$error.pattern'> Can contain only letters ! </strong>
+                <strong ng-show="myform.name.$error.required"> Required field !</strong>
+                <strong ng-show="myform.name.$error.minlength"> Min 2 characters !</strong>
+                <strong ng-show="myform.name.$error.maxlength"> Max 10 characters !</strong>
+                <strong ng-show='myform.name.$error.pattern'> Can contain only letters ! </strong>
             </div>
         </div>
 
         <div class="form-group">
             <label for="lastName" class="col-lg-2 control-label">Фамилия </label>
             <div ng-class="{'has-success': myform.lastName.$valid, 'has-error': (myform.lastName.$invalid && myform.lastName.$dirty)}" class="col-lg-6">
-                <input type='text' ng-pattern='/^[a-zA-Z]+$/' ng-minlength="2" ng-maxlength="10" required name="lastName" class="form-control" ng-model='userRegister.lastName'  id="name"/>
+                <input type='text' ng-pattern='/^[a-zA-Z]+$/' ng-minlength="2" ng-maxlength="10" required name="lastName" class="form-control" ng-model='userRegister.lastName' id="name" />
             </div>
 
             <div ng-show="myform.lastName.$dirty && myform.lastName.$invalid">
-                    <strong ng-show="myform.lastName.$error.required"> Required field !</strong>
-                    <strong ng-show="myform.lastName.$error.minlength"> Min 2 characters !</strong>
-                    <strong ng-show="myform.lastName.$error.maxlength"> Max 10 characters !</strong>
-                    <strong ng-show='myform.lastName.$error.pattern'> Can contain only letters ! </strong>
+                <strong ng-show="myform.lastName.$error.required"> Required field !</strong>
+                <strong ng-show="myform.lastName.$error.minlength"> Min 2 characters !</strong>
+                <strong ng-show="myform.lastName.$error.maxlength"> Max 10 characters !</strong>
+                <strong ng-show='myform.lastName.$error.pattern'> Can contain only letters ! </strong>
             </div>
         </div>
 
@@ -36,13 +39,13 @@
             <label for="inputEmail" class="col-lg-2 control-label">E-mail
             <span class="mendatory">*</span>
         </label>
-            <div class="col-lg-6" ng-class="{'has-success': myform.mail.$valid, 'has-error': (myform.mail.$invalid && myform.mail.$dirty)}" >
-                <input type="text" ng-pattern='/^[a-zA-Z0-9]+@[a-z]{4,6}\.+[a-z]{2,3}$/' required ng-model='userRegister.mail' class="form-control"  name="mail"  id="mail"/>
+            <div class="col-lg-6" ng-class="{'has-success': myform.mail.$valid, 'has-error': (myform.mail.$invalid && myform.mail.$dirty)}">
+                <input type="text" ng-pattern='/^[a-zA-Z0-9]+@[a-z]{4,6}\.+[a-z]{2,3}$/' required ng-model='userRegister.mail' class="form-control" name="mail" id="mail" />
             </div>
 
             <div ng-show="myform.mail.$dirty && myform.mail.$invalid">
-                    <strong ng-show="myform.mail.$error.required"> Required field !</strong>
-                    <strong ng-show="myform.mail.$error.pattern"> Please enter a valid email ! </strong>
+                <strong ng-show="myform.mail.$error.required"> Required field !</strong>
+                <strong ng-show="myform.mail.$error.pattern"> Please enter a valid email ! </strong>
             </div>
         </div>
 
@@ -51,12 +54,12 @@
             <span class="mendatory">*</span>
         </label>
             <div class="col-lg-6" ng-class="{'has-success': myform.phone.$valid, 'has-error': (myform.phone.$invalid && myform.phone.$dirty)}">
-                <input name="phone" ng-model='userRegister.phone'  required ng-pattern='/^[08][0-9]{9}$/' type="text" class="form-control" id="phone">
+                <input name="phone" ng-model='userRegister.phone' required ng-pattern='/^[08][0-9]{9}$/' type="text" class="form-control" id="phone">
             </div>
 
             <div ng-show="myform.phone.$dirty && myform.phone.$invalid">
-                    <strong ng-show="myform.phone.$error.required"> Required field !</strong>
-                    <strong ng-show="myform.phone.$error.pattern"> Please enter a valid number ! </strong>
+                <strong ng-show="myform.phone.$error.required"> Required field !</strong>
+                <strong ng-show="myform.phone.$error.pattern"> Please enter a valid number ! </strong>
             </div>
         </div>
 
@@ -68,10 +71,10 @@
                 <input name="password" type="password" ng-model='userRegister.password' ng-pattern='/^[a-zA-Z0-9]+$/' ng-minlength="5" ng-maxlength="12" required class="form-control" id="inputPassword">
             </div>
             <div ng-show="myform.password.$dirty && myform.password.$invalid">
-                    <strong ng-show="myform.password.$error.minlength"> Minimum 5 characters required ! </strong>
-                    <strong ng-show="myform.password.$error.maxlength"> Maximum 12 characters ! </strong>
-                    <strong ng-show="myform.password.$error.required"> Required field !</strong>
-                    <strong ng-show="myform.password.$error.pattern"> Please enter a valid password ! </strong>
+                <strong ng-show="myform.password.$error.minlength"> Minimum 5 characters required ! </strong>
+                <strong ng-show="myform.password.$error.maxlength"> Maximum 12 characters ! </strong>
+                <strong ng-show="myform.password.$error.required"> Required field !</strong>
+                <strong ng-show="myform.password.$error.pattern"> Please enter a valid password ! </strong>
             </div>
         </div>
 
@@ -83,7 +86,7 @@
                 <input name="password2" required ng-model='userRegister.password2' type="password" class="form-control" id="repearPassword">
             </div>
             <div ng-show="password != password2 && myform.password.$dirty">
-                    <strong> Passwords dont match ! </strong>
+                <strong> Passwords dont match ! </strong>
             </div>
         </div>
 
@@ -96,8 +99,8 @@
         </div>
 
         <div class='row'>
-                <div class='col-lg-4' ng-show='errorMsg'></div>
-                <div class='alert alert-danger col-lg-3' ng-show='errorMsg'> {{errorMsg}} </div>
-            </div>
+            <div class='col-lg-4' ng-show='errorMsg'></div>
+            <div class='alert alert-danger col-lg-3' ng-show='errorMsg'> {{errorMsg}} </div>
+        </div>
     </fieldset>
 </form>

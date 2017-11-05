@@ -10,7 +10,7 @@ angular.module('adminApp', ['ngAnimate'])
 
             $scope.addNewProduct = function() {
                 $scope.productToEdit = {};
-                
+                $scope.productToEdit.type = p.type;
             }
 
             $scope.changeCat = function(cat) {

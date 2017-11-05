@@ -1,0 +1,38 @@
+<div id="productsToBuy">
+    <h1>Кошница</h1>
+    <table class="table table-striped table-hover table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Продукт</th>
+                <th>Количество</th>
+                <th>Единична цена</th>
+                <th>Цена</th>
+                <th>Опции</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="product in userInSess.products">
+                <td><img height="90px" width="90px" src="{{product.pictures[0]}}" alt="" /><span>{{product.title}}</span> </td>
+                <td>
+                    <form class="update-quantity-form">
+                        <input type="number" min="1" max="10" ng-value="{{product.quantity}}" required>
+                    </form>
+                </td>
+                <td>{{product.price}} лв</td>
+                <td class="productPrice">{{product.price*product.quantity}} лв</td>
+                <td>
+                    <img ng-click="addToFavorites(product)" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt="">
+                    <img src='images/remove.png' ng-click='removeFromCart(product)'>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <h2 id="totalPrice"> Крайна сума: {{getTotal()}} лв</h2>
+    </div><br>
+    <div class="row">
+        <button class="buy btn btn-danger pull-right"><a ng-href="checkout">КУПИ</a></button>
+    </div>
+</div>
