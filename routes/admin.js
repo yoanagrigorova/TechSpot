@@ -5,16 +5,26 @@ router.post('/:collection/:id', function (req, res, next) {
     var db = req.db;
     var collection = req.params.collection;
     var id = req.params.id;
-    var selection = db.get(collection);  
-    selection.update({_id: id}, req.body, function(e, docs) {
-      if (e){
-          console.log('greshka')
-      } else {
-          console.log('stignah')
-          res.json({message: 'Продуктът беше променен успешно!'})
-      }
-
-    });
+    var selection = db.get(collection);
+    
+    if (id != 'undefined'){
+    selection.update({_id: id}, req.body, function(err, result) {
+           if (err){
+               console.log(err)
+           } else {
+               res.json({message: 'Продуктът беше добавен успешно!'});
+           }
+        });
+    } else {
+     selection.insert(req.body, {}, function(err,result){
+         if(err){
+             console.log(err)
+         } else {
+             res.json({message: 'Продуктът беше променен успешно!'})
+         }
+     })
+    }
+    
 });
 
 router.delete('/:collection/:id', function (req, res, next) {

@@ -15,7 +15,7 @@ phone.filter('sizeFilter', [function() {
     }
 }]);
 
-phone.controller("phonesCtrl", function($scope, $http) {
+phone.controller("phonesCtrl", function($scope, $http, $rootScope) {
     $scope.search = {};
     $scope.pageTitle = "Мобилни телефони";
     $http.get("/api/phones").then(function(response) {
@@ -65,7 +65,7 @@ phone.controller("phonesCtrl", function($scope, $http) {
     }
 })
 
-.controller("phoneInfoCtrl", function($scope, $http) {
+.controller("phoneInfoCtrl", function($scope, $http, $rootScope) {
    
     var url = window.location.href.substr(21);
     $http.get('/api' + url).then(function(response) {

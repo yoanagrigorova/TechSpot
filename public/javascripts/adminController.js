@@ -8,9 +8,19 @@ angular.module('adminApp', ['ngAnimate'])
             $scope.editMode = true;
             $scope.productToEdit = p;
 
+            $scope.addNewProduct = function() {
+                $scope.productToEdit = {};
+                $scope.productToEdit.type = p.type;
+            }
+
+            $scope.changeCat = function(cat) {
+                var newCat = cat.url.substr(5);
+                $scope.productToEdit.type = newCat;
+            }
+
             $scope.saveProduct = function () {
                 console.log($scope.productToEdit);
-                $http.post('/admin' + '/' + p.type + '/' + p._id, angular.toJson($scope.productToEdit)).then(function (response) {
+                $http.post('/admin' + '/' + $scope.productToEdit.type + '/' + $scope.productToEdit._id, angular.toJson($scope.productToEdit)).then(function (response) {
                     $scope.responseMsg = response.data.message;
                     $timeout(function(){
                         $scope.responseMsg = null;
@@ -37,9 +47,7 @@ angular.module('adminApp', ['ngAnimate'])
                 });
             };
 
-            $scope.addNewProduct = function() {
-                $scope.productToEdit = {};
-            }
+           
         
         }
     })
