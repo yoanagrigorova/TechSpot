@@ -1,10 +1,10 @@
 angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
-    .controller("MainController", function($scope, $http, $timeout, $location, $rootScope) {
+    .controller("MainController", function($scope, $http, $timeout, $location, $rootScope, $route, $window) {
 
         $scope.errorMsg = false;
         $scope.getCurrentUser = function() {
             $rootScope.userInSess = JSON.parse(localStorage.getItem('currentUser'));
-            // console.log($rootScope.userInSess);
+            $scope.userInfo = [$rootScope.userInSess];
         }
         $scope.logIn = function(user) {
             $http.post("/login", JSON.stringify(user)).then(function(response) {
@@ -13,11 +13,15 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
                     $scope.successMsg = response.data.message;
                     $rootScope.userInSess = response.data.user[0];
                     $rootScope.login = true;
-                    $rootScope.users = response.data.user[0];
+                    $rootScope.users = [$rootScope.userInSess];
                     localStorage.setItem('currentUser', JSON.stringify(response.data.user[0]));
                     $timeout(function() {
                         $location.path('/');
-                    }, 2000)
+                    }, 2000);
+
+                    $timeout(function() {
+                        localStorage.clear();
+                    }, 600000)
                 } else {
                     $scope.errorMsg = response.data.message;
                 }
@@ -26,7 +30,6 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
         }
 
         $scope.register = function(user) {
-            console.log(user);
             $http.post("/api/registration", JSON.stringify(user)).then(function(response) {
 
                 if (response.data.success) {
@@ -39,11 +42,26 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
             });
 
         }
+        $scope.logOut = function() {
+            $http.get('/logout');
+            localStorage.clear();
+            $rootScope.login = false;
 
+        }
         $scope.getCurrentUser();
 
         if ($rootScope.userInSess) {
             $rootScope.login = true;
+        }
+
+        $scope.newComment = {};
+        $scope.addCommentToProduct = function(product) {
+            $scope.date = new Date().toLocaleString('en-GB');
+            product.comments.push({ user: $rootScope.userInSess.mail, date: $scope.date, text: $scope.newComment.text });
+            $scope.newComment.text = '';
+            $http.post('/admin' + '/' + product.type + '/' + product._id, angular.toJson(product)).then(function(response) {
+                console.log(response);
+            });
         }
 
 
@@ -78,6 +96,11 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
                 product.quantity++;
             }
             localStorage.setItem('currentUser', JSON.stringify($rootScope.userInSess));
+
+            $scope.addProductToFavorites = true;
+            $timeout(function() {
+                $scope.addProductToFavorites = false;
+            }, 2000);
         }
 
         $scope.removeFromFavorite = function(item) {
@@ -108,29 +131,15 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
             return products.some(pr => pr.hasOwnProperty(property));
         }
 
-        $scope.getMyLastName = function() {
-            facebookService.getMyLastName()
-                .then(function(response) {
-                    $scope.last_name = response.last_name;
-                });
-        };
-    })
-    .factory('facebookService', function($q) {
-        console.log("test");
-        return {
-            getMyLastName: function() {
-                var deferred = $q.defer();
-                FB.api('/1682503738435015', {
-                    fields: 'last_name'
-                }, function(response) {
-                    console.log(response);
-                    if (!response || response.error) {
-                        deferred.reject('Error occured');
-                    } else {
-                        deferred.resolve(response);
-                    }
-                });
-                return deferred.promise;
-            }
+        $scope.getTotal = function() {
+            var total = 0;
+            $rootScope.userInSess.products.forEach(pr => total += (pr.price * pr.quantity));
+            localStorage.setItem("totalPrice", JSON.stringify(total));
+            return localStorage.getItem("totalPrice");;
         }
-    });
+
+        $scope.finalPurchase = function(items) {
+            $scope.final = true;
+            items.forEach(it => $scope.removeFromCart(it));
+        }
+    })

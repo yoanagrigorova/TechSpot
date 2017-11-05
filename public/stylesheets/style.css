@@ -316,12 +316,18 @@ div.form-group {
     width: 150px;
 }
 
-#dropMenu button,
+#dropMenu button a,
+#dropMenu2 button a {
+    color: black !important;
+}
+
+
+/* #dropMenu button,
 #dropMenu2 button,
 #dropMenu3 button,
 #dropMenu4 button {
     margin-left: 20px;
-}
+} */
 
 #navigation {
     margin-right: 9em !important;
@@ -370,10 +376,20 @@ main {
     transition: all linear 0.5s;
 }
 
-.menu {
-    height: 200px;
-    overflow: scroll;
+#popUp.ng-hide {
+    opacity: 0
 }
+
+#popUp.ng-hide-add,
+#popUp.ng-hide-remove {
+    transition: all linear 0.5s;
+}
+
+
+/* .menu {
+    height: 200px;
+    /* overflow: scroll; 
+} */
 
 div#comparePanel table tr td {
     height: 58px !important;
@@ -413,24 +429,28 @@ div#comparePanel table tr th {
     width: 15%;
 }
 
-div#productsToBuy td img {
-    height: 40px;
-    width: 40px;
+div#productsToBuy td img,
+div#favoriteProducts td img {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
 }
 
 button a {
     color: white;
 }
 
-div#checkout div#adressDiv span.step {
+div#checkout span.step {
     background-color: rgb(168, 69, 69);
     color: white;
     text-align: center;
     height: 60px;
 }
 
-div#checkout div#adressDiv h2 {
+div#checkout h2 {
     height: 60px;
+    box-sizing: border-box;
+    margin: 0px;
     /* vertical-align: middle; */
 }
 
@@ -443,4 +463,113 @@ div#checkout span img {
     height: 40px;
     width: 40px;
     margin-top: 1em;
+    cursor: pointer;
+}
+
+.adminButtons {
+    float: right;
+    margin-right: 10px;
+}
+
+#navigation {
+    background-color: #2c3e50;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+#commentBox {
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+#commentBox div {
+    padding: 5px;
+    border: 2px solid #1881E9;
+    width: 40%;
+    border-radius: 5px;
+}
+
+#commentBox strong {
+    font-size: 1.6em;
+}
+
+#myTabContent {
+    padding: 10px;
+}
+
+#tabContent {
+    margin-top: 10px;
+}
+
+.thumbnail {
+    padding: 0px;
+}
+
+.panel {
+    position: relative;
+}
+
+.panel>.panel-heading:after,
+.panel>.panel-heading:before {
+    position: absolute;
+    top: 11px;
+    left: -16px;
+    right: 100%;
+    width: 0;
+    height: 0;
+    display: block;
+    content: " ";
+    border-color: transparent;
+    border-style: solid solid outset;
+    pointer-events: none;
+}
+
+.panel>.panel-heading:after {
+    border-width: 7px;
+    border-right-color: #f7f7f7;
+    margin-top: 1px;
+    margin-left: 2px;
+}
+
+.panel>.panel-heading:before {
+    border-right-color: #ddd;
+    border-width: 8px;
+}
+
+#addComment {
+    font-size: 10px;
+}
+
+.articleTech {
+    width: 40%;
+    margin: auto;
+}
+
+h2#totalPrice {
+    text-align: right;
+}
+
+div#paymentDiv+div label:first-of-type {
+    margin-right: 1em;
+}
+
+div#paymentDiv+div {
+    text-align: center;
+}
+
+div#confirm+div,
+div#adressDiv+div {
+    margin-left: 7em !important;
+}
+
+div#finalPrice {
+    margin-top: 2em;
+}
+
+#finalMessage {
+    text-align: center;
 }

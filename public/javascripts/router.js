@@ -106,6 +106,9 @@ app.config(function($routeProvider, $locationProvider) {
         .when("/checkout", {
             templateUrl: "checkout.htm"
         })
+        .when("/favorites", {
+            templateUrl: "favorites.htm"
+        })
 
     $locationProvider.html5Mode({
         enabled: true,

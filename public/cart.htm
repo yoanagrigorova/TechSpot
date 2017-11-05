@@ -15,11 +15,11 @@
                 <td><img height="90px" width="90px" src="{{product.pictures[0]}}" alt="" /><span>{{product.title}}</span> </td>
                 <td>
                     <form class="update-quantity-form">
-                        <input type="number" min="1" max="10" ng-init="quantity=1" ng-model="quantity" required>
+                        <input type="number" min="1" max="10" ng-value="{{product.quantity}}" required>
                     </form>
                 </td>
                 <td>{{product.price}} лв</td>
-                <td>{{product.price*quantity}} лв</td>
+                <td class="productPrice">{{product.price*product.quantity}} лв</td>
                 <td>
                     <img ng-click="addToFavorites(product)" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt="">
                     <img src='images/remove.png' ng-click='removeFromCart(product)'>
@@ -30,9 +30,9 @@
     </table>
 
     <div>
-        <span> Цена  лв</span>
-    </div>
+        <h2 id="totalPrice"> Крайна сума: {{getTotal()}} лв</h2>
+    </div><br>
     <div class="row">
-        <button class="buy btn btn-danger"><a ng-href="checkout">КУПИ</a></button>
+        <button class="buy btn btn-danger pull-right"><a ng-href="checkout">КУПИ</a></button>
     </div>
 </div>
