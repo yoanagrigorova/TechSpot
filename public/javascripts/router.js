@@ -1,6 +1,6 @@
 var app = angular.module("myApp", ["ngRoute", "phoneController", "tvController", "computersController",
     "microwaveOvensController", "vacuumsController", "conditionersController", "ovensController", 'searchApp',
-    "MainCtrl", "fridgesController", "washingMachinesController", "profileController", 'adminApp'
+    "MainCtrl", "fridgesController", "washingMachinesController", "profileController", 'adminApp', "homeController"
 ]);
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider
@@ -108,6 +108,10 @@ app.config(function($routeProvider, $locationProvider) {
         })
         .when("/favorites", {
             templateUrl: "favorites.htm"
+        })
+        .when("/", {
+            templateUrl: "home.htm",
+            controller: "homeCtrl"
         })
 
     $locationProvider.html5Mode({

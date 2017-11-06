@@ -15,7 +15,7 @@
                 <td><img height="90px" width="90px" src="{{product.pictures[0]}}" alt="" /><span>{{product.title}}</span> </td>
                 <td>
                     <form class="update-quantity-form">
-                        <input type="number" min="1" max="10" ng-value="{{product.quantity}}" required>
+                        <input type="number" min="1" max="10" ng-value="{{product.quantity}}" ng-model="product.quantity" required>
                     </form>
                 </td>
                 <td>{{product.price}} лв</td>

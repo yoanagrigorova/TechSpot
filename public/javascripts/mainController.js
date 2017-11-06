@@ -6,7 +6,7 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
         $scope.errorMsg = false;
 
         $scope.checkSession = function() {
-            $http.get('/').then(function(response){
+            $http.get('/').then(function(response) {
                 console.log(response.data.message);
             })
         };
@@ -36,7 +36,7 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
                 } else {
                     $scope.errorMsg = response.data.message;
                     $timeout(function() {
-                       $scope.errorMsg = false;
+                        $scope.errorMsg = false;
                     }, 2000);
                 }
             });
@@ -157,14 +157,16 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
 
         $scope.getTotal = function() {
             var total = 0;
-            $rootScope.userInSess.products.forEach(pr => total += (pr.price * pr.quantity));
+            $rootScope.userInSess.products.forEach(function(pr) {
+                total += (pr.price * pr.quantity)
+            });
             localStorage.setItem("totalPrice", angular.toJson(total));
             return localStorage.getItem("totalPrice");;
         }
 
         $scope.finalPurchase = function(items) {
             $scope.final = true;
-           
+
             items.forEach(it => $rootScope.userInSess.boughtProducts.push(it));
             localStorage.setItem('currentUser', angular.toJson($rootScope.userInSess));
             items.forEach(it => $scope.removeFromCart(it));
