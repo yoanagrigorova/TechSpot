@@ -575,3 +575,17 @@ div#finalPrice {
 button.close {
     margin: 0 !important;
 }
+
+@media screen and (max-width:481px) {
+    body {
+        padding: 0px;
+    }
+    #dropMenu4 {
+        right: -60px;
+        width: 250px;
+    }
+    #dropMenu3 {
+        right: -120px;
+        width: 250px;
+    }
+}
