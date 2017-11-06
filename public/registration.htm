@@ -1,6 +1,3 @@
-<div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
-
-
 <form ng-submit='register(userRegister)' name="myform" class="form-horizontal">
     <fieldset>
         <legend>Регистрация</legend>
@@ -10,10 +7,10 @@
             <span class="mendatory">*</span>
         </label>
             <div ng-class="{'has-success': myform.name.$valid, 'has-error': (myform.name.$invalid && myform.name.$dirty)}" class="col-lg-6">
-                <input type='text' ng-pattern='/^[a-zA-Z]+$/' ng-minlength="2" ng-maxlength="10" required name="name" class="form-control" ng-model='userRegister.name' id="name" />
+                <input type='text' ng-pattern='/^[a-zA-Zа-яА-я]+$/' ng-minlength="2" ng-maxlength="10" required name="name" class="form-control" ng-model='userRegister.name' id="name" />
             </div>
 
-            <div ng-show="myform.name.$dirty && myform.name.$invalid">
+            <div ng-show="myform.name.$dirty && myform.name.$invalid" class='warningReg'>
                 <strong ng-show="myform.name.$error.required"> Required field !</strong>
                 <strong ng-show="myform.name.$error.minlength"> Min 2 characters !</strong>
                 <strong ng-show="myform.name.$error.maxlength"> Max 10 characters !</strong>
@@ -24,10 +21,10 @@
         <div class="form-group">
             <label for="lastName" class="col-lg-2 control-label">Фамилия </label>
             <div ng-class="{'has-success': myform.lastName.$valid, 'has-error': (myform.lastName.$invalid && myform.lastName.$dirty)}" class="col-lg-6">
-                <input type='text' ng-pattern='/^[a-zA-Z]+$/' ng-minlength="2" ng-maxlength="10" required name="lastName" class="form-control" ng-model='userRegister.lastName' id="name" />
+                <input type='text' ng-pattern='/^[a-zA-Zа-яА-Я]+$/' ng-minlength="2" ng-maxlength="10" required name="lastName" class="form-control" ng-model='userRegister.lastName' id="name" />
             </div>
 
-            <div ng-show="myform.lastName.$dirty && myform.lastName.$invalid">
+            <div ng-show="myform.lastName.$dirty && myform.lastName.$invalid" class='warningReg'>
                 <strong ng-show="myform.lastName.$error.required"> Required field !</strong>
                 <strong ng-show="myform.lastName.$error.minlength"> Min 2 characters !</strong>
                 <strong ng-show="myform.lastName.$error.maxlength"> Max 10 characters !</strong>
@@ -43,7 +40,7 @@
                 <input type="text" ng-pattern='/^[a-zA-Z0-9]+@[a-z]{4,6}\.+[a-z]{2,3}$/' required ng-model='userRegister.mail' class="form-control" name="mail" id="mail" />
             </div>
 
-            <div ng-show="myform.mail.$dirty && myform.mail.$invalid">
+            <div ng-show="myform.mail.$dirty && myform.mail.$invalid" class='warningReg'>
                 <strong ng-show="myform.mail.$error.required"> Required field !</strong>
                 <strong ng-show="myform.mail.$error.pattern"> Please enter a valid email ! </strong>
             </div>
@@ -54,10 +51,10 @@
             <span class="mendatory">*</span>
         </label>
             <div class="col-lg-6" ng-class="{'has-success': myform.phone.$valid, 'has-error': (myform.phone.$invalid && myform.phone.$dirty)}">
-                <input name="phone" ng-model='userRegister.phone' required ng-pattern='/^[08][0-9]{9}$/' type="text" class="form-control" id="phone">
+                <input name="phone" ng-model='userRegister.phone' required ng-pattern='/^[0][8][0-9]{8}$/' type="text" class="form-control" id="phone">
             </div>
 
-            <div ng-show="myform.phone.$dirty && myform.phone.$invalid">
+            <div ng-show="myform.phone.$dirty && myform.phone.$invalid" class='warningReg'>
                 <strong ng-show="myform.phone.$error.required"> Required field !</strong>
                 <strong ng-show="myform.phone.$error.pattern"> Please enter a valid number ! </strong>
             </div>
@@ -70,7 +67,7 @@
             <div class="col-lg-6" ng-class="{'has-success': myform.password.$valid, 'has-error': (myform.password.$invalid && myform.password.$dirty)}">
                 <input name="password" type="password" ng-model='userRegister.password' ng-pattern='/^[a-zA-Z0-9]+$/' ng-minlength="5" ng-maxlength="12" required class="form-control" id="inputPassword">
             </div>
-            <div ng-show="myform.password.$dirty && myform.password.$invalid">
+            <div ng-show="myform.password.$dirty && myform.password.$invalid" class='warningReg'>
                 <strong ng-show="myform.password.$error.minlength"> Minimum 5 characters required ! </strong>
                 <strong ng-show="myform.password.$error.maxlength"> Maximum 12 characters ! </strong>
                 <strong ng-show="myform.password.$error.required"> Required field !</strong>
@@ -78,29 +75,25 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label for="repeatPassword" class="col-lg-2 control-label">Потвърдете паролата
-            <span class="mendatory">*</span>
-        </label>
-            <div ng-class="{'has-success': ((password == password2) && myform.password.$dirty && password != ''), 'has-error': ((password != password2) && myform.password.$dirty)}" class="col-lg-6">
-                <input name="password2" required ng-model='userRegister.password2' type="password" class="form-control" id="repearPassword">
-            </div>
-            <div ng-show="password != password2 && myform.password.$dirty">
-                <strong> Passwords dont match ! </strong>
-            </div>
-        </div>
+        
 
         <div class="form-group">
             <div class="col-lg-6 col-lg-offset-2">
                 <button type="reset" class="btn btn-default">Отмени</button>
                 <button type="submit" class="btn btn-primary" ng-disabled='myform.$invalid'>Запази</button>
-                <button ng-click='getInfo()' class='btn btn-success'> REGISTER WITH FB </button>
+                <button ng-click='getInfo()' class='btn btn-info'> REGISTER WITH FB </button>
             </div>
         </div>
 
+        
         <div class='row'>
-            <div class='col-lg-4' ng-show='errorMsg'></div>
-            <div class='alert alert-danger col-lg-3' ng-show='errorMsg'> {{errorMsg}} </div>
+                <div class='col-lg-2'></div>
+                <div class='alert alert-success col col-lg-5 popUp' ng-show='successRegMsg'> {{successRegMsg}} </div>
+            </div>
+
+        <div class='row'>
+            <div class='col-lg-2' ng-show='errorMsg'></div>
+            <div class='alert alert-danger col-lg-5' ng-show='errorRegMsg'> {{errorRegMsg}} </div>
         </div>
     </fieldset>
 </form>

@@ -165,8 +165,8 @@
                     <table class="table table-striped table-hover">
                         <tbody>
                             <td> ИЗБЕРETE КАТЕГОРИЯ </td>
-                            <td><select class='form-control selectpicker' ng-controller='searchCtrl' data-style="btn-primary"
-                                    ng-model='selectedOption' ng-change='changeCat(selectedOption)' ng-options='x.name for x in categories'></select></td>
+                            <td><select class='form-control selectpicker' ng-controller='searchCtrl' ng-init='selectedOption = categories[0]' data-style="btn-primary"
+                                    ng-model='selectedOption' ng-change='changeCat(selectedOption)' ng-options='x.name disable when x.disable for x in categories'></select></td>
                             <tr>
                                 <td>МАРКА</td>
                                 <td><input type='text' class='form-control' ng-model='productToEdit.brand'></td>

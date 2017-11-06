@@ -8,8 +8,10 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+        crossorigin="anonymous"></script>
     <link href='./stylesheets/bootstrap.min.css' rel="stylesheet" />
     <link href="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
@@ -28,6 +30,7 @@
     <script src="./javascripts/washingMachinesCtrl.js"></script>
     <script src='./javascripts/adminController.js'></script>
     <script src="./javascripts/router.js">
+
     </script>
     <script src="./javascripts/profileCtrl.js"></script>
     <script src='./javascripts/fbScript.js'></script>
@@ -39,27 +42,17 @@
 
 <body ng-app='myApp' ng-controller="MainController">
 
-    <div id="fb-root"></div>
-    <script>
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.10&appId=127323264645300';
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
 
     <div class="row">
         <span><img class="col-lg-6 col-xs-12" id="logo" src="./images/logo.png" alt=""/></span>
 
         <form class="navbar-form navbar-right col-lg-4 col-xs-12" role="search">
             <div class="form-group" ng-controller="searchCtrl">
-                <select class='form-control selectpicker' data-style="btn-primary" ng-model='selectedOption' ng-change='changeValue(selectedOption)' ng-options='x.name for x in categories'></select>
+                <select class='form-control selectpicker' ng-init='selectedOption = categories[0]' data-style="btn-primary" ng-model='selectedOption' ng-change='changeValue(selectedOption)'
+                    ng-options='x.name disable when x.disable for x in categories'></select>
                 <input type="text" class="form-control" placeholder="Search" ng-model='search.name'>
                 <div id='searchDiv'>
-                    <div class='animateSearch' ng-repeat='result in searchResults | filter: search.name' ng-if='search.name.length > 0'> <img ng-src='{{result.pictures[0]}}' width='50px' /> <a ng-href="http://localhost:3000/{{category}}/{{result._id}}"> {{result.title}} </a> </div>
+                    <div class='animateSearch' ng-repeat='result in searchResults | filter: search.name' ng-if='search.name.length > 0'> <img ng-src='{{result.pictures[0]}}' width='50px' /> <a ng-href="http://localhost:3000/{{category}}/{{result._id}}"> {{result.title}} </a>                        </div>
                 </div>
             </div>
         </form>
@@ -67,13 +60,14 @@
 
     <div class="row">
         <ul id="navigation" class="nav nav-pills pull-right">
-            <li><a ng-show='login'><strong>{{userInSess.mail}}</strong></a></li>
-            <li><a ng-hide="login" href="login"><strong>Вход</strong></a></li>
-            <li><a ng-show="login" ng-click='logOut()'><strong>Изход</strong></a></li>
-            <li><a ng-hide="login" href="registration"><strong>Регистрация</strong></a></li>
-            <li><a ng-show="login" href="myProfile"><strong>Моят профил</strong></a></li>
-            <li><img ng-mouseover='display3=true' ng-mouseleave='display3=false' class='animate' ng-model='display3' height="40px" width="40px" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png" alt="">
-                <div ng-show='display3' class="popUp menu" ng-mouseover='display3=true' ng-mouseleave='display3=false' id='dropMenu3'>
+            <li><a ng-show='login' class='popUp'><strong>{{userInSess.mail}}</strong></a></li>
+            <li><a ng-hide="login" href="login" class='popUp'><strong>Вход</strong></a></li>
+            <li><a ng-show="login" ng-click='logOut()' class='popUp'><strong>Изход</strong></a></li>
+            <li><a ng-hide="login" href="registration" class='popUp'><strong>Регистрация</strong></a></li>
+            <li><a ng-show="login" href="myProfile" class='popUp'><strong>Моят профил</strong></a></li>
+            <li ng-mouseenter="display3 = true" ng-mouseleave='display3=false'><img class='animate' ng-model='display3' height="40px" width="40px" src="http://icons.iconarchive.com/icons/graphicloads/100-flat/256/heart-favourite-icon.png"
+                    alt="">
+                <div ng-show='display3' class="popUp menu" id='dropMenu3'>
                     <p ng-show='userInSess'>
                         <div ng-repeat='x in userInSess.favorites'>
                             <span class="pull-right"><img width='15px' src='images/remove.png' ng-click='removeFromFavorite(x)'></span>
@@ -82,15 +76,18 @@
                         <strong ng-show='userInSess.favorites.length == 0'> Няма продукти в любими! </strong> <br>
                         <hr>
                         <button class="btn btn-default btn-xs"><a ng-href="favorites">Виж любими</a></button>
+                    </p>
                 </div>
             </li>
-            <li><img ng-mouseover='cart=true' ng-mouseleave='cart=false' class='animate' ng-model='display4' height="40px" width="40px" src="./images/basket.png" alt="">
-                <div ng-show='cart' class="popUp menu" ng-mouseover='cart=true' ng-mouseleave='cart=false' id='dropMenu4'>
+
+            <li ng-mouseenter="cart = true" ng-mouseleave="cart = false"><img class='animate' ng-model='display4' height="40px" width="40px" src="./images/basket.png" alt="">
+                <div ng-show='cart' class="popUp menu" id='dropMenu4'>
                     <div ng-repeat='x in userInSess.products' class='animate'>
-                        <span class="pull-right"><img width='15px' src='images/remove.png' ng-click='removeFromCart(x)'></span>
+                        <span class="pull-right"><img width='15px' src='images/remove.png' ng-click='removeFromCart(x)'/></span>
                         <img class="pull-left" ng-src='{{x.pictures[0]}}' width='50px' />
-                        <a ng-href=/phones/{{x._id}}> {{x.title}} </a> <br>
+                        <a ng-href=/phones/{{x._id}}> {{x.title}} </a>
                         <span>Количество:<strong>{{x.quantity}} бр.</strong></span>
+                        <hr>
                     </div>
                     <strong ng-show='userInSess.products.length == 0'> Кошницата е празна! </strong><br>
                     <hr>
@@ -100,11 +97,12 @@
         </ul>
     </div>
     <br>
-    <!-- <br/><br/><br/> -->
+    
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                    aria-expanded="true">
                       <span class="sr-only">Toggle navigation</span>
                       <span class="icon-bar"></span>
                       <span class="icon-bar"></span>
@@ -116,15 +114,15 @@
                     <li><a href="phones">Телефони</a></li>
                     <li><a href="tvs">Телевизори</a></li>
                     <li><a href="computers">Компютри</a></li>
-                    <li><a href="homeappliances" ng-mouseover='display=true' ng-mouseleave="display=false" class='animate' ng-model='display'>Домакински електроуреди</a>
-                        <div ng-show='display' class="popUp" ng-mouseover="display=true" ng-mouseleave="display=false" id='dropMenu'>
+                    <li ng-mouseenter="homeAppl = true" ng-mouseleave="homeAppl = false"><a href="homeappliances" class='animate' ng-model='display'>Домакински електроуреди</a>
+                        <div ng-show='homeAppl' class="popUp" id='dropMenu'>
                             <button class="btn"> <a href="homeappliances/ovens">Готварски печки</a> </button>
                             <button class="btn"> <a href="homeappliances/fridges">Хладилници</a> </button>
                             <button class="btn"> <a href="homeappliances/washing-machines">Перални</a> </button>
                         </div>
                     </li>
-                    <li><a href="smallappliances" ng-mouseover='display2=true' ng-mouseleave='display2=false' class='animate' ng-model='display2'>Малки електроуреди</a>
-                        <div ng-show='display2' class="popUp" ng-mouseover='display2=true' ng-mouseleave='display2=false' id='dropMenu2'>
+                    <li ng-mouseenter='smallAppl = true' ng-mouseleave='smallAppl = false'><a href="smallappliances" class='animate' ng-model='display2'>Малки електроуреди</a>
+                        <div ng-show='smallAppl' class="popUp" id='dropMenu2'>
                             <button class="btn"> <a href="smallappliances/microwave-ovens">Микровълнови</a> </button>
                             <button class="btn"> <a href="smallappliances/vacuumCleaners">Прахосмукачки</a> </button>
                         </div>
@@ -143,12 +141,14 @@
 
 
         <div ng-show="addProduct" class="alert alert-dismissible alert-success popUp">
-            <button type="button" class="close" data-dismiss="alert">&times;</button> Успешно добавихте продукта в количката си!
+            <button type="button" class="close" data-dismiss="alert">&times;</button> Успешно добавихте продукта в количката
+            си!
         </div>
         <div ng-show="addProductToFavorites" class="alert alert-dismissible alert-success popUp">
-            <button type="button" class="close" data-dismiss="alert">&times;</button> Успешно добавихте продукта в списъка си с любими артикули!
+            <button type="button" class="close" data-dismiss="alert">&times;</button> Успешно добавихте продукта в списъка
+            си с любими артикули!
         </div>
-
+        <div ng-show='notLoggedIn'> Моля, влезте в профила си ! </div>
         <div ng-show="compare" class="card border-primary row">
             <div ng-repeat="product in compareProducts" class="card-body col-md-3">
                 <button type="button" class="close" style="color:black" ng-click="removeCompare(product)">&times;</button>

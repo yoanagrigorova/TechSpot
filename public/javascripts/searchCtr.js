@@ -2,7 +2,7 @@ angular.module('searchApp', ['ngAnimate'])
     .controller('searchCtrl', function($scope, $http) {
 
         $scope.categories = [
-            
+            { name: 'Изберете категория', disable: true},
             { name: 'Телефони', url: '/api/phones' },
             { name: 'Телевизори', url: '/api/tvs' },
             { name: 'Компютри', url: '/api/computers' },

@@ -12,7 +12,7 @@ router.post('/', function(req,res,next){
       } else {
         req.session.destroy();
         res.redirect('/');
-        console.log('stignah')
+        
          
       }
 

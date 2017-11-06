@@ -11,6 +11,7 @@ var db = monk('angelov21:plf13017@ds237445.mlab.com:37445/final-project');
 var express = require("express");
 var sha1 = require("sha1");
 var app = express();
+var MongoStore = require('connect-mongo')(session);
 
 app.use(function(req, res, next) {
     req.db = db;
@@ -44,25 +45,32 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: 'Yoana', maxAge: 600000 }));
+app.use(session({ secret: 'Yoana', maxAge: 600000, store: new MongoStore({url: 'mongodb://angelov21:plf13017@ds237445.mlab.com:37445/final-project' , autoRemove: 'native' , ttl: 1 * 1 * 30 * 60}) }));
 
-function requireAdmin(req, res, next) {
-    console.log('test');
-    console.log(req.session.user);
+function checkSession(req, res, next) {
+    var db = req.db;
+    var sessions = db.get('sessions');
+    console.log(req.session.id)
+    console.log(db)
     next();
-    // if (req.session.user.permission == 'admin') {
-    //     console.log('1');
-    //     next();
-    // } else {
-    //     console.log('error')
-    //     res.json({message: "Admin rights required !"});
-    // }
+    // sessions.find({_id: req.session.id}, {}, function(err, succ){
+    //     if (err){
+    //         console.log('losho')
+    //     } else {
+    //         console.log('dobre')
+    //     }
+    // });
+//    if (req.session.id == ){
+//        next();
+//    } else {
+//        res.json({message: 'Session expired, please login!', timeout: true})
+//    }
 }
 
 
-
+app.use('/',checkSession)
 app.use('/login', login);
-app.use('/admin', requireAdmin, admin);
+app.use('/admin', admin);
 app.use("/api/phones", phones);
 app.use('/api/registration', registration);
 app.use("/api/tvs", tvs);

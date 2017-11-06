@@ -4,6 +4,14 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
         // $rootScope.login = false;
         $scope.userRegister = {};
         $scope.errorMsg = false;
+
+        $scope.checkSession = function() {
+            $http.get('/').then(function(response){
+                console.log(response.data.message);
+            })
+        };
+
+        $scope.checkSession();
         $scope.getCurrentUser = function() {
             $rootScope.userInSess = JSON.parse(localStorage.getItem('currentUser'));
             $scope.userInfo = [$rootScope.userInSess];
@@ -27,6 +35,9 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
                     }, 600000);
                 } else {
                     $scope.errorMsg = response.data.message;
+                    $timeout(function() {
+                       $scope.errorMsg = false;
+                    }, 2000);
                 }
             });
 
@@ -38,15 +49,17 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
             $http.post("/api/registration", JSON.stringify(user)).then(function(response) {
                 console.log(response.data);
                 if (response.data.success) {
-                    $scope.successMsg = response.data.message;
-                    $location.path('/')
+                    $scope.successRegMsg = response.data.message;
+                    $timeout(function() {
+                        $location.path('/');
+                    }, 2000);
                 } else {
-                    $scope.errorMsg = response.data.message;
+                    $scope.errorRegMsg = response.data.message;
                 }
 
             });
-
         }
+
         $scope.logOut = function() {
             $rootScope.userInSess = {};
             var user = localStorage.getItem('currentUser');
@@ -151,25 +164,15 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
 
         $scope.finalPurchase = function(items) {
             $scope.final = true;
+           
             items.forEach(it => $rootScope.userInSess.boughtProducts.push(it));
             localStorage.setItem('currentUser', angular.toJson($rootScope.userInSess));
             items.forEach(it => $scope.removeFromCart(it));
         }
 
-        $scope.FBLogin = function() {
-            FB.login(function(response) {
-                if (response.authResponse) {
-                    console.log('Welcome');
-                    FB.api('/me', 'GET', { fields: 'picture' }, function(response) {
-                        console.log(response)
-                        console.log('GOod to see you' + response.name + ' ' + response.mail)
-
-                    });
-                } else {
-                    console.log('Not authorized!')
-                }
-            }, { scope: 'public_profile, email' })
-        }
+        // $scope.changePass = function() {
+        //     $http.post
+        // }
 
         $scope.getInfo = function() {
             FB.login(function(response) {
