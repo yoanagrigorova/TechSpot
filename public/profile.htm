@@ -1,45 +1,96 @@
-<div ng-init='activeTab = 1' id='tabContent'>
-    <ul class="nav nav-tabs">
-        <li ng-class="{'active': activeTab == 1}"><a ng-click='activeTab = 1'>Лични данни</a></li>
-        <li ng-class="{'active': activeTab == 2}"><a ng-click='activeTab = 2'>Необработени поръчки</a></li>
-        <li ng-class="{'active': activeTab == 3}"><a ng-click='activeTab = 3'>Обработени поръчки</a></li>
-        <li ng-class="{'active': activeTab == 4}"><a ng-click='activeTab = 4'>Промяна на парола</a></li>
-    </ul>
+<div ng-controller='adminCtrl'>
+    <div ng-init='activeTab = 1' id='tabContent' ng-show='userInSess.permission != "admin" '>
+        <ul class="nav nav-tabs">
+            <li ng-class="{'active': activeTab == 1}"><a ng-click='activeTab = 1'>Лични данни</a></li>
+            <li ng-class="{'active': activeTab == 2}"><a ng-click='activeTab = 2'>Необработени поръчки</a></li>
+            <li ng-class="{'active': activeTab == 3}"><a ng-click='activeTab = 3'>Обработени поръчки</a></li>
+            <!-- <li ng-class="{'active': activeTab == 4}"><a ng-click='activeTab = 4'>Промяна на парола</a></li> -->
+        </ul>
 
-    <div id="myTabContent" class='tab-conten'>
-        <div ng-show="activeTab == 1" id='popUp'>
-            <div ng-repeat="user in userInfo">
-                <p><strong>Име: </strong> {{user.firstName}} </p>
-                <p><strong>Фамилия: </strong> {{user.lastName}} </p>
-                <p><strong>Имейл: </strong> {{user.mail}} </p>
-                <p><strong>Телефон: </strong> {{user.phone}} </p>
+        <div id="myTabContent" class='tab-conten'>
+            <div ng-show="activeTab == 1" id='popUp'>
+                <div ng-repeat="user in userInfo">
+                    <p><strong>Име: </strong> {{userInSess.firstName}} </p>
+                    <p><strong>Фамилия: </strong> {{userInSess.lastName}} </p>
+                    <p><strong>Имейл: </strong> {{userInSess.mail}} </p>
+                    <p><strong>Телефон: </strong> {{userInSess.phone}} </p>
+                </div>
             </div>
-        </div>
-        <div ng-show="activeTab == 2" id='popUp'>
-            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress,
-                commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
-        </div>
-        <div ng-show="activeTab == 3" id='popUp'>
-            <div>
-                <table class="table table-striped table-hover table-bordered">
-                    <thead class="thead-dark">
-                        <tr>
-                            <th>Продукт</th>
-                            <th>Единична цена</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="product in userInSess.boughtProducts">
-                            <td><img height="90px" width="90px" src="{{product.pictures[0]}}" alt="" /><span>{{product.title}}</span> </td>
-                            <td>{{product.price}} лв</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div ng-show="activeTab == 2" id='popUp'>
+
             </div>
-        </div>
-        <div ng-show="activeTab == 4" id='popUp'>
-            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress,
-                commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit.</p>
+            <div ng-show="activeTab == 3" id='popUp'>
+                <div>
+                    <table class="table table-striped table-hover table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th>Продукт</th>
+                                <th>Единична цена</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="product in userInSess.boughtProducts">
+                                <td><img height="90px" width="90px" src="{{product.pictures[0]}}" alt="" /><span>{{product.title}}</span>                                    </td>
+                                <td>{{product.price}} лв</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- <div ng-show="activeTab == 4" id='popUp'>
+                <label for='enterOldPass'> <input ng-model='oldpass' class='form-group'/>
+                        <label for='enterNewPass'> <input ng-model='newpass' class='form-group'/>
+                        <label for='enterNewPass'> <input ng-model='newpass2' class='form-group'/>
+                            <button class='btn btn-info' ng-disabled='newpass != newpass2'> ПРОМЕНИ </button>
+            </div> -->
         </div>
     </div>
+
+    <div ng-init='activeTab = 1' id='tabContent' ng-show='userInSess.permission == "admin"'>
+        <ul class="nav nav-tabs">
+            <li ng-class="{'active': activeTab == 1}"><a ng-click='activeTab = 1'>Лични данни</a></li>
+            <li ng-class="{'active': activeTab == 2}"><a ng-click='activeTab = 2'>Изтриване на потребителите</a></li>
+<!-- 
+            <li ng-class="{'active': activeTab == 4}"><a ng-click='activeTab = 4'>Промяна на парола</a></li> -->
+        </ul>
+
+        <div id="myTabContent" class='tab-conten'>
+            <div ng-show="activeTab == 1" id='popUp'>
+                <div ng-repeat="user in userInfo">
+                    <p><strong>Име: </strong> {{userInSess.firstName}} </p>
+                    <p><strong>Фамилия: </strong> {{userInSess.lastName}} </p>
+                    <p><strong>Имейл: </strong> {{userInSess.mail}} </p>
+                    <p><strong>Телефон: </strong> {{userInSess.phone}} </p>
+                </div>
+            </div>
+            <div ng-show="activeTab == 2" id='popUp'>
+                <div ng-show='userDeletedMsg' id='popUp' class='alert alert-success'> {{userDeletedMsg}} </div>
+                <div ng-repeat='user in userList' class='userCards'>
+                   
+                    <button type="button" ng-click='deleteUser(user)' class="close" data-dismiss="alert"> ИЗТРИЙ </button>
+                    <p><strong>Име: </strong> {{user.firstName}} </p>
+                    <p><strong>Фамилия: </strong> {{user.lastName}} </p>
+                    <p><strong>Имейл: </strong> {{user.mail}} </p>
+                    <p><strong>Телефон: </strong> {{user.phone}} </p>
+                   
+                </div>
+            </div>
+
+            <!-- <div ng-show="activeTab == 4" id='popUp'>
+                <form ng-submit='changePass()'>
+                    <label for='enterOldPass'> Въведете парола:</label> <input type='password' ng-model='oldpass'
+                    class='form-control' />
+                <label for='enterNewPass'> Въведете нова парола:</label><input type='password' ng-model='newPass' class='form-control'
+                />
+                <label for='enterNewPass'> Потвърдете нова парола:</label><input type='password' ng-model='newPass2' class='form-control'
+                />
+                <hr>
+                <div class='alert alert-danger' ng-show=''></div>
+                <div class='alert alert-danger' ng-show='newPass != newPass2' id='popUp'> Паролите не съвпадат ! </div>
+                <button class='btn btn-info' ng-disabled='newPass != newPass2' type='submit'> ПРОМЕНИ </button>
+                </form>
+            </div> -->
+        </div>
+    </div>
+
 </div>

@@ -291,6 +291,10 @@ option {
     border-radius: 5px;
 }
 
+#searchDiv a {
+    color: #00ccff
+}
+
 div.form-group {
     position: relative;
 }
@@ -588,4 +592,51 @@ button.close {
         right: -120px;
         width: 250px;
     }
+    /* ul.nav.nav-pills li a{
+    color: white;
+} */
+}
+
+ul.nav.nav-tabs li a {
+    color: #00ccff
+}
+
+ul.nav.nav-tabs li.active a {
+    color: black
+}
+
+article h4 {
+    color: #00ccff;
+}
+
+#dropMenu3 a,
+#dropMenu4 a {
+    color: #000000
+}
+
+footer a {
+    color: #00ccff;
+}
+
+.userCards {
+    border: 2px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    width: 20%;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.userCards .close {
+    color: black;
+    background-color: white;
+    font-size: 14px;
+}
+
+.userCards .close:hover {
+    color: black
+}
+
+.warningReg {
+    font-size: 2em;
 }
