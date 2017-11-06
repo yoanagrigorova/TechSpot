@@ -66,8 +66,7 @@ phone.controller("phonesCtrl", function($scope, $http, $rootScope) {
 })
 
 .controller("phoneInfoCtrl", function($scope, $http, $rootScope) {
-
-    var url = window.location.href.substr(21);
+    var url = window.location.pathname;
     $http.get('/api' + url).then(function(response) {
         $scope.phones = response.data;
     })
