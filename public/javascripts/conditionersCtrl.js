@@ -45,7 +45,7 @@ angular.module("conditionersController", ['ngAnimate', 'rzModule', 'ui.bootstrap
     })
 
 .controller("conditionersInfoCtrl", function($scope, $http) {
-    var url = window.location.href.substr(21);
+    var url = window.location.pathname;
     $http.get('/api' + url).then(function(response) {
         $scope.conditioners = response.data;
     })

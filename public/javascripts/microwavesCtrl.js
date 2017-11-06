@@ -45,7 +45,7 @@ angular.module("microwaveOvensController", ['ngAnimate', 'rzModule', 'ui.bootstr
     })
 
 .controller("microwavesInfoCtrl", function($scope, $http) {
-    var url = window.location.href.substr(37);
+    var url = window.location.pathname.substr(16);
     $http.get('/api' + url).then(function(response) {
         $scope.microwaves = response.data;
     })

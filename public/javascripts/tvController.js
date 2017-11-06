@@ -45,7 +45,7 @@ angular.module("tvController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
     })
 
 .controller("tvsInfoCtrl", function($scope, $http) {
-    var url = window.location.href.substr(21);
+    var url = window.location.pathname;
     $http.get('/api' + url).then(function(response) {
         $scope.tvs = response.data;
     })

@@ -54,8 +54,9 @@ angular.module("computersController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
     })
 
 .controller("computersInfoCtrl", function($scope, $http) {
-    var url = window.location.href.substr(21);
+    var url = window.location.pathname;
     $http.get('/api' + url).then(function(response) {
+        console.log(response.data);
         $scope.computers = response.data;
     })
 })
