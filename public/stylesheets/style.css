@@ -75,9 +75,8 @@ footer article ul li a {
 }
 
 footer a img {
-    width: 30px;
-    height: 30px;
-    margin-left: 10px;
+    font-size: 1.4em !important;
+    color: black !important
 }
 
 #payment img {
@@ -601,4 +600,13 @@ footer a {
     position: relative;
     width: 100%;
     height: 600px;
+}
+
+section h1 {
+    display: inline-block;
+    width: 70%;
+}
+
+img.avatar {
+    border-radius: 50%;
 }

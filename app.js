@@ -32,6 +32,8 @@ var fridges = require("./routes/fridges");
 var washingMachines = require("./routes/washingMachines");
 var logout = require("./routes/logout");
 var admin = require('./routes/admin');
+var checkSes = require('./routes/checkSession')
+
 
 
 // view engine setup
@@ -45,16 +47,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: 'Yoana', maxAge: 600000, store: new MongoStore({ url: 'mongodb://angelov21:plf13017@ds237445.mlab.com:37445/final-project', autoRemove: 'native', ttl: 1 * 1 * 30 * 60 }) }));
-
-function checkSession(req, res, next) {
-    var db = req.db;
-    var sessions = db.get('sessions');
-    next();
-}
+app.use(session({ secret: 'Yoana', maxAge: 600000, store: new MongoStore({ url: 'mongodb://angelov21:plf13017@ds237445.mlab.com:37445/final-project', autoRemove: 'native', ttl: 1 * 1 * 5 * 60 }) }));
 
 
-app.use('/', checkSession)
+
+
+function reqAdmin(req, res, next) {
+    if (req.session.user.permission == 'admin') {
+        next();
+    } else {
+        res.sendStatus(401);
+
+    }
+};
+app.use('/sessioncheck', checkSes)
 app.use('/login', login);
 app.use('/admin', admin);
 app.use("/api/phones", phones);

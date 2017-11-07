@@ -41,6 +41,13 @@ angular.module("tvController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
     function getTV() {
         dataService.getProduct(url).then(function(response) {
             $scope.tvs = response.data;
-        })
+        }).catch(function(response) {
+            $rootScope.sessionTimeout = 'Сесията ви е изтекла, моля влезте отново в профила си !'
+            $timeout(function() {
+                $rootScope.sessionTimeout = false;
+                $location.path('/login');
+                $scope.logOut();
+            }, 2500);
+        });
     }
 })

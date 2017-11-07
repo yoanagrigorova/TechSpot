@@ -35,7 +35,14 @@ phone.controller("phonesCtrl", function($scope, $http, $rootScope, dataService) 
                 }
             };
             print(response.data);
-        })
+        }).catch(function(response) {
+            $rootScope.sessionTimeout = 'Сесията ви е изтекла, моля влезте отново в профила си !'
+            $timeout(function() {
+                $rootScope.sessionTimeout = false;
+                $location.path('/login');
+                $scope.logOut();
+            }, 2500);
+        });
     }
 
 

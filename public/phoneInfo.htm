@@ -106,7 +106,7 @@
                             </div>
                             <div class="panel-body">
                                 <input type='text' class='form-control' ng-model='newComment.text'> </input>
-                                <button ng-click='addCommentToProduct(phones[0])' id='addComment' class='btn btn-info'> ДОБАВИ КОМЕНТАР </button>
+                                <button ng-click='addCommentToProduct(phones[0])' ng-disabled="!userInSess" id='addComment' class='btn btn-info'> ДОБАВИ КОМЕНТАР </button>
                             </div>
                         </div>
                     </div>
@@ -239,7 +239,7 @@
                             </div>
                             <div class="panel-body">
                                 <input type='text' class='form-control' ng-model='newComment.text'> </input>
-                                <button ng-click='addCommentToProduct(phones[0])' id='addComment' class='btn btn-info'> ДОБАВИ КОМЕНТАР </button>
+                                <button ng-click='addCommentToProduct(phones[0])'  id='addComment' class='btn btn-info'> ДОБАВИ КОМЕНТАР </button>
                             </div>
                         </div>
                     </div>

@@ -1,5 +1,10 @@
 <section class="row">
     <h1> {{pageTitle}} </h1>
+    <div id='sort' style='float:right'>
+            <span style='font-size:1.8em'> Сортирай по: </span>
+            <button class='btn btn-primary' ng-click='togglePrice = !togglePrice'> ЦЕНА </button>
+            
+            </div>
     <aside class="col-sm-3">
         <h3>Резултати</h3>
         <div class="col-sm-12">
@@ -26,7 +31,7 @@
         </div>
     </aside>
     <div class="col-sm-8 productsListing">
-        <article class='animate' ng-repeat="tv in tvs | filter:search.brand | filter:search.displaysize | filter:search.r | sizeFilter:slider">
+        <article class='animate' ng-repeat="tv in tvs | orderBy: !togglePrice?'price':'-price' | filter:search.brand |filter:search.displaysize | filter:search.r | sizeFilter:slider">
             <span class="col-sm-2" style="float:left"><img ng-src="{{tv.pictures[0]}}" alt=""/></span>
             <div class="tvInfo col-sm-7">
                 <h4> {{tv.title}} </h4>
