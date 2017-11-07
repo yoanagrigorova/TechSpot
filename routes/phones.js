@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 
 router.get("/", function(req, res, next) {
-    console.log('proba')
     var db = req.db;
     var phones = db.get('phones');
     phones.find({}, {}, function(err, docs) {
@@ -19,10 +18,5 @@ router.get("/:phones_id", function(req, res, next) {
     });
 });
 
-// router.post('/', function(req,res,next){
-//     var db = req.db;
-//     var collection = db.get('phones');
-//     req.session
-// });
 
 module.exports = router;

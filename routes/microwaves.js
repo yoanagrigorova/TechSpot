@@ -13,7 +13,6 @@ router.get("/:microwaves_id", function(req, res, next) {
     var db = req.db;
     var collection = db.get('microwaveOvens');
     var id = req.params.microwaves_id;
-    console.log(id);
     collection.find({ _id: id }, {}, function(e, docs) {
         res.json(docs);
     });

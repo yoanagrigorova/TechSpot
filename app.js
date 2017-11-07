@@ -45,30 +45,16 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: 'Yoana', maxAge: 600000, store: new MongoStore({url: 'mongodb://angelov21:plf13017@ds237445.mlab.com:37445/final-project' , autoRemove: 'native' , ttl: 1 * 1 * 30 * 60}) }));
+app.use(session({ secret: 'Yoana', maxAge: 600000, store: new MongoStore({ url: 'mongodb://angelov21:plf13017@ds237445.mlab.com:37445/final-project', autoRemove: 'native', ttl: 1 * 1 * 30 * 60 }) }));
 
 function checkSession(req, res, next) {
     var db = req.db;
     var sessions = db.get('sessions');
-    console.log(req.session.id)
-    console.log(db)
     next();
-    // sessions.find({_id: req.session.id}, {}, function(err, succ){
-    //     if (err){
-    //         console.log('losho')
-    //     } else {
-    //         console.log('dobre')
-    //     }
-    // });
-//    if (req.session.id == ){
-//        next();
-//    } else {
-//        res.json({message: 'Session expired, please login!', timeout: true})
-//    }
 }
 
 
-app.use('/',checkSession)
+app.use('/', checkSession)
 app.use('/login', login);
 app.use('/admin', admin);
 app.use("/api/phones", phones);

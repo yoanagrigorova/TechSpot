@@ -22,12 +22,6 @@
             </ul>
         </div>
         <div class="col-sm-12">
-            <h4>Тип</h4>
-            <ul>
-                <li ng-repeat="type in types"><input type="checkbox" ng-model='search.type' ng-true-value="'{{type}}'" ng-false-value=''> {{type}} </li>
-            </ul>
-        </div>
-        <div class="col-sm-12">
             <h4>Капацитет на хладилника</h4>
             <ul>
                 <li ng-repeat="cf in capacitiesF"><input type="checkbox" ng-model='search.cf' ng-true-value="'{{cf}}'" ng-false-value=''> {{cf}} </li>
@@ -46,7 +40,6 @@
             <div class="col-sm-7 fridgeInfo">
                 <h4> {{fridge.title}} </h4>
                 <ul>
-                    <li>Тип: {{fridge.type}} </li>
                     <li>Общ капацитет: {{fridge.totalCapacity}} </li>
                     <li>Височина: {{fridge.height}} </li>
                     <li>Енергиен клас: {{fridge.energyClass}} </li>

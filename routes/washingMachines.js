@@ -14,7 +14,6 @@ router.get("/:wm_id", function(req, res, next) {
     var collection = db.get('washingMachines');
     var id = req.params.wm_id;
     collection.find({ _id: id }, {}, function(e, docs) {
-        console.log(docs);
         res.json(docs);
     });
 })

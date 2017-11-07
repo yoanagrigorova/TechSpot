@@ -1,6 +1,7 @@
 var app = angular.module("myApp", ["ngRoute", "phoneController", "tvController", "computersController",
     "microwaveOvensController", "vacuumsController", "conditionersController", "ovensController", 'searchApp',
-    "MainCtrl", "fridgesController", "washingMachinesController", "profileController", 'adminApp', "homeController"
+    "MainCtrl", "fridgesController", "washingMachinesController", "profileController", 'adminApp', "homeController",
+    "Service"
 ]);
 app.config(function($routeProvider, $locationProvider) {
     $routeProvider
@@ -109,7 +110,7 @@ app.config(function($routeProvider, $locationProvider) {
         .when("/favorites", {
             templateUrl: "favorites.htm"
         })
-        .when("/", {
+        .otherwise({
             templateUrl: "home.htm",
             controller: "homeCtrl"
         })

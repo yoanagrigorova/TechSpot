@@ -25,22 +25,8 @@
             </div>
         </form>
     </div><br>
-    <div id="paymentDiv" class="row">
-        <span class="col-sm-1 col-xs-2 step"><strong>2</strong> СТЪПКА</span>
-        <h2 class="col-xs-6">Плащане</h2>
-        <span class="pull-right"><img ng-click="payment=true" ng-hide="payment" src="./images/plus.png" alt=""></span>
-        <span class="pull-right"><img ng-click="payment=false" ng-show="payment" src="./images/minus.png" alt=""></span>
-    </div>
-    <div class="row popUp" ng-show="payment" ng-if="userAdress.length>0 && userCity.length>0">
-        <strong>Изберете начин на плащане: </strong>
-        <input type="radio" name="wayOfPayment" ng-model="radioValue" value="afterDelivery" />
-        <label for="afterDelivery"> Наложен платеж </label>
-        <input type="radio" name="wayOfPayment" ng-model="radioValue" value="ePay" />
-        <label for="ePay"> Плащане с ePay.bg </label>
-
-    </div><br>
     <div id="confirm" class="row">
-        <span class="col-sm-1 col-xs-2 step"><strong>3</strong> СТЪПКА</span>
+        <span class="col-sm-1 col-xs-2 step"><strong>2</strong> СТЪПКА</span>
         <h2 class="col-xs-6">Потвърждаване</h2>
         <span class="pull-right"><img ng-click="confirm=true" ng-hide="confirm" src="./images/plus.png" alt=""></span>
         <span class="pull-right"><img ng-click="confirm=false" ng-show="confirm" src="./images/minus.png" alt=""></span>
@@ -66,11 +52,8 @@
         <div class="col-xs-3">
             <h4>Вид плащане</h4>
             <ul class="list-group">
-                <li ng-show="radioValue=='afterDelivery'" class="list-group-item">
+                <li class="list-group-item">
                     <p>Наложен платеж</p>
-                </li>
-                <li ng-show="radioValue=='ePay'" class="list-group-item">
-                    <p>Плащане с ePay.bg</p>
                 </li>
             </ul>
         </div>

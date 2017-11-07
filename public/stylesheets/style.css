@@ -59,25 +59,11 @@ footer {
     background-color: rgb(242, 242, 242);
 }
 
-
-/* footer article {
-    width: 16%;
-    float: left;
-    margin-top: 1em;
-    margin-left: 3em;
-} */
-
 footer article h5 {
     color: black;
     font-weight: bold;
     padding: 5px;
 }
-
-
-/* 
-footer article ul {
-    list-style: none;
-} */
 
 footer article ul li {
     padding: 5px;
@@ -87,16 +73,6 @@ footer article ul li a {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
 }
-
-
-/* footer ul li {
-    text-align: left;
-    padding: 5px;
-}
-
-footer h5~a {
-    float: left;
-} */
 
 footer a img {
     width: 30px;
@@ -241,14 +217,6 @@ i img {
     opacity: 0;
 }
 
-
-/* .animateSearch {
-    -webkit-transition: 1s linear all; 
-	transition: 1s linear all;
-    opacity: 1;
-    display: block !important;
-  } */
-
 .animateSearch.ng-enter {
     -webkit-transition: 1s linear all;
     /* Chrome */
@@ -331,14 +299,6 @@ div.form-group {
     color: black !important;
 }
 
-
-/* #dropMenu button,
-#dropMenu2 button,
-#dropMenu3 button,
-#dropMenu4 button {
-    margin-left: 20px;
-} */
-
 #navigation li img:first-child {
     margin-right: 1em !important;
 }
@@ -358,11 +318,6 @@ div.form-group {
     margin-left: 0px !important;
     margin-right: 0px !important;
 }
-
-
-/* strong {
-    font-size: 1.8em;
-}  */
 
 main {
     background-color: white;
@@ -386,12 +341,6 @@ main {
 #popUp.ng-hide-remove {
     transition: all linear 0.5s;
 }
-
-
-/* .menu {
-    height: 200px;
-    /* overflow: scroll; 
-} */
 
 div#comparePanel table tr td {
     height: 58px !important;
@@ -453,7 +402,6 @@ div#checkout h2 {
     height: 60px;
     box-sizing: border-box;
     margin: 0px;
-    /* vertical-align: middle; */
 }
 
 div#checkout div#adressDiv {
@@ -592,9 +540,6 @@ button.close {
         right: -120px;
         width: 250px;
     }
-    /* ul.nav.nav-pills li a{
-    color: white;
-} */
 }
 
 ul.nav.nav-tabs li a {
@@ -639,4 +584,21 @@ footer a {
 
 .warningReg {
     font-size: 2em;
+}
+
+#slides_control>div {
+    height: 600px;
+}
+
+#slides_control>div img {
+    margin: auto;
+    width: 50%;
+    height: 550px;
+}
+
+#slides_control {
+    top: 40px;
+    position: relative;
+    width: 100%;
+    height: 600px;
 }

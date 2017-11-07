@@ -1,62 +1,58 @@
 angular.module("computersController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
-    .controller("computersCtrl", function($scope, $http) {
+    .controller("computersCtrl", function($scope, $http, dataService) {
         $scope.search = {};
         $scope.pageTitle = "Компютри";
-        $http.get("/api/computers").then(function(response) {
-            response.data.sort((c1, c2) => c1.price - c2.price);
-            $scope.computers = response.data;
-            $scope.slider = {
-                minValue: $scope.computers[0].price,
-                maxValue: $scope.computers[$scope.computers.length - 1].price,
-                options: {
-                    floor: $scope.computers[0].price,
-                    ceil: $scope.computers[$scope.computers.length - 1].price,
-                    step: 10
-                }
-            };
-            print(response.data);
-        })
 
-        function onlyUnique(value, index, self) {
-            return self.indexOf(value) === index;
-        }
+        getComputers();
 
-        function sort(arr) {
-            arr.sort(function(arr1, arr2) {
-                if (arr1 > arr2)
-                    return 1;
-                if (arr1 < arr2)
-                    return -1;
-                return 0;
+        function getComputers() {
+            dataService.getProducts("computers").then(function(response) {
+                response.data.sort((c1, c2) => c1.price - c2.price);
+                $scope.computers = response.data;
+                $scope.slider = {
+                    minValue: $scope.computers[0].price,
+                    maxValue: $scope.computers[$scope.computers.length - 1].price,
+                    options: {
+                        floor: $scope.computers[0].price,
+                        ceil: $scope.computers[$scope.computers.length - 1].price,
+                        step: 10
+                    }
+                };
+                print(response.data);
             })
         }
 
+
         function print(data) {
-            var brands = data.map((comp) => comp.brand).filter(onlyUnique);
-            sort(brands);
+            var brands = data.map((comp) => comp.brand).filter(dataService.onlyUnique);
+            dataService.sort(brands);
             $scope.brands = brands;
-            var displaySizes = data.map((comp) => comp.displaysize).filter(onlyUnique);
-            sort(displaySizes);
+            var displaySizes = data.map((comp) => comp.displaysize).filter(dataService.onlyUnique);
+            dataService.sort(displaySizes);
             $scope.displaySizes = displaySizes;
-            var rams = data.map((comp) => comp.ram).filter(onlyUnique);
-            sort(rams);
+            var rams = data.map((comp) => comp.ram).filter(dataService.onlyUnique);
+            dataService.sort(rams);
             $scope.rams = rams;
-            var hdds = data.map((comp) => comp.hdd).filter(onlyUnique);
+            var hdds = data.map((comp) => comp.hdd).filter(dataService.onlyUnique);
             hdds = hdds.map(x => parseFloat(x)).sort((x1, x2) => x1 - x2).map(x => x + " GB")
             $scope.hdds = hdds;
-            var oss = data.map((comp) => comp.os).filter(onlyUnique);
-            sort(oss);
+            var oss = data.map((comp) => comp.os).filter(dataService.onlyUnique);
+            dataService.sort(oss);
             $scope.oss = oss;
-            var processors = data.map((comp) => comp.processor).filter(onlyUnique);
-            sort(processors);
+            var processors = data.map((comp) => comp.processor).filter(dataService.onlyUnique);
+            dataService.sort(processors);
             $scope.processors = processors;
         }
     })
 
-.controller("computersInfoCtrl", function($scope, $http) {
+.controller("computersInfoCtrl", function($scope, $http, dataService) {
     var url = window.location.pathname;
-    $http.get('/api' + url).then(function(response) {
-        console.log(response.data);
-        $scope.computers = response.data;
-    })
+
+    getComputer();
+
+    function getComputer() {
+        dataService.getProduct(url).then(function(response) {
+            $scope.computers = response.data;
+        })
+    }
 })

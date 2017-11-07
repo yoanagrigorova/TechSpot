@@ -27,12 +27,6 @@
                 <li ng-repeat="capacity in capacities"><input type="checkbox" ng-model='search.capacity' ng-true-value="'{{capacity}}'" ng-false-value=''> {{capacity}} </li>
             </ul>
         </div>
-        <div class="col-sm-12">
-            <h4>Тип</h4>
-            <ul>
-                <li ng-repeat="type in types"><input type="checkbox" ng-model='search.type' ng-true-value="'{{type}}'" ng-false-value=''> {{type}} </li>
-            </ul>
-        </div>
     </aside>
     <div class="col-sm-8 productsListing">
         <article class="col-sm-12" ng-repeat="vacuum in vacuums | filter:search.brand | filter:search.power | filter:search.capacity | filter:search.type | sizeFilter:slider">
@@ -40,7 +34,6 @@
             <div class="col-sm-7" class="vacuumsInfo">
                 <h4> {{vacuum.title}} </h4>
                 <ul>
-                    <li>Тип: {{vacuum.type}} </li>
                     <li>Мощност: {{vacuum.power}} </li>
                     <li>Капацитет: {{vacuum.capacity}} </li>
                 </ul>
