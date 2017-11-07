@@ -17,7 +17,6 @@ angular.module("tvController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
             };
             print(response.data);
         })
-
         function onlyUnique(value, index, self) {
             return self.indexOf(value) === index;
         }
@@ -48,5 +47,12 @@ angular.module("tvController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
     var url = window.location.href.substr(21);
     $http.get('/api' + url).then(function(response) {
         $scope.tvs = response.data;
-    })
+    }).catch(function (response) {
+        $rootScope.sessionTimeout = 'Сесията ви е изтекла, моля влезте отново в профила си !'
+        $timeout(function () {
+            $rootScope.sessionTimeout = false;
+            $location.path('/login');
+            $scope.logOut();
+        }, 2500);
+    });
 })

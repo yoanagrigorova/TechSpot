@@ -1,38 +1,49 @@
 var phone = angular.module("phoneController", ['ngAnimate', 'rzModule', 'ui.bootstrap']);
 
 
-phone.filter('sizeFilter', [function() {
-    return function(phones, config) {
+phone.filter('sizeFilter', [function () {
+    return function (phones, config) {
         var filterResult = [];
-        angular.forEach(phones, function(phone) {
+        angular.forEach(phones, function (phone) {
             if (phone.price >= config.minValue && phone.price <= config.maxValue) {
                 filterResult.push(phone);
             };
         });
         return filterResult;
 
-        
+
     }
 }]);
 
-phone.controller("phonesCtrl", function($scope, $http, $rootScope) {
+phone.controller("phonesCtrl", function ($scope, $http, $rootScope, $location, $timeout) {
     $scope.search = {};
     $scope.pageTitle = "Мобилни телефони";
-    $http.get("/api/phones").then(function(response) {
-       
-        response.data.sort((p1, p2) => p1.price - p2.price);
-        $scope.phones = response.data;
-        $scope.slider = {
-            minValue: $scope.phones[0].price,
-            maxValue: $scope.phones[$scope.phones.length - 1].price,
-            options: {
-                floor: $scope.phones[0].price,
-                ceil: $scope.phones[$scope.phones.length - 1].price,
-                step: 10
-            }
-        };
-        print(response.data);
+    
+    $http.get("/api/phones").then(function (response) {
+        if (response.status == 200) {
+            response.data.sort((p1, p2) => p1.price - p2.price);
+            $scope.phones = response.data;
+            $scope.slider = {
+                minValue: $scope.phones[0].price,
+                maxValue: $scope.phones[$scope.phones.length - 1].price,
+                options: {
+                    floor: $scope.phones[0].price,
+                    ceil: $scope.phones[$scope.phones.length - 1].price,
+                    step: 10
+                }
+            };
+            print(response.data);
+        }
+    })
+    .catch(function (response) {
+        $rootScope.sessionTimeout = 'Сесията ви е изтекла, моля влезте отново в профила си !'
+        $timeout(function () {
+            $rootScope.sessionTimeout = false;
+            $location.path('/login');
+            $scope.logOut();
+        }, 2500);
     });
+
 
 
     function onlyUnique(value, index, self) {
@@ -40,7 +51,7 @@ phone.controller("phonesCtrl", function($scope, $http, $rootScope) {
     }
 
     function sort(arr) {
-        arr.sort(function(arr1, arr2) {
+        arr.sort(function (arr1, arr2) {
             if (arr1 > arr2)
                 return 1;
             if (arr1 < arr2)
@@ -65,11 +76,13 @@ phone.controller("phonesCtrl", function($scope, $http, $rootScope) {
     }
 })
 
-.controller("phoneInfoCtrl", function($scope, $http, $rootScope) {
-   
-    var url = window.location.href.substr(21);
-    $http.get('/api' + url).then(function(response) {
-        $scope.phones = response.data;
+
+
+    .controller("phoneInfoCtrl", function ($scope, $http, $rootScope) {
+
+        var url = window.location.href.substr(21);
+        $http.get('/api' + url).then(function (response) {
+            $scope.phones = response.data;
+        })
     })
-})
 

@@ -4,14 +4,24 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
         // $rootScope.login = false;
         $scope.userRegister = {};
         $scope.errorMsg = false;
+        $scope.notLoggedIn = false;
 
         $scope.checkSession = function() {
-            $http.get('/').then(function(response){
-                console.log(response.data.message);
+            $http.get('/sessioncheck').then(function(response){
+               
+            }).catch(function(res){
+                if ($location.path() != '/login'){
+                $rootScope.sessionTimeout = 'Сесията ви е изтекла, моля влезте отново в профила си !'
+                $timeout(function () {
+                    $rootScope.sessionTimeout = false;
+                    $location.path('/login');
+                    $scope.logOut();
+                }, 2500);
+            }
             })
         };
-
         $scope.checkSession();
+        
         $scope.getCurrentUser = function() {
             $rootScope.userInSess = JSON.parse(localStorage.getItem('currentUser'));
             $scope.userInfo = [$rootScope.userInSess];
@@ -36,7 +46,7 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
                 } else {
                     $scope.errorMsg = response.data.message;
                     $timeout(function() {
-                       $scope.errorMsg = false;
+                       $scope.errorMsg = null;
                     }, 2000);
                 }
             });
@@ -91,6 +101,7 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
 
         $scope.addToCart = function(item) {
             $scope.getCurrentUser();
+            if ($rootScope.userInSess){
             if (!$rootScope.userInSess.products.some(x => x.title == item.title)) {
                 $rootScope.userInSess.products.push(item);
             } else {
@@ -98,10 +109,23 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
                 product.quantity++;
             }
             localStorage.setItem('currentUser', angular.toJson($rootScope.userInSess));
+            console.log($rootScope.userInSess);
+            
             $scope.addProduct = true;
             $timeout(function() {
                 $scope.addProduct = false;
+                
             }, 2000);
+                
+            
+            }
+            else {
+                $scope.notLoggedIn = true;
+                $timeout(function(){
+                    $scope.notLoggedIn = false;
+                    
+                }, 2000)
+            }
         }
 
         $scope.removeFromCart = function(item) {
@@ -170,9 +194,6 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
             items.forEach(it => $scope.removeFromCart(it));
         }
 
-        // $scope.changePass = function() {
-        //     $http.post
-        // }
 
         $scope.getInfo = function() {
             FB.login(function(response) {

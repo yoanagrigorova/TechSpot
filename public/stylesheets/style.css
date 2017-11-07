@@ -88,6 +88,11 @@ footer article ul li a {
     font-size: 14px;
 }
 
+footer a {
+    font-size: 1.4em !important;
+    color: black !important
+}
+
 
 /* footer ul li {
     text-align: left;
@@ -98,11 +103,11 @@ footer h5~a {
     float: left;
 } */
 
-footer a img {
+/* footer a img {
     width: 30px;
     height: 30px;
     margin-left: 10px;
-}
+} */
 
 #payment img {
     width: 4em;
@@ -627,4 +632,13 @@ footer a{
 
 .warningReg {
     font-size: 2em;
+}
+
+section h1 {
+    display: inline-block;
+    width: 70%;
+}
+
+img.avatar {
+    border-radius: 50%;
 }

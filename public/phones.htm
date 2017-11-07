@@ -1,6 +1,10 @@
 <section class="row">
     <h1> {{pageTitle}} </h1>
-
+    <div id='sort' style='float:right'>
+            <span style='font-size:1.8em'> Сортирай по: </span>
+            <button class='btn btn-primary' ng-click='togglePrice = !togglePrice'> ЦЕНА </button>
+            
+            </div>
     <aside class="col-sm-3">
         <h3>Резултати</h3>
         <div>
@@ -34,8 +38,8 @@
             </div>
     </aside>
     <div class="col-sm-8 productsListing" ng-controller='adminCtrl'>
-
-        <article class='animate' class="col-sm-12" ng-repeat="phone in phones | filter:search.brand | filter:search.displaysize:true | filter:search.rc | filter:search.im | sizeFilter:slider">
+        
+        <article class='animate' class="col-sm-12" ng-repeat="phone in phones | orderBy: !togglePrice?'price':'-price' | filter:search.brand | filter:search.displaysize:true | filter:search.rc | filter:search.im | sizeFilter:slider">
             <span class="col-sm-2" style="float:left"><img ng-src="{{phone.pictures[0]}}" alt=""/></span>
 
 

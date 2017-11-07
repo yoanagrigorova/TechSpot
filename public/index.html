@@ -35,6 +35,7 @@
     <script src="./javascripts/profileCtrl.js"></script>
     <script src='./javascripts/fbScript.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.5.0/sha1.min.js"></script>
+   
 
 </head>
 
@@ -48,8 +49,8 @@
 
         <form class="navbar-form navbar-right col-lg-4 col-xs-12" role="search">
             <div class="form-group" ng-controller="searchCtrl">
-                <select class='form-control selectpicker' ng-init='selectedOption = categories[0]' data-style="btn-primary" ng-model='selectedOption' ng-change='changeValue(selectedOption)'
-                    ng-options='x.name disable when x.disable for x in categories'></select>
+                <select class='form-control selectpicker' ng-init='selectedOption = categories[0]' data-style="btn-primary" ng-model='selectedOption'
+                    ng-change='changeValue(selectedOption)' ng-options='x.name disable when x.disable for x in categories'></select>
                 <input type="text" class="form-control" placeholder="Search" ng-model='search.name'>
                 <div id='searchDiv'>
                     <div class='animateSearch' ng-repeat='result in searchResults | filter: search.name' ng-if='search.name.length > 0'> <img ng-src='{{result.pictures[0]}}' width='50px' /> <a ng-href="http://localhost:3000/{{category}}/{{result._id}}"> {{result.title}} </a>                        </div>
@@ -72,11 +73,13 @@
                         <div ng-repeat='x in userInSess.favorites'>
                             <span class="pull-right"><img width='15px' src='images/remove.png' ng-click='removeFromFavorite(x)'></span>
                             <img class="pull-left" ng-src='{{x.pictures[0]}}' width='50px' /> <a ng-href=/phones/{{x._id}}> {{x.title}} </a>
+                            <hr>
                         </div>
-                        <strong ng-show='userInSess.favorites.length == 0'> Няма продукти в любими! </strong> <br>
+                        <strong ng-show='userInSess.favorites.length == 0'> Няма продукти в любими! </strong>
                         <hr>
                         <button class="btn btn-default btn-xs"><a ng-href="favorites">Виж любими</a></button>
                     </p>
+
                 </div>
             </li>
 
@@ -97,7 +100,7 @@
         </ul>
     </div>
     <br>
-    
+
     <nav class="navbar navbar-default">
         <div class="container-fluid">
             <div class="navbar-header">
@@ -138,8 +141,8 @@
     <script src='./javascripts/navBarApp.js'></script>
 
     <main>
-
-
+        <div ng-show='notLoggedIn' class='alert alert-danger' id='popUp'> Влезте в профила си за да може да пазарувате !</div>
+        <div ng-show='sessionTimeout' class='alert alert-danger'> {{sessionTimeout}} </div>
         <div ng-show="addProduct" class="alert alert-dismissible alert-success popUp">
             <button type="button" class="close" data-dismiss="alert">&times;</button> Успешно добавихте продукта в количката
             си!
@@ -148,7 +151,8 @@
             <button type="button" class="close" data-dismiss="alert">&times;</button> Успешно добавихте продукта в списъка
             си с любими артикули!
         </div>
-        <div ng-show='notLoggedIn'> Моля, влезте в профила си ! </div>
+
+       
         <div ng-show="compare" class="card border-primary row">
             <div ng-repeat="product in compareProducts" class="card-body col-md-3">
                 <button type="button" class="close" style="color:black" ng-click="removeCompare(product)">&times;</button>
@@ -163,57 +167,37 @@
     </main>
 
     <footer class="row">
-        <article class="col-md-2 col-sm-2">
-            <h5>ТЕХНОПОЛИС</h5>
+        <article class="col-md-4 col-sm-4">
+            <h4> ЗА НАС: </h4>
             <ul>
-                <li><a href="">Компанията</a></li>
-                <li><a href="">Работа при нас</a></li>
-                <li><a href="">Новини</a></li>
-                <li><a href="">Общи условия</a></li>
-            </ul>
-        </article>
-        <article class="col-md-2 col-sm-2">
-            <h5>КОНТАКТИ</h5>
-            <ul>
-                <li><a href="">Контакти</a></li>
-                <li><a href="">Магазини</a></li>
-                <li><a href="">Сервизи</a></li>
-            </ul>
-        </article>
-        <article class="col-md-2 col-sm-2">
-            <h5>ЗА КЛИЕНТА</h5>
-            <ul>
-                <li><a href="">Съвети</a></li>
-                <li><a href="">Транспорт</a></li>
-                <li><a href="">Доставка при онлайн поръчка</a></li>
-                <li><a href="">Вземи от магазин</a></li>
-                <li><a href="">Услуги</a></li>
-                <li><a href="">Връщане на поръчка</a></li>
-            </ul>
-        </article>
-        <article class="col-md-2 col-sm-2">
-            <h5>ОБЩА ИНФОРМАЦИЯ</h5>
-            <ul>
-                <li><a href="">Как да поръчам</a></li>
-                <li><a href="">Лоялни клиенти</a></li>
-                <li><a href="">Рециклиране</a></li>
-            </ul>
+                <li><a href="https://github.com/angelov21"> Александър Ангелов </a></li>
+                <li><a href="https://github.com/yoanagrigorova"> Йоана Григорова </a></li>
 
-            <h5>НАМЕРЕТЕ НИ В</h5>
-            <ul>
-                <a href=""><img src="/images/facebook.png" alt=""></a>
-                <a href=""><img src="/images/yt.png" alt=""></a>
-                <a href=""><img src="/images/g+.png" alt=""></a>
             </ul>
         </article>
-        <article class="col-md-3 col-sm-3" id="payment">
-            <h5>ПАЗАРУВАЙТЕ С</h5>
+        <article class="col-md-4 col-sm-4">
+            <h4> С ЛЮБЕЗНОТО СЪДЕЙСТВИЕ НА: </h4>
             <ul>
-                <a href=""><img src="/images/visa.png" alt=""></a>
-                <a href=""><img src="/images/master.png" alt=""></a>
-                <a href=""><img src="/images/maestro.png" alt=""></a>
+                <li class='second_li_footer'><a href='http://ittalents.bg/home'>		
+                        <img width='150px' src="images/ittalents.png" alt="">		
+                    </a>
+                </li>
+                <li class='second_li_footer'>	
+                        <img width='200px' src="http://www.technopolis.bg/medias/sys_master/images/h70/h6c/8843421057054.png" alt="">		
+                       
+                </li>
             </ul>
         </article>
+        <article class="col-md-4 col-sm-4">
+            <h4> ПОВЕЧЕ ИНФОРМАЦИЯ: </h4>
+            <ul>
+                <li>
+<a href='https://www.facebook.com/profile.php?id=1716361084'> <img width='100px' class='avatar' src='images/angelov-pic.jpg' alt='fb-icon'/></a>
+<a href='https://www.facebook.com/Joana.Iurieva?fref=ts'> <img width='100px' class='avatar' src='images/yoana.jpg'alt='fb-icon'/></a>
+                </li>
+            </ul>
+        </article>
+      
     </footer>
 </body>
 

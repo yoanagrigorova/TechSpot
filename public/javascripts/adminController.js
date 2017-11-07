@@ -1,6 +1,6 @@
 angular.module('adminApp', ['ngAnimate'])
 
-    .controller('adminCtrl', function ($scope, $http, $timeout) {
+    .controller('adminCtrl', function ($scope, $http, $timeout,$route) {
         $scope.editMode = false;
 
 
@@ -33,6 +33,7 @@ angular.module('adminApp', ['ngAnimate'])
                     $scope.responseMsg = response.data.message;
                     $timeout(function () {
                         $scope.responseMsg = false;
+                        $route.reload();
                     }, 2000);
                 })
             };

@@ -15,8 +15,7 @@ angular.module("microwaveOvensController", ['ngAnimate', 'rzModule', 'ui.bootstr
                 }
             };
             print(response.data);
-        });
-
+        })
         function onlyUnique(value, index, self) {
             return self.indexOf(value) === index;
         }

@@ -13,7 +13,7 @@ var sha1 = require("sha1");
 var app = express();
 var MongoStore = require('connect-mongo')(session);
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     req.db = db;
     next();
 });
@@ -32,6 +32,8 @@ var fridges = require("./routes/fridges");
 var washingMachines = require("./routes/washingMachines");
 var logout = require("./routes/logout");
 var admin = require('./routes/admin');
+var checkSes = require('./routes/checkSession')
+
 
 
 // view engine setup
@@ -45,33 +47,23 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: 'Yoana', maxAge: 600000, store: new MongoStore({url: 'mongodb://angelov21:plf13017@ds237445.mlab.com:37445/final-project' , autoRemove: 'native' , ttl: 1 * 1 * 30 * 60}) }));
-
-function checkSession(req, res, next) {
-    var db = req.db;
-    var sessions = db.get('sessions');
-    console.log(req.session.id)
-    console.log(db)
-    next();
-    // sessions.find({_id: req.session.id}, {}, function(err, succ){
-    //     if (err){
-    //         console.log('losho')
-    //     } else {
-    //         console.log('dobre')
-    //     }
-    // });
-//    if (req.session.id == ){
-//        next();
-//    } else {
-//        res.json({message: 'Session expired, please login!', timeout: true})
-//    }
-}
+app.use(session({ secret: 'Yoana', maxAge: 600000, store: new MongoStore({ url: 'mongodb://angelov21:plf13017@ds237445.mlab.com:37445/final-project', autoRemove: 'native', ttl: 1 * 1 * 5 * 60 }) }));
 
 
-app.use('/',checkSession)
+
+
+function reqAdmin (req, res, next) {
+    if (req.session.user.permission == 'admin') {
+        next();
+    } else {
+        res.sendStatus(401);
+    
+    }
+};
+app.use('/sessioncheck',checkSes)
 app.use('/login', login);
 app.use('/admin', admin);
-app.use("/api/phones", phones);
+app.use("/api/phones",phones);
 app.use('/api/registration', registration);
 app.use("/api/tvs", tvs);
 app.use("/api/computers", computers);
@@ -82,20 +74,20 @@ app.use("/api/ovens", ovens);
 app.use("/api/fridges", fridges);
 app.use("/api/washing-machines", washingMachines);
 app.use("/api/logout", logout);
-app.all("/*", function(req, res, next) {
+app.all("/*", function (req, res, next) {
     res.sendFile("index.html", { root: __dirname + "/public" });
 });
 
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
 
 // error handler
-app.use(function(err, req, res, next) {
+app.use(function (err, req, res, next) {
     // set locals, only providing error in development
     res.locals.message = err.message;
     res.locals.error = req.app.get('env') === 'development' ? err : {};

@@ -15,7 +15,7 @@ angular.module("vacuumsController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
                 }
             };
             print(response.data);
-        });
+        })
 
         function onlyUnique(value, index, self) {
             return self.indexOf(value) === index;

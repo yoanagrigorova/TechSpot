@@ -50,5 +50,5 @@ angular.module("washingMachinesController", ['ngAnimate', 'rzModule', 'ui.bootst
         var url = window.location.pathname.substr(15);
         $http.get("/api" + url).then(function(response) {
             $scope.washingMachines = response.data;
-        })
+        });
     })
