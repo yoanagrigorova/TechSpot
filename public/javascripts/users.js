@@ -15,22 +15,4 @@ var User = function(firstName, lastName, mail, phone, password) {
     }
 }
 
-User.prototype.addProductToBuy = function(product) {
-    this.products.push(product);
-}
-
-User.prototype.addFavorite = function(product) {
-    this.favorites.push(product);
-}
-
-User.prototype.removeProductFromBasket = function(product) {
-    var index = this.products.findIndex(pr => pr._id === product._id);
-    this.products.splice(index, 1);
-}
-
-User.prototype.removeProductFromFavorites = function(product) {
-    var index = this.products.findIndex(pr => pr._id === product._id);
-    this.favorites.splice(index, 1);
-}
-
 module.exports = User;
