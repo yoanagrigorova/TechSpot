@@ -37,7 +37,7 @@ angular.module("tvController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
 
 .controller("tvsInfoCtrl", function($scope, $http, dataService) {
     var url = window.location.pathname;
-
+    getTV();
     function getTV() {
         dataService.getProduct(url).then(function(response) {
             $scope.tvs = response.data;

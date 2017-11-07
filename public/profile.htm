@@ -2,9 +2,9 @@
     <div ng-init='activeTab = 1' id='tabContent' ng-show='userInSess.permission != "admin" '>
         <ul class="nav nav-tabs">
             <li ng-class="{'active': activeTab == 1}"><a ng-click='activeTab = 1'>Лични данни</a></li>
-            <li ng-class="{'active': activeTab == 2}"><a ng-click='activeTab = 2'>Необработени поръчки</a></li>
+           
             <li ng-class="{'active': activeTab == 3}"><a ng-click='activeTab = 3'>Обработени поръчки</a></li>
-            <!-- <li ng-class="{'active': activeTab == 4}"><a ng-click='activeTab = 4'>Промяна на парола</a></li> -->
+            
         </ul>
 
         <div id="myTabContent" class='tab-conten'>
@@ -16,9 +16,7 @@
                     <p><strong>Телефон: </strong> {{userInSess.phone}} </p>
                 </div>
             </div>
-            <div ng-show="activeTab == 2" id='popUp'>
-
-            </div>
+           
             <div ng-show="activeTab == 3" id='popUp'>
                 <div>
                     <table class="table table-striped table-hover table-bordered">
@@ -37,12 +35,7 @@
                     </table>
                 </div>
             </div>
-            <!-- <div ng-show="activeTab == 4" id='popUp'>
-                <label for='enterOldPass'> <input ng-model='oldpass' class='form-group'/>
-                        <label for='enterNewPass'> <input ng-model='newpass' class='form-group'/>
-                        <label for='enterNewPass'> <input ng-model='newpass2' class='form-group'/>
-                            <button class='btn btn-info' ng-disabled='newpass != newpass2'> ПРОМЕНИ </button>
-            </div> -->
+           
         </div>
     </div>
 
@@ -50,8 +43,6 @@
         <ul class="nav nav-tabs">
             <li ng-class="{'active': activeTab == 1}"><a ng-click='activeTab = 1'>Лични данни</a></li>
             <li ng-class="{'active': activeTab == 2}"><a ng-click='activeTab = 2'>Изтриване на потребителите</a></li>
-<!-- 
-            <li ng-class="{'active': activeTab == 4}"><a ng-click='activeTab = 4'>Промяна на парола</a></li> -->
         </ul>
 
         <div id="myTabContent" class='tab-conten'>
@@ -76,20 +67,6 @@
                 </div>
             </div>
 
-            <!-- <div ng-show="activeTab == 4" id='popUp'>
-                <form ng-submit='changePass()'>
-                    <label for='enterOldPass'> Въведете парола:</label> <input type='password' ng-model='oldpass'
-                    class='form-control' />
-                <label for='enterNewPass'> Въведете нова парола:</label><input type='password' ng-model='newPass' class='form-control'
-                />
-                <label for='enterNewPass'> Потвърдете нова парола:</label><input type='password' ng-model='newPass2' class='form-control'
-                />
-                <hr>
-                <div class='alert alert-danger' ng-show=''></div>
-                <div class='alert alert-danger' ng-show='newPass != newPass2' id='popUp'> Паролите не съвпадат ! </div>
-                <button class='btn btn-info' ng-disabled='newPass != newPass2' type='submit'> ПРОМЕНИ </button>
-                </form>
-            </div> -->
         </div>
     </div>
 
