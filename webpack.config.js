@@ -60,6 +60,6 @@ module.exports = {
             $: "jquery",
             jQuery: "jquery"
         }),
-        // new UglifyJsPlugin()
+        new UglifyJsPlugin()
     ]
 }
