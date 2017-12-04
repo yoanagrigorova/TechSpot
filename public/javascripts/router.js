@@ -1,117 +1,136 @@
+
+let angular = require('angular');
+let sliderCss = require('../stylesheets/slider-css.css');
+let angularSlider = require('angularjs-slider');
+let angularRoute = require('angular-route');
+let angularAnimate = require('angular-animate');
+let angularCookies = require('angular-cookies');
+let angularBootstrap = require('angular-ui-bootstrap');
+let sha1 = require('sha1');
+let css = require("../stylesheets/style.css");
+let bootstrapJS = require('./bootstrap-js');
+let bootstrap = require('../stylesheets/bootstrap.min.css');
+
+var requireTest = require.context('./', true, /\.js$/);
+requireTest.keys().forEach(requireTest);
+
 var app = angular.module("myApp", ["ngRoute", "phoneController", "tvController", "computersController",
     "microwaveOvensController", "vacuumsController", "conditionersController", "ovensController", 'searchApp',
     "MainCtrl", "fridgesController", "washingMachinesController", "profileController", 'adminApp', "homeController",
     "Service"
 ]);
-app.config(function($routeProvider, $locationProvider) {
+
+
+
+app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
     $routeProvider
 
         .when("/login", {
-            templateUrl: "login.htm"
+            template: require("../views/login.htm")
         })
         .when("/registration", {
-            templateUrl: "registration.htm"
+            template: require("../views/registration.htm")
         })
         .when("/phones", {
-            templateUrl: "phones.htm",
+            template: require("../views/phones.htm"),
             controller: "phonesCtrl"
         })
         .when("/tvs", {
-            templateUrl: "tvs.htm",
+            template: require("../views/tvs.htm"),
             controller: "tvCtrl"
         })
         .when("/computers", {
-            templateUrl: "computers.htm",
+            template: require("../views/computers.htm"),
             controller: "computersCtrl"
         })
         .when("/phones/:_id", {
-            templateUrl: "phoneInfo.htm",
+            template: require("../views/phoneInfo.htm"),
             controller: "phoneInfoCtrl"
         })
         .when("/tvs/:_id", {
-            templateUrl: "tvsInfo.htm",
+            template: require("../views/tvsInfo.htm"),
             controller: "tvsInfoCtrl"
         })
         .when("/computers/:_id", {
-            templateUrl: "computersInfo.htm",
+            template: require("../views/computersInfo.htm"),
             controller: "computersInfoCtrl"
         })
         .when("/smallappliances/microwave-ovens", {
-            templateUrl: "microwaves.htm",
+            template: require("../views/microwaves.htm"),
             controller: "microwavesCtrl"
         })
         .when("/smallappliances/microwave-ovens/:_id", {
-            templateUrl: "microwavesInfo.htm",
+            template: require("../views/microwavesInfo.htm"),
             controller: "microwavesInfoCtrl"
         })
         .when("/smallappliances/vacuumCleaners", {
-            templateUrl: "vacuums.htm",
+            template: require("../views/vacuums.htm"),
             controller: "vacuumsCtrl"
         })
         .when("/smallappliances/vacuumCleaners/:_id", {
-            templateUrl: "vacuumsInfo.htm",
+            template: require("../views/vacuumsInfo.htm"),
             controller: "vocuumsInfoCtrl"
         })
         .when("/conditioners", {
-            templateUrl: "conditioners.htm",
+            template: require("../views/conditioners.htm"),
             controller: "conditionersCtrl"
         })
         .when("/conditioners/:_id", {
-            templateUrl: "conditionersInfo.htm",
+            template: require("../views/conditionersInfo.htm"),
             controller: "conditionersInfoCtrl"
         })
         .when("/homeappliances/ovens", {
-            templateUrl: "ovens.htm",
+            template: require("../views/ovens.htm"),
             controller: "ovensCtrl"
         })
         .when("*", {
             controller: "MainController"
         })
         .when("/homeappliances", {
-            templateUrl: "homeAppliances.htm"
+            template: require("../views/homeAppliances.htm")
         })
         .when("/homeappliances/ovens/:_id", {
-            templateUrl: "ovensInfo.htm",
+            template: require("../views/ovensInfo.htm"),
             controller: "ovensInfoCtrl"
         })
         .when("/homeappliances/fridges", {
-            templateUrl: "fridges.htm",
+            template: require("../views/fridges.htm"),
             controller: "fridgesCtrl"
         })
         .when("/homeappliances/fridges/:_id", {
-            templateUrl: "fridgesInfo.htm",
+            template: require("../views/fridgesInfo.htm"),
             controller: "fridgesInfoCtrl"
         })
         .when("/homeappliances/washing-machines", {
-            templateUrl: "washingMachines.htm",
+            template: require("../views/washingMachines.htm"),
             controller: "washingMachinesCtrl"
         })
         .when("/homeappliances/washing-machines/:_id", {
-            templateUrl: "washingMachinesInfo.htm",
+            template: require("../views/washingMachinesInfo.htm"),
             controller: "washingMachinesInfoCtrl"
         })
         .when("/smallappliances", {
-            templateUrl: "smallAppliances.htm"
+            template: require("../views/smallAppliances.htm")
         })
         .when("/myProfile", {
-            templateUrl: "profile.htm",
+            template: require("../views/profile.htm"),
             controller: "profileCtrl"
         })
 
-    .when("/compare", {
-            templateUrl: "compare.htm"
+        .when("/compare", {
+            template: require("../views/compare.htm")
         })
         .when("/cart", {
-            templateUrl: "cart.htm"
+            template: require("../views/cart.htm")
         })
         .when("/checkout", {
-            templateUrl: "checkout.htm"
+            template: require("../views/checkout.htm")
         })
         .when("/favorites", {
-            templateUrl: "favorites.htm"
+            template: require("../views/favorites.htm")
         })
         .otherwise({
-            templateUrl: "home.htm",
+            template: require("../views/home.htm"),
             controller: "homeCtrl"
         })
 
@@ -120,4 +139,4 @@ app.config(function($routeProvider, $locationProvider) {
         requireBase: false
     });
 
-});
+}]);

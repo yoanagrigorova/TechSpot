@@ -1,4 +1,4 @@
 angular.module("profileController", [])
-    .controller("profileCtrl", function($scope, $http, $rootScope) {
+    .controller("profileCtrl", ['$scope', '$http', '$rootScope', function($scope, $http, $rootScope) {
         $scope.users = $rootScope.userInSess;
-    })
+    }])

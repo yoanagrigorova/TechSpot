@@ -1,5 +1,5 @@
 angular.module('searchApp', ['ngAnimate'])
-    .controller('searchCtrl', function($scope, $http) {
+    .controller('searchCtrl', ['$scope', '$http', function($scope, $http) {
 
         $scope.categories = [
             { name: 'Изберете категория', disable: true},
@@ -36,4 +36,4 @@ angular.module('searchApp', ['ngAnimate'])
 
 
 
-    });
+    }]);

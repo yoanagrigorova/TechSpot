@@ -1,5 +1,5 @@
 angular.module("fridgesController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
-    .controller("fridgesCtrl", function($scope, $http, dataService) {
+    .controller("fridgesCtrl", ['$scope', '$http', 'dataService', function($scope, $http, dataService) {
         $scope.search = {};
         $scope.pageTitle = "Хладилници";
 
@@ -37,8 +37,8 @@ angular.module("fridgesController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
             capacitiesR = capacitiesR.map(x => parseInt(x)).sort((x1, x2) => x1 - x2).map(x => x + " L");
             $scope.capacitiesR = capacitiesR;
         }
-    })
-    .controller("fridgesInfoCtrl", function($scope, $http, dataService) {
+    }])
+    .controller("fridgesInfoCtrl", ['$scope','$http', 'dataService', function($scope, $http, dataService) {
         var url = window.location.pathname.substr(15);
 
         getFridge();
@@ -48,4 +48,4 @@ angular.module("fridgesController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
                 $scope.fridges = response.data;
             })
         }
-    })
+    }])

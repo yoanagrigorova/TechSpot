@@ -1,7 +1,7 @@
 var express = require('express');
 var sha1 = require("sha1");
 var router = express.Router();
-var User = require('../public/javascripts/users.js');
+// var User = require('../public/dist/bundle.js').User;
 
 router.post('/', function(req, res, next) {
 

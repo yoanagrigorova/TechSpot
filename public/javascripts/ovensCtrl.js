@@ -1,5 +1,5 @@
 angular.module("ovensController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
-    .controller("ovensCtrl", function($scope, $http, dataService) {
+    .controller("ovensCtrl", ['$scope', '$http', 'dataSerivce', function($scope, $http, dataService) {
         $scope.search = {};
         $scope.pageTitle = "Фурни за вграждане";
 
@@ -36,8 +36,9 @@ angular.module("ovensController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
             dataService.sort(capacities);
             $scope.capacities = capacities;
         }
-    })
-    .controller("ovensInfoCtrl", function($scope, $http, dataService) {
+    }])
+
+    .controller("ovensInfoCtrl", ['$scope', '$http', 'dataService', function($scope, $http, dataService) {
         var url = window.location.pathname.substr(15);
 
         getOven();
@@ -47,4 +48,4 @@ angular.module("ovensController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
                 $scope.ovens = response.data;
             })
         }
-    })
+    }])

@@ -1,1 +1,1 @@
-var app = angular.module("myApp", ['ngAnimate', 'rzModule', 'ui.bootstrap', 'ngCookies']);
+// var app = angular.module("myApp", ['ngAnimate', 'rzModule', 'ui.bootstrap', 'ngCookies']);

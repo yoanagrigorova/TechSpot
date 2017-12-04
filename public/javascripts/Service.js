@@ -1,5 +1,7 @@
+
+
 angular.module('Service', [])
-    .service('dataService', function($http) {
+    .service('dataService', ['$http', function($http) {
 
         this.onlyUnique = function(value, index, self) {
             return self.indexOf(value) === index;
@@ -37,4 +39,4 @@ angular.module('Service', [])
             return $http.delete(base + "/" + category);
         };
 
-    });
+    }]);

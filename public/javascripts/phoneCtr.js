@@ -15,7 +15,7 @@ phone.filter('sizeFilter', [function() {
     }
 }]);
 
-phone.controller("phonesCtrl", function($scope, $http, $rootScope, dataService) {
+phone.controller("phonesCtrl", ['$scope', '$http', '$rootScope', 'dataService', function($scope, $http, $rootScope, dataService) {
     $scope.search = {};
     $scope.pageTitle = "Мобилни телефони";
 
@@ -60,9 +60,9 @@ phone.controller("phonesCtrl", function($scope, $http, $rootScope, dataService) 
         iternalMemory = iternalMemory.map(x => parseFloat(x)).sort((x1, x2) => x1 - x2).map(x => x + " GB");
         $scope.iternalMemory = iternalMemory;
     }
-})
+}])
 
-.controller("phoneInfoCtrl", function($scope, $http, $rootScope, dataService) {
+.controller("phoneInfoCtrl", ['$scope', '$http', '$rootScope', 'dataService', function($scope, $http, $rootScope, dataService) {
     var url = window.location.pathname;
 
     getPhone(url);
@@ -72,4 +72,4 @@ phone.controller("phonesCtrl", function($scope, $http, $rootScope, dataService) 
             $scope.phones = response.data;
         })
     }
-})
+}])

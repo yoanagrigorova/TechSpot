@@ -1,5 +1,5 @@
 angular.module("homeController", ["ui.bootstrap"])
-    .controller("homeCtrl", function($scope, $http, $rootScope, dataService) {
+    .controller("homeCtrl", ['$scope', '$http', '$rootScope', 'dataService', function($scope, $http, $rootScope, dataService) {
         dataService.getProducts("phones").then(function(response) {
             $scope.phones = response.data;
             $scope.myInterval = 2000;
@@ -23,4 +23,4 @@ angular.module("homeController", ["ui.bootstrap"])
                 }
             ];
         })
-    })
+    }])

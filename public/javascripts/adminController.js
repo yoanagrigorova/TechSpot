@@ -1,6 +1,6 @@
-angular.module('adminApp', ['ngAnimate'])
+export default angular.module('adminApp', ['ngAnimate'])
 
-.controller('adminCtrl', function($scope, $http, $timeout, dataService, $route) {
+.controller('adminCtrl', ['$scope', '$http', '$timeout', 'dataService', '$route', function($scope, $http, $timeout, dataService, $route) {
     $scope.editMode = false;
 
 
@@ -81,4 +81,4 @@ angular.module('adminApp', ['ngAnimate'])
         }
     }
 
-});
+}]);

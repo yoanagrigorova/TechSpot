@@ -1,12 +1,12 @@
 angular.module("computersController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
-    .controller("computersCtrl", function($scope, $http, dataService) {
+    .controller("computersCtrl", ['$scope', '$http', 'dataService', function ($scope, $http, dataService) {
         $scope.search = {};
         $scope.pageTitle = "Компютри";
 
         getComputers();
 
         function getComputers() {
-            dataService.getProducts("computers").then(function(response) {
+            dataService.getProducts("computers").then(function (response) {
                 response.data.sort((c1, c2) => c1.price - c2.price);
                 $scope.computers = response.data;
                 $scope.slider = {
@@ -43,16 +43,16 @@ angular.module("computersController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
             dataService.sort(processors);
             $scope.processors = processors;
         }
-    })
+    }])
 
-.controller("computersInfoCtrl", function($scope, $http, dataService) {
-    var url = window.location.pathname;
+    .controller("computersInfoCtrl", ['$scope', '$http', 'dataService', function ($scope, $http, dataService) {
+        var url = window.location.pathname;
 
-    getComputer();
+        getComputer();
 
-    function getComputer() {
-        dataService.getProduct(url).then(function(response) {
-            $scope.computers = response.data;
-        })
-    }
-})
+        function getComputer() {
+            dataService.getProduct(url).then(function (response) {
+                $scope.computers = response.data;
+            })
+        }
+    }])

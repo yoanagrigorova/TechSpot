@@ -1,5 +1,5 @@
 angular.module("tvController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
-    .controller("tvCtrl", function($scope, $http, dataService) {
+    .controller("tvCtrl", ['$scope', '$http', 'dataService', function($scope, $http, dataService) {
         $scope.search = {};
         $scope.pageTitle = "Телевизори";
 
@@ -33,9 +33,9 @@ angular.module("tvController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
             var resolutions = data.map((tv) => tv.resolution).filter(dataService.onlyUnique);
             $scope.resolutions = resolutions;
         }
-    })
+    }])
 
-.controller("tvsInfoCtrl", function($scope, $http, dataService) {
+.controller("tvsInfoCtrl", ['$scope', '$http', 'dataService', function($scope, $http, dataService) {
     var url = window.location.pathname;
     getTV();
     function getTV() {
@@ -50,4 +50,4 @@ angular.module("tvController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
             }, 2500);
         });
     }
-})
+}])

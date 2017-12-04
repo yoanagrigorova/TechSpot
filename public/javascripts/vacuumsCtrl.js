@@ -1,5 +1,5 @@
 angular.module("vacuumsController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
-    .controller("vacuumsCtrl", function($scope, $http, dataService) {
+    .controller("vacuumsCtrl", ['$scope', '$http', 'dataService', function($scope, $http, dataService) {
         $scope.search = {};
         $scope.pageTitle = "Прахосмукачки";
 
@@ -33,9 +33,9 @@ angular.module("vacuumsController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
             dataService.sort(capacities);
             $scope.capacities = capacities;
         }
-    })
+    }])
 
-.controller("vocuumsInfoCtrl", function($scope, $http, dataService) {
+.controller("vocuumsInfoCtrl", ['$scope', '$http', 'dataService', function($scope, $http, dataService) {
     var url = window.location.pathname.substr(16);
 
     getVacuum();
@@ -45,4 +45,4 @@ angular.module("vacuumsController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
             $scope.vacuums = response.data;
         })
     }
-})
+}])

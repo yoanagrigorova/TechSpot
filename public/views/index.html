@@ -2,13 +2,31 @@
 <html>
 
 <head>
-    <title>TechSpot</title>
+    <title>TechSpot </title>
     <base href='/'>
+    <link rel='stylesheet' href='./stylesheets/style.css' />
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <link href="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.14.3/ui-bootstrap-tpls.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+    <link href='./stylesheets/bootstrap.min.css' rel="stylesheet" />
+    <script src="https://rawgit.com/rzajac/angularjs-slider/master/dist/rzslider.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-cookies.js"></script>
+    
     <script src='./dist/bundle.js'></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-sha1/0.5.0/sha1.min.js"></script>
+    
 </head>
 
 
+
 <body ng-app='myApp' ng-controller="MainController">
+
+
     <div class="row">
         <span><img class="col-lg-6 col-xs-12" id="logo" src="./images/logo.png" alt=""/></span>
     </div>
@@ -74,7 +92,7 @@
                       <span class="icon-bar"></span>
                     </button>
             </div>
-            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="true" >
+            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1" aria-expanded="true" style="">
                 <ul class="nav navbar-nav">
                     <li><a href="phones">Телефони</a></li>
                     <li><a href="tvs">Телевизори</a></li>
@@ -97,6 +115,10 @@
             </div>
         </div>
     </nav>
+
+
+    <script src='./javascripts/searchCtr.js'></script>
+    <script src='./javascripts/navBarApp.js'></script>
 
     <main>
         <div ng-show='notLoggedIn' class='alert alert-danger' id='popUp'> Влезте в профила си за да може да пазарувате !</div>

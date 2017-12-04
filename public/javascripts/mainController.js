@@ -1,5 +1,5 @@
 angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
-    .controller("MainController", function($scope, $http, $timeout, $location, $rootScope, $route, $window) {
+    .controller("MainController",['$scope', '$http', '$timeout', '$location', '$rootScope', '$route', '$window', function($scope, $http, $timeout, $location, $rootScope, $route, $window) {
 
         // $rootScope.login = false;
         $scope.userRegister = {};
@@ -213,4 +213,6 @@ angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
         };
 
 
-    });
+    }]);
+
+    

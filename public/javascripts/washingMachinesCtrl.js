@@ -1,5 +1,5 @@
 angular.module("washingMachinesController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
-    .controller("washingMachinesCtrl", function($scope, $http, dataService) {
+    .controller("washingMachinesCtrl", ['$scope', '$http', 'dataService', function($scope, $http, dataService) {
         $scope.search = {};
         $scope.pageTitle = "Перални";
 
@@ -33,8 +33,8 @@ angular.module("washingMachinesController", ['ngAnimate', 'rzModule', 'ui.bootst
             dataService.sort(dimensions);
             $scope.dimensions = dimensions;
         }
-    })
-    .controller("washingMachinesInfoCtrl", function($scope, $http, dataService) {
+    }])
+    .controller("washingMachinesInfoCtrl",['$scope', '$http', 'dataService', function($scope, $http, dataService) {
         var url = window.location.pathname.substr(15);
 
         getMachine();
@@ -44,4 +44,4 @@ angular.module("washingMachinesController", ['ngAnimate', 'rzModule', 'ui.bootst
                 $scope.washingMachines = response.data;
             })
         }
-    })
+    }])

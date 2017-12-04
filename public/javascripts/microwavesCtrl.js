@@ -1,5 +1,5 @@
 angular.module("microwaveOvensController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
-    .controller("microwavesCtrl", function($scope, $http, dataService) {
+    .controller("microwavesCtrl", ['$scope', '$http', 'dataService', function($scope, $http, dataService) {
         $scope.search = {};
         $scope.pageTitle = "Микровълнови фурни";
 
@@ -33,9 +33,9 @@ angular.module("microwaveOvensController", ['ngAnimate', 'rzModule', 'ui.bootstr
             dataService.sort(capacities.map(x => parseFloat(x)));
             $scope.capacities = capacities;
         }
-    })
+    }])
 
-.controller("microwavesInfoCtrl", function($scope, $http, dataService) {
+.controller("microwavesInfoCtrl", ['$scope', '$http', 'dataService', function($scope, $http, dataService) {
     var url = window.location.pathname.substr(16);
 
     getMicrowave();
@@ -45,4 +45,4 @@ angular.module("microwaveOvensController", ['ngAnimate', 'rzModule', 'ui.bootstr
             $scope.microwaves = response.data;
         })
     }
-})
+}]);

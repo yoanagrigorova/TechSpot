@@ -1,5 +1,5 @@
 angular.module("conditionersController", ['ngAnimate', 'rzModule', 'ui.bootstrap'])
-    .controller("conditionersCtrl", function($scope, $http, dataService) {
+    .controller("conditionersCtrl", ['$scope', '$http', 'dataService', function($scope, $http, dataService) {
         $scope.search = {};
         $scope.pageTitle = "Професионална климатична техника";
 
@@ -34,9 +34,9 @@ angular.module("conditionersController", ['ngAnimate', 'rzModule', 'ui.bootstrap
             dataService.sort(heatingPowers);
             $scope.heatingPowers = heatingPowers;
         }
-    })
+    }])
 
-.controller("conditionersInfoCtrl", function($scope, $http, dataService) {
+.controller("conditionersInfoCtrl", ['$scope', '$http', 'dataService' , function($scope, $http, dataService) {
     var url = window.location.pathname;
 
     getAirCond();
@@ -46,4 +46,4 @@ angular.module("conditionersController", ['ngAnimate', 'rzModule', 'ui.bootstrap
             $scope.conditioners = response.data;
         })
     }
-})
+}])
