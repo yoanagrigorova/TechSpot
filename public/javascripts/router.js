@@ -6,7 +6,7 @@ let angularRoute = require('angular-route');
 let angularAnimate = require('angular-animate');
 let angularCookies = require('angular-cookies');
 let angularBootstrap = require('angular-ui-bootstrap');
-let sha1 = require('sha1');
+
 let css = require("../stylesheets/style.css");
 let bootstrapJS = require('./bootstrap-js');
 let bootstrap = require('../stylesheets/bootstrap.min.css');

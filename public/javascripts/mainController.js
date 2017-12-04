@@ -1,6 +1,6 @@
 angular.module("MainCtrl", ['ngCookies', 'ngAnimate'])
     .controller("MainController",['$scope', '$http', '$timeout', '$location', '$rootScope', '$route', '$window', function($scope, $http, $timeout, $location, $rootScope, $route, $window) {
-
+    var sha1 = require('sha1');
         // $rootScope.login = false;
         $scope.userRegister = {};
         $scope.errorMsg = false;

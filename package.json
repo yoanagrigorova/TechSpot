@@ -31,6 +31,8 @@
     "nodemon": "^1.12.1",
     "resolve-url-loader": "^2.2.0",
     "serve-favicon": "~2.4.5",
+    "sha": "^2.0.1",
+    "sha.js": "^2.4.9",
     "sha1": "^1.1.1",
     "webpack": "^3.8.1"
   },
